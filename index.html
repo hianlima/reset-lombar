@@ -56,7 +56,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
 }
 .reveal.in{ opacity:1; transform:translateY(0); }
-.receive-grid .reveal:nth-child(2),.bonus-grid .reveal:nth-child(2),.compare-wrap .reveal:nth-child(2){ transition-delay:.1s; }
+.receive-grid .reveal:nth-child(2),.bonus-grid .reveal:nth-child(2){ transition-delay:.1s; }
 .receive-grid .reveal:nth-child(3),.bonus-grid .reveal:nth-child(3){ transition-delay:.2s; }
 .receive-grid .reveal:nth-child(4){ transition-delay:.3s; }
 @media (prefers-reduced-motion: reduce){
@@ -148,26 +148,8 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .rcard p{ margin:0; font-size:.95rem; color:var(--ink); position:relative; }
 
 /* ============ POR QUE É DIFERENTE ============ */
-.compare-wrap{ display:grid; gap:16px; grid-template-columns:1fr; max-width:860px; margin:0 auto; }
-@media(min-width:720px){ .compare-wrap{ grid-template-columns:1fr 1fr; align-items:stretch; } }
-.compare-card{ padding:28px 26px; }
-.compare-card.bad{ background:#F5F5F5; border:1px solid var(--line); }
-.compare-card.good{ background:var(--black); color:#fff; border-top:6px solid var(--yellow); }
-.compare-card .clabel{ font-family:var(--ui); font-weight:700; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
-.compare-card.bad .clabel{ color:var(--grey); }
-.compare-card.good .clabel{ color:var(--yellow); }
-.compare-card ul{ list-style:none; margin:0; padding:0; }
-.compare-card li{ display:flex; gap:12px; align-items:flex-start; font-size:.92rem; line-height:1.48; margin-bottom:16px; }
-.compare-card li:last-child{ margin-bottom:0; }
-.compare-card.bad li{ color:var(--ink); }
-.compare-card.good li{ color:#E8E8E8; }
-.compare-card .mark{
-  flex:none; width:20px; height:20px; margin-top:2px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700;
-}
-.compare-card.bad .mark{ background:#E2E2E2; color:#8A8A8A; }
-.compare-card.good .mark{ background:var(--yellow); color:var(--black); }
-.compare-card.good strong{ color:var(--yellow); font-weight:600; }
+.diagram-wrap{ max-width:1100px; margin:0 auto; }
+.diagram-wrap svg{ width:100%; height:auto; display:block; }
 
 .compare-lead{
   text-align:center; font-family:var(--ui); font-size:.88rem; color:var(--grey);
@@ -433,25 +415,97 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       <p>Criado por um fisioterapeuta que atende dor lombar e ciática todos os dias. Não é conteúdo copiado da internet.</p>
     </div>
 
-    <div class="compare-wrap">
-      <div class="compare-card bad reveal">
-        <div class="clabel">O que você já deve ter tentado</div>
-        <ul>
-          <li><span class="mark">✕</span>Uma lista de alongamento igual pra todo mundo, sem saber se serve pro seu tipo de dor</li>
-          <li><span class="mark">✕</span>Você só sabe se "doeu menos" hoje, sem entender o porquê</li>
-          <li><span class="mark">✕</span>Alonga hoje, esquece amanhã, sem plano de progressão</li>
-          <li><span class="mark">✕</span>Quando a dor volta, você começa tudo do zero de novo</li>
-        </ul>
-      </div>
-      <div class="compare-card good reveal">
-        <div class="clabel">O Reset Lombar</div>
-        <ul>
-          <li><span class="mark">✓</span>Um teste de 3 dias descobre exatamente qual direção o <strong>seu</strong> corpo pede</li>
-          <li><span class="mark">✓</span>Você lê se a dor está centralizando ou periferizando, série após série</li>
-          <li><span class="mark">✓</span>Plano de 30 dias em 3 fases: Direção → Estabilidade → Força</li>
-          <li><span class="mark">✓</span>Você aprende a se avaliar sozinho, útil muito depois dos 30 dias</li>
-        </ul>
-      </div>
+    <div class="diagram-wrap reveal">
+      <svg viewBox="0 0 1600 820" role="img" aria-labelledby="diagTitle" xmlns="http://www.w3.org/2000/svg">
+      <title id="diagTitle">Comparação entre tentativa e erro e o método Reset Lombar</title>
+      <rect width="100%" height="100%" fill="#F8F7F4"/>
+      <!-- central bridge -->
+      <path d="M760 380 H840" stroke="#C9A24B" stroke-width="2"/>
+      <path d="M824 366 L840 380 L824 394" fill="none" stroke="#C9A24B" stroke-width="2"/>
+      <circle cx="800" cy="380" r="24" fill="#F8F7F4" stroke="#C9A24B" stroke-width="2"/>
+      <text x="800" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#C9A24B">VS</text>
+
+      <!-- LEFT CARD -->
+      <rect x="70" y="110" width="670" height="610" rx="4" fill="#F1F0ED" stroke="#D8D5CF" stroke-width="2"/>
+      <rect x="70" y="110" width="670" height="7" fill="#D8D5CF"/>
+      <text x="105" y="160" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="2" fill="#6F6F6F">O QUE VOCÊ JÁ DEVE TER TENTADO</text>
+      <line x1="105" y1="182" x2="705" y2="182" stroke="#D8D5CF" stroke-width="1"/>
+
+      <!-- left items -->
+      <g font-family="Arial,sans-serif" font-size="21" fill="#333">
+       <circle cx="122" cy="235" r="14" fill="#E0E0DC"/>
+       <path d="M117 230 L127 240 M127 230 L117 240" stroke="#9A9A96" stroke-width="2"/>
+       <text x="155" y="229">
+         <tspan x="155" dy="0">Uma lista de alongamento igual pra todo mundo,</tspan>
+         <tspan x="155" dy="29">sem saber se serve pro seu tipo de dor</tspan>
+       </text>
+
+       <circle cx="122" cy="340" r="14" fill="#E0E0DC"/>
+       <path d="M117 335 L127 345 M127 335 L117 345" stroke="#9A9A96" stroke-width="2"/>
+       <text x="155" y="334">
+         <tspan x="155" dy="0">Você só sabe se "doeu menos" hoje, sem entender</tspan>
+         <tspan x="155" dy="29">o porquê</tspan>
+       </text>
+
+       <circle cx="122" cy="430" r="14" fill="#E0E0DC"/>
+       <path d="M117 425 L127 435 M127 425 L117 435" stroke="#9A9A96" stroke-width="2"/>
+       <text x="155" y="424">
+         <tspan x="155" dy="0">Alonga hoje, esquece amanhã, sem plano de</tspan>
+         <tspan x="155" dy="29">progressão</tspan>
+       </text>
+
+       <circle cx="122" cy="520" r="14" fill="#E0E0DC"/>
+       <path d="M117 515 L127 525 M127 515 L117 525" stroke="#9A9A96" stroke-width="2"/>
+       <text x="155" y="514">
+         <tspan x="155" dy="0">Quando a dor volta, você começa tudo do zero</tspan>
+         <tspan x="155" dy="29">de novo</tspan>
+       </text>
+      </g>
+
+      <!-- RIGHT CARD -->
+      <rect x="860" y="110" width="670" height="610" rx="4" fill="#151515"/>
+      <rect x="860" y="110" width="670" height="7" fill="#C9A24B"/>
+      <text x="900" y="160" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="2" fill="#C9A24B">O RESET LOMBAR</text>
+      <line x1="900" y1="182" x2="1490" y2="182" stroke="#333333" stroke-width="1"/>
+
+      <!-- right pathway -->
+      <path d="M930 235 C930 300, 970 300, 970 365 S1010 430,1010 495 S1050 560,1050 625" fill="none" stroke="#C9A24B" stroke-width="2" opacity=".55"/>
+
+      <g font-family="Arial,sans-serif" fill="#FFFFFF">
+       <circle cx="930" cy="235" r="15" fill="#C9A24B"/>
+       <path d="M924 235 L929 240 L938 229" fill="none" stroke="#151515" stroke-width="2.5"/>
+       <text x="965" y="229" font-size="20">
+         <tspan x="965" dy="0">Um teste de 3 dias descobre</tspan>
+         <tspan x="965" dy="27">exatamente qual direção o</tspan>
+         <tspan x="965" dy="27"><tspan font-weight="700">seu</tspan> corpo pede</tspan>
+       </text>
+
+       <circle cx="970" cy="365" r="15" fill="#C9A24B"/>
+       <path d="M964 365 L969 370 L978 359" fill="none" stroke="#151515" stroke-width="2.5"/>
+       <text x="1005" y="359" font-size="20">
+         <tspan x="1005" dy="0">Você lê se a dor está centralizando ou</tspan>
+         <tspan x="1005" dy="27">periferizando, série após série</tspan>
+       </text>
+
+       <circle cx="1010" cy="495" r="15" fill="#C9A24B"/>
+       <path d="M1004 495 L1009 500 L1018 489" fill="none" stroke="#151515" stroke-width="2.5"/>
+       <text x="1045" y="489" font-size="20">
+         <tspan x="1045" dy="0">Plano de 30 dias em 3 fases: Direção → Estabilidade</tspan>
+         <tspan x="1045" dy="27">→ Força</tspan>
+       </text>
+
+       <circle cx="1050" cy="625" r="15" fill="#C9A24B"/>
+       <path d="M1044 625 L1049 630 L1058 619" fill="none" stroke="#151515" stroke-width="2.5"/>
+       <text x="1085" y="619" font-size="20">
+         <tspan x="1085" dy="0">Você aprende a se avaliar sozinho, útil muito depois</tspan>
+         <tspan x="1085" dy="27">dos 30 dias</tspan>
+       </text>
+      </g>
+
+      <!-- small labels -->
+      <text x="405" y="770" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="2" fill="#9A9A96">TENTATIVA E ERRO</text>
+      <text x="1195" y="770" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="2" fill="#C9A24B">MÉTODO E PROGRESSÃO</text>
+      </svg>
     </div>
 
     <p class="compare-lead">É assim que você vai ler o próprio corpo, série após série:</p>
