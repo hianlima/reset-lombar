@@ -52,8 +52,8 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .rule{ display:flex; align-items:center; gap:10px; }
 .rule i{ flex:1; height:1px; background:var(--yellow); opacity:.55; }
 .rule b{ flex:none; width:4px; height:4px; border-radius:50%; background:var(--yellow); }
-.emblem{ width:34px; height:34px; border:1px solid var(--yellow); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
-.emblem svg{ width:14px; height:14px; }
+.emblem{ width:44px; height:44px; border:1px solid var(--yellow); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.emblem svg{ width:20px; height:20px; }
 .section-head{ text-align:center; max-width:640px; margin:0 auto 40px; }
 .section-head h2{ font-size:clamp(1.6rem,4.5vw,2.3rem); line-height:1.2; }
 .section-head p{ margin-top:14px; font-size:1.02rem; color:var(--ink); }
@@ -117,13 +117,21 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 
 /* ============ O QUE VOCÊ VAI RECEBER ============ */
-.receive-grid{ display:grid; gap:16px; grid-template-columns:1fr; }
-@media(min-width:640px){ .receive-grid{ grid-template-columns:1fr 1fr; } }
+.receive-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+@media(min-width:640px){ .receive-grid{ grid-template-columns:1fr 1fr; gap:24px; } }
 
-.rcard{ border:1px solid var(--line); padding:24px 22px; background:#fff; }
-.rcard .n{ font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.14em; color:var(--yellow-dk); text-transform:uppercase; }
-.rcard h3{ font-family:var(--ui); font-size:1.05rem; font-weight:600; margin:8px 0 8px; }
-.rcard p{ margin:0; font-size:.95rem; color:var(--ink); }
+.rcard{
+  position:relative; overflow:hidden; border:1px solid var(--line); border-top:3px solid var(--yellow);
+  padding:30px 26px 28px; background:#fff; transition:transform .18s ease, box-shadow .18s ease;
+}
+.rcard:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(20,20,20,.09); }
+.rcard .num{
+  position:absolute; top:2px; right:18px; font-family:var(--serif); font-weight:700; font-size:3.6rem;
+  color:var(--yellow); opacity:.16; line-height:1; pointer-events:none;
+}
+.rcard .n{ font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.14em; color:var(--yellow-dk); text-transform:uppercase; position:relative; }
+.rcard h3{ font-family:var(--ui); font-size:1.05rem; font-weight:600; margin:8px 0 8px; position:relative; }
+.rcard p{ margin:0; font-size:.95rem; color:var(--ink); position:relative; }
 
 /* ============ POR QUE É DIFERENTE ============ */
 .compare-wrap{ display:grid; gap:16px; grid-template-columns:1fr; max-width:860px; margin:0 auto; }
@@ -325,21 +333,29 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
     <div class="receive-grid">
       <div class="rcard">
+        <span class="num">01</span>
+        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="6.5" stroke="#141414" stroke-width="1.6"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M12 8l2 4-2 4-2-4 2-4z" fill="#141414"/></svg></div>
         <div class="n">Passo 1</div>
         <h3>Teste de direção de 3 dias</h3>
         <p>Um protocolo guiado, dia a dia, para descobrir se o seu corpo responde melhor a movimentos de flexão ou de extensão: a decisão mais importante de todo o processo.</p>
       </div>
       <div class="rcard">
+        <span class="num">02</span>
+        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <div class="n">Passo 2</div>
         <h3>8 movimentos com foto e dose exata</h3>
         <p>Trilha da flexão e trilha da extensão, com fotos reais de cada exercício, número de séries, repetições e frequência ao longo do dia.</p>
       </div>
       <div class="rcard">
+        <span class="num">03</span>
+        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="1" stroke="#141414" stroke-width="1.7"/><path d="M4 9.5h16M8 3v4M16 3v4" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <div class="n">Passo 3</div>
         <h3>Calendário de 30 dias pronto</h3>
         <p>Semana a semana, o que treinar, quando progredir de fase e como intercalar caminhada, sem precisar montar nada sozinho.</p>
       </div>
       <div class="rcard">
+        <span class="num">04</span>
+        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1" stroke="#141414" stroke-width="1.7"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <div class="n">Passo 4</div>
         <h3>Ficha de parâmetros imprimível</h3>
         <p>Uma página para anotar os 6 números que realmente mostram progresso, muito além do "hoje doeu menos".</p>
