@@ -49,6 +49,19 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   padding:6px 12px; margin-bottom:16px;
 }
 .section{ padding:64px 0; }
+
+/* ============ REVEAL AO ROLAR ============ */
+.reveal{
+  opacity:0; transform:translateY(26px);
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.in{ opacity:1; transform:translateY(0); }
+.receive-grid .reveal:nth-child(2),.bonus-grid .reveal:nth-child(2),.testi-grid .reveal:nth-child(2),.compare-wrap .reveal:nth-child(2){ transition-delay:.1s; }
+.receive-grid .reveal:nth-child(3),.bonus-grid .reveal:nth-child(3),.testi-grid .reveal:nth-child(3){ transition-delay:.2s; }
+.receive-grid .reveal:nth-child(4){ transition-delay:.3s; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
 .rule{ display:flex; align-items:center; gap:10px; }
 .rule i{ flex:1; height:1px; background:var(--yellow); opacity:.55; }
 .rule b{ flex:none; width:4px; height:4px; border-radius:50%; background:var(--yellow); }
@@ -76,8 +89,9 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ============ TOPO MINI ============ */
 .topbar{
-  position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid var(--line);
-  padding:14px 0;
+  position:sticky; top:0; z-index:30; background:rgba(255,255,255,.72);
+  backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(20,20,20,.08); padding:14px 0;
 }
 .topbar .container{ display:flex; align-items:center; justify-content:space-between; }
 .brand{ font-family:var(--serif); font-weight:700; font-size:1.15rem; color:var(--black); }
@@ -183,16 +197,31 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .bonus-card .val{ margin-top:14px; font-family:var(--ui); font-size:.78rem; color:var(--yellow); }
 
 /* ============ OFERTA ============ */
-.offer-box{
-  max-width:560px; margin:0 auto; background:#fff; color:var(--black); padding:34px 26px;
-  border-top:8px solid var(--yellow);
+@keyframes offerGlow{
+  0%,100%{ box-shadow:0 30px 70px rgba(0,0,0,.4), 0 0 0 1px rgba(201,161,92,.3), 0 0 0 rgba(201,161,92,0); }
+  50%{ box-shadow:0 30px 70px rgba(0,0,0,.4), 0 0 0 1px rgba(201,161,92,.3), 0 0 34px 4px rgba(201,161,92,.3); }
 }
-.offer-box .kicker{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--yellow-dk); text-align:center; }
+.offer-box{
+  position:relative; max-width:560px; margin:0 auto;
+  background:linear-gradient(180deg,#fff 0%,#FBF6EA 100%); color:var(--black); padding:40px 26px 34px;
+  border:1px solid rgba(201,161,92,.3); border-top:8px solid var(--yellow);
+  animation:offerGlow 3.6s ease-in-out infinite;
+}
+.offer-box .ribbon{
+  position:absolute; top:-15px; left:50%; transform:translateX(-50%); white-space:nowrap;
+  background:var(--yellow); color:var(--black); font-family:var(--ui); font-weight:700; font-size:.7rem;
+  letter-spacing:.1em; text-transform:uppercase; padding:7px 18px; box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+.offer-box .kicker{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--yellow-dk); text-align:center; margin-top:6px; }
 .offer-box .price-row{ text-align:center; margin:16px 0 4px; }
 .offer-box .from{ font-family:var(--ui); font-size:1rem; color:var(--grey); text-decoration:line-through; }
-.offer-box .to{ font-family:var(--serif); font-weight:700; font-size:clamp(2.3rem,9vw,3rem); color:var(--black); line-height:1; margin-top:4px; }
+.offer-box .to{ font-family:var(--serif); font-weight:700; font-size:clamp(2.6rem,10vw,3.4rem); color:var(--black); line-height:1; margin-top:4px; }
 .offer-box .to sup{ font-size:1.1rem; top:-1.2em; }
-.offer-box .installments{ text-align:center; font-family:var(--ui); font-size:.85rem; color:var(--grey); margin-top:6px; }
+.offer-box .save{
+  display:inline-block; background:var(--yellow-sf); color:var(--yellow-dk); font-family:var(--ui);
+  font-weight:700; font-size:.72rem; letter-spacing:.05em; padding:5px 12px; margin-top:10px;
+}
+.offer-box .installments{ text-align:center; font-family:var(--ui); font-size:.85rem; color:var(--grey); margin-top:10px; }
 
 .countdown{
   display:flex; justify-content:center; gap:10px; margin:22px 0; font-family:var(--ui);
@@ -275,7 +304,9 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
 /* ============ BARRA STICKY ============ */
 .sticky-cta{
-  position:fixed; left:0; right:0; bottom:0; z-index:40; background:var(--black);
+  position:fixed; left:0; right:0; bottom:0; z-index:40; background:rgba(20,17,13,.86);
+  backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-top:1px solid rgba(201,161,92,.25);
   padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px;
   transform:translateY(110%); transition:transform .25s ease; box-shadow:0 -6px 18px rgba(0,0,0,.25);
 }
@@ -332,28 +363,28 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     </div>
 
     <div class="receive-grid">
-      <div class="rcard">
+      <div class="rcard reveal">
         <span class="num">01</span>
         <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="6.5" stroke="#141414" stroke-width="1.6"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M12 8l2 4-2 4-2-4 2-4z" fill="#141414"/></svg></div>
         <div class="n">Passo 1</div>
         <h3>Teste de direção de 3 dias</h3>
         <p>Um protocolo guiado, dia a dia, para descobrir se o seu corpo responde melhor a movimentos de flexão ou de extensão: a decisão mais importante de todo o processo.</p>
       </div>
-      <div class="rcard">
+      <div class="rcard reveal">
         <span class="num">02</span>
         <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <div class="n">Passo 2</div>
         <h3>8 movimentos com foto e dose exata</h3>
         <p>Trilha da flexão e trilha da extensão, com fotos reais de cada exercício, número de séries, repetições e frequência ao longo do dia.</p>
       </div>
-      <div class="rcard">
+      <div class="rcard reveal">
         <span class="num">03</span>
         <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="1" stroke="#141414" stroke-width="1.7"/><path d="M4 9.5h16M8 3v4M16 3v4" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <div class="n">Passo 3</div>
         <h3>Calendário de 30 dias pronto</h3>
         <p>Semana a semana, o que treinar, quando progredir de fase e como intercalar caminhada, sem precisar montar nada sozinho.</p>
       </div>
-      <div class="rcard">
+      <div class="rcard reveal">
         <span class="num">04</span>
         <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1" stroke="#141414" stroke-width="1.7"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
         <div class="n">Passo 4</div>
@@ -378,7 +409,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     </div>
 
     <div class="compare-wrap">
-      <div class="compare-card bad">
+      <div class="compare-card bad reveal">
         <div class="clabel">O que você já deve ter tentado</div>
         <ul>
           <li><span class="mark">✕</span>Uma lista de alongamento igual pra todo mundo, sem saber se serve pro seu tipo de dor</li>
@@ -387,7 +418,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
           <li><span class="mark">✕</span>Quando a dor volta, você começa tudo do zero de novo</li>
         </ul>
       </div>
-      <div class="compare-card good">
+      <div class="compare-card good reveal">
         <div class="clabel">O Reset Lombar</div>
         <ul>
           <li><span class="mark">✓</span>Um teste de 3 dias descobre exatamente qual direção o <strong>seu</strong> corpo pede</li>
@@ -424,7 +455,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     </div>
 
     <div class="bonus-grid">
-      <div class="bonus-card">
+      <div class="bonus-card reveal">
         <div class="ytab"></div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#141414"/></svg></div>
         <div class="tag">Bônus 1</div>
@@ -432,7 +463,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <p>Plano hora a hora para os momentos de crise aguda, para usar enquanto o método principal ainda está fazendo efeito.</p>
         <div class="val">[definir valor percebido]</div>
       </div>
-      <div class="bonus-card">
+      <div class="bonus-card reveal">
         <div class="ytab"></div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#141414" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="tag">Bônus 2</div>
@@ -440,7 +471,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <p>Uma folha única para marcar seus treinos dia a dia e não perder o fio da progressão entre as fases.</p>
         <div class="val">[definir valor percebido]</div>
       </div>
-      <div class="bonus-card">
+      <div class="bonus-card reveal">
         <div class="ytab"></div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#141414" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg></div>
         <div class="tag">Bônus 3</div>
@@ -455,12 +486,14 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 5. OFERTA ===== -->
 <section class="section dark" id="oferta">
   <div class="container">
-    <div class="offer-box">
-      <div class="kicker">Oferta por tempo limitado</div>
+    <div class="offer-box reveal">
+      <div class="ribbon">Oferta especial</div>
+      <div class="kicker">Por tempo limitado</div>
 
       <div class="price-row">
-        <div class="from">De R$ [xx],00</div>
+        <div class="from">De R$ 127,00</div>
         <div class="to">R$ 37<sup>,90</sup></div>
+        <div class="save">Economize 70%</div>
         <div class="installments">ou em até [x]x de R$ [xx],xx</div>
       </div>
 
@@ -517,21 +550,21 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     </div>
 
     <div class="testi-grid">
-      <div class="testi-card">
+      <div class="testi-card reveal">
         <div class="testi-avatar">[Foto]</div>
         <div class="testi-stars">★★★★★</div>
         <p>"[Espaço reservado para depoimento real do paciente sobre o resultado com o método.]"</p>
         <div class="testi-name">[Nome do paciente]</div>
         <div class="testi-role">[Contexto: dor há 2 anos]</div>
       </div>
-      <div class="testi-card">
+      <div class="testi-card reveal">
         <div class="testi-avatar">[Foto]</div>
         <div class="testi-stars">★★★★★</div>
         <p>"[Espaço reservado para depoimento real do paciente sobre o resultado com o método.]"</p>
         <div class="testi-name">[Nome do paciente]</div>
         <div class="testi-role">[Contexto: ciática recorrente]</div>
       </div>
-      <div class="testi-card">
+      <div class="testi-card reveal">
         <div class="testi-avatar">[Foto]</div>
         <div class="testi-stars">★★★★★</div>
         <p>"[Espaço reservado para depoimento real do paciente sobre o resultado com o método.]"</p>
@@ -545,7 +578,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 8. GARANTIA ===== -->
 <section class="section" id="garantia">
   <div class="container">
-    <div class="guarantee">
+    <div class="guarantee reveal">
       <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#141414"/><path d="M9 12l2 2 4-4" stroke="#C9A15C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <h2>7 dias de garantia incondicional</h2>
       <p>Se em até 7 dias você sentir que o Reset Lombar não é para você, basta enviar um e-mail e devolvemos 100% do valor, sem perguntas, sem burocracia.</p>
@@ -562,23 +595,23 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     </div>
 
     <div class="faq" id="faq-list">
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <button class="faq-q" type="button">Funciona para dor crônica, que já dura anos? <span class="plus">+</span></button>
         <div class="faq-a"><p>Sim. O método não depende de quanto tempo a dor já dura, e sim de como o seu corpo responde ao movimento hoje. O teste de 3 dias funciona tanto para quadros recentes quanto para dores de longa data. O que muda é só o ritmo de progressão entre as fases.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <button class="faq-q" type="button">Funciona também para hérnia de disco? <span class="plus">+</span></button>
         <div class="faq-a"><p>Na maioria dos casos, sim: hérnia de disco costuma responder bem a movimento direcional bem dosado. O ebook começa com uma checagem de segurança para identificar os sinais de alerta que pedem avaliação médica antes de qualquer exercício. Fora desses casos, o método se aplica normalmente.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <button class="faq-q" type="button">Em que formato eu recebo o material? <span class="plus">+</span></button>
         <div class="faq-a"><p>Um ebook digital em PDF de 30 páginas, com fotos de cada exercício, para ler no celular, tablet ou computador, e imprimir se preferir. Os bônus também são entregues em PDF.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <button class="faq-q" type="button">Em quanto tempo eu vejo resultado? <span class="plus">+</span></button>
         <div class="faq-a"><p>O teste de 3 dias já mostra se você encontrou a sua direção. A partir daí, a maioria das pessoas sente alívio já na primeira fase (dias 1 a 10), mas o objetivo do método vai além do alívio rápido: as fases de Estabilidade e Força são o que evita a dor de voltar.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item reveal">
         <button class="faq-q" type="button">Como eu acesso o material depois da compra? <span class="plus">+</span></button>
         <div class="faq-a"><p>Assim que o pagamento é aprovado, você recebe acesso imediato na área de membros, com login por e-mail. O material fica disponível para consultar quando quiser, sem prazo de expiração.</p></div>
       </div>
@@ -602,7 +635,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 </footer>
 
 <div class="sticky-cta" id="stickyCta">
-  <div class="p"><b>R$ 37,90</b><span>de R$ [xx],00</span></div>
+  <div class="p"><b>R$ 37,90</b><span>de R$ 127,00</span></div>
   <a href="#oferta" class="btn btn-primary" data-cta>Garantir acesso</a>
 </div>
 
@@ -649,6 +682,22 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   }
   document.addEventListener("scroll", onScroll, { passive:true });
   onScroll();
+
+  /* ---- reveal ao rolar ---- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.15, rootMargin:"0px 0px -60px 0px" });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  }
 
   /* ---- FAQ acordeão ---- */
   document.querySelectorAll(".faq-item").forEach(function(item){
