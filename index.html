@@ -146,15 +146,10 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   margin:40px auto 0; max-width:460px;
 }
 
-.ud-mini{ display:flex; gap:14px; margin-top:20px; max-width:760px; margin-left:auto; margin-right:auto; }
-.ud-mini > div{ flex:1; text-align:center; padding:18px 12px; border:1px solid var(--line); }
-.ud-mini .sym{ font-family:var(--ui); font-size:1.5rem; font-weight:700; }
-.ud-mini .lbl{ font-family:var(--ui); font-weight:700; font-size:.82rem; letter-spacing:.05em; margin:4px 0 6px; }
-.ud-mini p{ font-size:.8rem; margin:0; color:var(--ink); }
-.ud-mini .go{ background:var(--yellow-sf); border-color:var(--yellow); }
-.ud-mini .go .sym,.ud-mini .go .lbl{ color:var(--yellow-dk); }
-.ud-mini .stop{ background:var(--red-sf); border-color:#E8C4C0; }
-.ud-mini .stop .sym,.ud-mini .stop .lbl{ color:var(--red); }
+.diagram-mobile{ margin-top:20px; }
+.diagram-photo-half{ position:relative; overflow:hidden; border-radius:4px; margin-bottom:12px; }
+.diagram-photo-half:last-child{ margin-bottom:0; }
+.diagram-photo-half img{ width:100%; height:auto; display:block; }
 
 .diagram-photo{ display:none; max-width:1100px; margin:40px auto 0; position:relative; overflow:hidden; border-radius:4px; }
 .diagram-photo img{ width:100%; height:auto; display:block; transition:transform .5s ease; }
@@ -174,7 +169,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 @media(min-width:768px){
   .compare-lead{ display:none; }
   .diagram-photo{ display:block; }
-  .ud-mini{ display:none; }
+  .diagram-mobile{ display:none; }
 }
 
 /* ============ BÔNUS ============ */
@@ -539,16 +534,14 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
     <p class="compare-lead">É assim que você vai ler o próprio corpo, série após série:</p>
 
-    <div class="ud-mini">
-      <div class="go">
-        <div class="sym">↑</div>
-        <div class="lbl">CENTRALIZOU</div>
-        <p>A dor recuou em direção à coluna. Sinal de que a direção está certa.</p>
+    <div class="diagram-mobile reveal">
+      <div class="diagram-photo-half">
+        <img src="img/diagrama-centraliza.png" alt="Centralização: a dor recuou em direção à coluna, sinal de que a direção está certa" loading="lazy">
+        <span class="pulse-dot gold" style="left:34.9%; top:31.8%;"></span>
       </div>
-      <div class="stop">
-        <div class="sym">↓</div>
-        <div class="lbl">PERIFERIZOU</div>
-        <p>A dor se espalhou para longe da coluna. Sinal para trocar de direção.</p>
+      <div class="diagram-photo-half">
+        <img src="img/diagrama-periferiza.png" alt="Periferização: a dor se espalhou para longe da coluna, sinal para trocar de direção" loading="lazy">
+        <span class="pulse-dot red" style="left:74.3%; top:32.3%;"></span>
       </div>
     </div>
   </div>
