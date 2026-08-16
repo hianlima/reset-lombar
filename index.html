@@ -199,7 +199,6 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   50%{ box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,161,92,.35), 0 0 44px 6px rgba(201,161,92,.32); }
 }
 @keyframes ribbonPulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.045); } }
-@keyframes livePulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(.7); } }
 
 .offer-box{
   position:relative; max-width:560px; margin:0 auto; overflow:hidden; border-radius:18px;
@@ -218,7 +217,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   box-shadow:0 8px 18px rgba(0,0,0,.2); animation:ribbonPulse 2.4s ease-in-out infinite;
 }
 .offer-box .kicker{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--yellow-dk); text-align:center; margin-top:6px; }
-.offer-box .price-row{ text-align:center; margin:18px 0 4px; }
+.offer-box .price-row{ text-align:center; margin:18px 0 30px; }
 .offer-box .from{ font-family:var(--ui); font-size:1rem; color:var(--red); text-decoration:line-through; opacity:.75; }
 .offer-box .to-wrap{ position:relative; display:inline-block; }
 .offer-box .to{
@@ -233,19 +232,6 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   box-shadow:0 8px 16px rgba(192,57,43,.4); border:2px solid #fff;
 }
 @media(max-width:400px){ .offer-box .off-badge{ position:static; transform:none; display:inline-flex; margin-top:10px; } }
-
-.countdown-label{
-  display:flex; align-items:center; justify-content:center; gap:8px; margin:26px 0 10px;
-  font-family:var(--ui); font-weight:600; font-size:.8rem; letter-spacing:.03em; color:var(--red);
-}
-.countdown-label .live-dot{ width:7px; height:7px; border-radius:50%; background:var(--red); animation:livePulse 1.4s ease-in-out infinite; }
-.countdown{
-  display:flex; justify-content:center; align-items:center; gap:8px; margin:0 0 26px; font-family:var(--ui);
-}
-.countdown .u{ background:var(--black); color:#fff; min-width:62px; padding:12px 8px; border-radius:8px; text-align:center; box-shadow:0 10px 20px rgba(0,0,0,.2); }
-.countdown .u b{ display:block; font-size:1.6rem; font-weight:700; font-variant-numeric:tabular-nums; }
-.countdown .u span{ display:block; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-top:2px; }
-.countdown .colon{ font-size:1.4rem; font-weight:700; color:var(--black); opacity:.25; }
 
 .offer-includes{ list-style:none; margin:0 0 26px; padding:0; font-family:var(--ui); font-size:.9rem; display:flex; flex-direction:column; gap:8px; }
 .offer-includes li{
@@ -465,7 +451,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Por que este método é diferente</div>
-      <h2>Não é mais uma lista genérica de alongamento</h2>
+      <h2>Não é uma lista genérica de alongamento</h2>
       <p>Criado por um fisioterapeuta que atende dor lombar e ciática todos os dias. Não é conteúdo copiado da internet.</p>
     </div>
 
@@ -613,8 +599,8 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <div class="ytab"></div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#141414" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg></div>
         <div class="tag">Bônus 3</div>
-        <h3>Ficha de Parâmetros</h3>
-        <p>Versão avulsa e imprimível da ficha do ebook, pronta para colar na geladeira ou no caderno de treino.</p>
+        <h3>Ficha de Parâmetros para Imprimir</h3>
+        <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o ebook toda vez que for anotar seus números.</p>
         <div class="val">[definir valor percebido]</div>
       </div>
     </div>
@@ -639,13 +625,6 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
           <div class="to">R$ 37<sup>,90</sup></div>
           <div class="off-badge">−70%</div>
         </div>
-      </div>
-
-      <div class="countdown-label"><span class="live-dot"></span>Essa condição expira em</div>
-      <div class="countdown" id="countdown">
-        <div class="u"><b id="cd-m">15</b><span>min</span></div>
-        <div class="colon">:</div>
-        <div class="u"><b id="cd-s">00</b><span>seg</span></div>
       </div>
 
       <ul class="offer-includes">
@@ -788,31 +767,6 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <script>
 (function(){
   "use strict";
-
-  /* ---- contador regressivo de 15 minutos, persistente entre reloads ---- */
-  var DURATION = 15 * 60 * 1000;
-  var KEY = "rl_offer_deadline";
-  var deadline = parseInt(localStorage.getItem(KEY), 10);
-  if(!deadline || deadline < Date.now()){
-    deadline = Date.now() + DURATION;
-    localStorage.setItem(KEY, String(deadline));
-  }
-  var elM = document.getElementById("cd-m");
-  var elS = document.getElementById("cd-s");
-  function tick(){
-    var remaining = deadline - Date.now();
-    if(remaining <= 0){
-      deadline = Date.now() + DURATION;
-      localStorage.setItem(KEY, String(deadline));
-      remaining = DURATION;
-    }
-    var m = Math.floor(remaining / 60000);
-    var s = Math.floor((remaining % 60000) / 1000);
-    elM.textContent = String(m).padStart(2, "0");
-    elS.textContent = String(s).padStart(2, "0");
-  }
-  tick();
-  setInterval(tick, 1000);
 
   /* ---- reveal ao rolar ---- */
   var revealEls = document.querySelectorAll(".reveal");
