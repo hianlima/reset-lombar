@@ -17,9 +17,9 @@
 
 /* ============ TOKENS (do ebook Reset Lombar) ============ */
 :root{
-  --yellow:#E5E24E;
-  --yellow-sf:#FAF9E4;
-  --yellow-dk:#8A8712;
+  --yellow:#C9A15C;
+  --yellow-sf:#F6EDDC;
+  --yellow-dk:#93712F;
   --black:#141414;
   --ink:#3A3A3A;
   --grey:#8A8A8A;
@@ -49,12 +49,17 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   padding:6px 12px; margin-bottom:16px;
 }
 .section{ padding:64px 0; }
+.rule{ display:flex; align-items:center; gap:10px; }
+.rule i{ flex:1; height:1px; background:var(--yellow); opacity:.55; }
+.rule b{ flex:none; width:4px; height:4px; border-radius:50%; background:var(--yellow); }
+.emblem{ width:34px; height:34px; border:1px solid var(--yellow); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+.emblem svg{ width:14px; height:14px; }
 .section-head{ text-align:center; max-width:640px; margin:0 auto 40px; }
 .section-head h2{ font-size:clamp(1.6rem,4.5vw,2.3rem); line-height:1.2; }
 .section-head p{ margin-top:14px; font-size:1.02rem; color:var(--ink); }
 .section.dark{ background:var(--black); color:#fff; }
 .section.dark h2, .section.dark h3{ color:#fff; }
-.section.soft{ background:#F6F6F3; }
+.section.soft{ background:#FAF6EC; }
 
 /* botões */
 .btn{
@@ -64,7 +69,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   transition:transform .15s ease, box-shadow .15s ease; text-align:center;
 }
 .btn-primary{ background:var(--yellow); color:var(--black); }
-.btn-primary:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(229,226,78,.45); }
+.btn-primary:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(201,161,92,.4); }
 .btn-block{ width:100%; }
 .btn-lg{ padding:18px 32px; font-size:1.08rem; }
 .btn small{ display:block; font-weight:400; font-size:.72rem; opacity:.75; }
@@ -80,18 +85,20 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .topbar .btn{ padding:12px 16px; font-size:.85rem; }
 
 /* ============ HERO ============ */
-.hero{ position:relative; padding:52px 0 60px; overflow:hidden; }
+.hero{ position:relative; padding:56px 0 64px; overflow:hidden; background:var(--black); }
 .hero .container{ display:grid; gap:36px; }
-.hero h1{ font-size:clamp(2rem,7vw,3.1rem); line-height:1.12; }
-.hero h1 em{ font-style:normal; background:var(--yellow); padding:0 .12em; }
-.hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:var(--ink); margin-top:18px; max-width:52ch; }
-.hero .compass{ font-family:var(--ui); font-weight:600; font-size:.78rem; letter-spacing:.18em; color:var(--yellow-dk); margin-top:14px; text-transform:uppercase; }
-.hero .cta-wrap{ margin-top:26px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
-.hero .microtrust{ font-family:var(--ui); font-size:.8rem; color:var(--grey); }
+.hero .kicker-row{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.hero .kicker-row i{ flex:none; width:34px; height:1px; background:var(--yellow); opacity:.6; }
+.hero h1{ font-size:clamp(2rem,7vw,3.1rem); line-height:1.12; color:#fff; }
+.hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
+.hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
+.hero .compass{ font-family:var(--ui); font-weight:600; font-size:.76rem; letter-spacing:.24em; color:var(--yellow); text-transform:uppercase; }
+.hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+.hero .microtrust{ font-family:var(--ui); font-size:.8rem; color:#8A867C; }
 
 .media-box{
   width:100%; aspect-ratio:4/5; background:var(--black); position:relative; overflow:hidden;
-  display:flex; align-items:center; justify-content:center; border:1px solid var(--black);
+  display:flex; align-items:center; justify-content:center; border:1px solid rgba(201,161,92,.4);
 }
 .media-box .frame{
   position:absolute; inset:14px; border:1px dashed rgba(255,255,255,.35);
@@ -296,7 +303,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="hero">
   <div class="container">
     <div>
-      <div class="compass">Teste de 3 dias · Plano de 30 dias</div>
+      <div class="kicker-row"><i></i><span class="compass">Método Bússola</span></div>
       <h1>Pare de alongar no escuro. Descubra a direção da sua dor lombar em <em>3 dias</em></h1>
       <p class="sub">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Em 3 dias você descobre qual movimento é o seu. Depois, segue um plano de 30 dias em 3 fases para parar de recair.</p>
       <div class="cta-wrap">
@@ -552,7 +559,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="section" id="garantia">
   <div class="container">
     <div class="guarantee">
-      <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#141414"/><path d="M9 12l2 2 4-4" stroke="#E5E24E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#141414"/><path d="M9 12l2 2 4-4" stroke="#C9A15C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <h2>7 dias de garantia incondicional</h2>
       <p>Se em até 7 dias você sentir que o Reset Lombar não é para você, basta enviar um e-mail e devolvemos 100% do valor, sem perguntas, sem burocracia.</p>
     </div>
