@@ -50,17 +50,20 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .section{ padding:64px 0; }
 
-/* ============ REVEAL AO ROLAR ============ */
+/* ============ REVEAL AO ROLAR (ScrollReveal) ============ */
 .reveal{
-  opacity:0; transform:translateY(26px);
-  transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+  opacity:0; transform:translateY(40px); will-change:opacity, transform;
+  transition:opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94);
 }
-.reveal.in{ opacity:1; transform:translateY(0); }
-.receive-grid .reveal:nth-child(2),.bonus-grid .reveal:nth-child(2){ transition-delay:.1s; }
-.receive-grid .reveal:nth-child(3),.bonus-grid .reveal:nth-child(3){ transition-delay:.2s; }
-.receive-grid .reveal:nth-child(4){ transition-delay:.3s; }
+.reveal-left{ transform:translateX(-40px); }
+.reveal-right{ transform:translateX(40px); }
+.reveal-down{ transform:translateY(-40px); }
+.reveal.in,.reveal-left.in,.reveal-right.in,.reveal-down.in{ opacity:1; transform:none; }
+.receive-grid .reveal:nth-child(2),.bonus-grid .reveal:nth-child(2){ transition-delay:.15s; }
+.receive-grid .reveal:nth-child(3),.bonus-grid .reveal:nth-child(3){ transition-delay:.3s; }
+.receive-grid .reveal:nth-child(4){ transition-delay:.45s; }
 @media (prefers-reduced-motion: reduce){
-  .reveal{ opacity:1; transform:none; transition:none; }
+  .reveal,.reveal-left,.reveal-right,.reveal-down{ opacity:1; transform:none; transition:none; }
   .pulse-dot::before,.pulse-dot::after{ animation:none; display:none; }
 }
 .rule{ display:flex; align-items:center; gap:10px; }
@@ -373,6 +376,50 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 @media(min-width:640px){
   .section{ padding:88px 0; }
 }
+
+/* ============ PROGRESSIVE BLUR (fixo no rodapé) ============ */
+.progressive-blur{ position:fixed; bottom:0; left:0; width:100%; height:120px; z-index:999; pointer-events:none; }
+.progressive-blur span{ position:absolute; inset:0; }
+.progressive-blur span:nth-child(1){
+  backdrop-filter:blur(.1px); -webkit-backdrop-filter:blur(.1px);
+  mask-image:linear-gradient(transparent 0%, #000 12.5%, #000 25%, transparent 37.5%);
+  -webkit-mask-image:linear-gradient(transparent 0%, #000 12.5%, #000 25%, transparent 37.5%);
+}
+.progressive-blur span:nth-child(2){
+  backdrop-filter:blur(.2px); -webkit-backdrop-filter:blur(.2px);
+  mask-image:linear-gradient(transparent 12.5%, #000 25%, #000 37.5%, transparent 50%);
+  -webkit-mask-image:linear-gradient(transparent 12.5%, #000 25%, #000 37.5%, transparent 50%);
+}
+.progressive-blur span:nth-child(3){
+  backdrop-filter:blur(.4px); -webkit-backdrop-filter:blur(.4px);
+  mask-image:linear-gradient(transparent 25%, #000 37.5%, #000 50%, transparent 62.5%);
+  -webkit-mask-image:linear-gradient(transparent 25%, #000 37.5%, #000 50%, transparent 62.5%);
+}
+.progressive-blur span:nth-child(4){
+  backdrop-filter:blur(.8px); -webkit-backdrop-filter:blur(.8px);
+  mask-image:linear-gradient(transparent 37.5%, #000 50%, #000 62.5%, transparent 75%);
+  -webkit-mask-image:linear-gradient(transparent 37.5%, #000 50%, #000 62.5%, transparent 75%);
+}
+.progressive-blur span:nth-child(5){
+  backdrop-filter:blur(1.5px); -webkit-backdrop-filter:blur(1.5px);
+  mask-image:linear-gradient(transparent 50%, #000 62.5%, #000 75%, transparent 87.5%);
+  -webkit-mask-image:linear-gradient(transparent 50%, #000 62.5%, #000 75%, transparent 87.5%);
+}
+.progressive-blur span:nth-child(6){
+  backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+  mask-image:linear-gradient(transparent 62.5%, #000 75%, #000 87.5%, transparent 100%);
+  -webkit-mask-image:linear-gradient(transparent 62.5%, #000 75%, #000 87.5%, transparent 100%);
+}
+.progressive-blur span:nth-child(7){
+  backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px);
+  mask-image:linear-gradient(transparent 75%, #000 87.5%, #000 100%);
+  -webkit-mask-image:linear-gradient(transparent 75%, #000 87.5%, #000 100%);
+}
+.progressive-blur span:nth-child(8){
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  mask-image:linear-gradient(transparent 87.5%, #000 100%);
+  -webkit-mask-image:linear-gradient(transparent 87.5%, #000 100%);
+}
 </style>
 </head>
 <body>
@@ -381,15 +428,15 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="hero">
   <div class="container">
     <div>
-      <div class="kicker-row"><i></i><span class="compass">Método clínico para dor lombar e ciática · Dr. Hian Lima, fisioterapeuta</span></div>
-      <h1>Sua coluna pode começar a melhorar ainda hoje<br>se você souber <em>o movimento certo</em></h1>
-      <p class="sub">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Descubra agora qual é o seu movimento certo e siga um plano de 30 dias para parar de recair.</p>
-      <div class="cta-wrap">
+      <div class="kicker-row reveal reveal-left"><i></i><span class="compass">Método clínico para dor lombar e ciática · Dr. Hian Lima, fisioterapeuta</span></div>
+      <h1 class="reveal reveal-left" style="transition-delay:150ms;">Sua coluna pode começar a melhorar ainda hoje<br>se você souber <em>o movimento certo</em></h1>
+      <p class="sub reveal reveal-left" style="transition-delay:300ms;">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Descubra agora qual é o seu movimento certo e siga um plano de 30 dias para parar de recair.</p>
+      <div class="cta-wrap reveal reveal-left" style="transition-delay:450ms;">
         <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Quero descobrir a minha direção</a>
         <span class="microtrust">Ebook digital · acesso imediato · garantia de 7 dias</span>
       </div>
     </div>
-    <div class="media-box">
+    <div class="media-box reveal reveal-right" style="transition-delay:300ms; transition-duration:.8s;">
       <div class="ycorner"></div>
       <div class="frame">
         <div class="play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="#141414"/></svg></div>
@@ -403,7 +450,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 2. O QUE VOCÊ VAI RECEBER ===== -->
 <section class="section soft" id="conteudo">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">O que você vai receber</div>
       <h2>Um método, não uma lista de alongamentos</h2>
       <p>30 páginas que levam você do "não sei o que fazer" até um plano diário, com fotos e dose exata de cada movimento.</p>
@@ -449,7 +496,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 3. POR QUE É DIFERENTE ===== -->
 <section class="section" id="diferente">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Por que este método é diferente</div>
       <h2>Não é uma lista genérica de alongamento</h2>
       <p>Criado por um fisioterapeuta que atende dor lombar e ciática todos os dias. Não é conteúdo copiado da internet.</p>
@@ -573,7 +620,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 4. BÔNUS ===== -->
 <section class="section soft" id="bonus">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Bônus inclusos</div>
       <h2>Além do ebook principal, você também leva</h2>
     </div>
@@ -615,7 +662,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       <h2>Garanta seu acesso completo agora</h2>
     </div>
 
-    <div class="offer-box reveal">
+    <div class="offer-box reveal" style="transition-delay:350ms; transition-duration:.8s;">
       <div class="ribbon">Oferta especial</div>
       <div class="kicker">Por tempo limitado</div>
 
@@ -645,7 +692,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 6. CARROSSEL PÁGINAS DO EBOOK ===== -->
 <section class="section" id="paginas">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Por dentro do ebook</div>
       <h2>Veja algumas páginas reais</h2>
     </div>
@@ -669,7 +716,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 7. DEPOIMENTOS ===== -->
 <section class="section soft" id="depoimentos">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Depoimentos</div>
       <h2>Quem já testou a própria direção</h2>
     </div>
@@ -721,7 +768,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 9. FAQ ===== -->
 <section class="section soft" id="faq">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Perguntas frequentes</div>
       <h2>Antes de começar</h2>
     </div>
@@ -764,6 +811,12 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   </div>
 </footer>
 
+<div style="height:120px; background:var(--black);" aria-hidden="true"></div>
+
+<div class="progressive-blur" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -778,7 +831,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
           io.unobserve(entry.target);
         }
       });
-    }, { threshold:.15, rootMargin:"0px 0px -60px 0px" });
+    }, { threshold:.15, rootMargin:"0px 0px -50px 0px" });
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add("in"); });
