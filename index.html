@@ -185,43 +185,80 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .bonus-card .val{ margin-top:14px; font-family:var(--ui); font-size:.78rem; color:var(--yellow); }
 
 /* ============ OFERTA ============ */
-@keyframes offerGlow{
-  0%,100%{ box-shadow:0 30px 70px rgba(0,0,0,.4), 0 0 0 1px rgba(201,161,92,.3), 0 0 0 rgba(201,161,92,0); }
-  50%{ box-shadow:0 30px 70px rgba(0,0,0,.4), 0 0 0 1px rgba(201,161,92,.3), 0 0 34px 4px rgba(201,161,92,.3); }
+#oferta{ position:relative; overflow:hidden; }
+#oferta::before{
+  content:""; position:absolute; top:50%; left:50%; width:1000px; height:1000px;
+  background:radial-gradient(circle, rgba(201,161,92,.16), transparent 68%);
+  transform:translate(-50%,-50%); pointer-events:none;
 }
+#oferta .container{ position:relative; }
+#oferta .section-head h2{ font-size:clamp(1.5rem,4vw,2.05rem); }
+
+@keyframes offerGlow{
+  0%,100%{ box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,161,92,.35), 0 0 0 rgba(201,161,92,0); }
+  50%{ box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,161,92,.35), 0 0 44px 6px rgba(201,161,92,.32); }
+}
+@keyframes ribbonPulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.045); } }
+@keyframes livePulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(.7); } }
+
 .offer-box{
-  position:relative; max-width:560px; margin:0 auto;
-  background:linear-gradient(180deg,#fff 0%,#FBF6EA 100%); color:var(--black); padding:40px 26px 34px;
-  border:1px solid rgba(201,161,92,.3); border-top:8px solid var(--yellow);
+  position:relative; max-width:560px; margin:0 auto; overflow:hidden; border-radius:18px;
+  background:linear-gradient(180deg,#fff 0%,#FBF6EA 100%); color:var(--black); padding:40px 30px 36px;
+  border:1px solid rgba(201,161,92,.35);
   animation:offerGlow 3.6s ease-in-out infinite;
 }
+.offer-box::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:8px;
+  background:linear-gradient(90deg,var(--yellow-dk),var(--yellow) 50%,var(--yellow-dk));
+}
 .offer-box .ribbon{
-  position:absolute; top:-15px; left:50%; transform:translateX(-50%); white-space:nowrap;
+  display:block; width:fit-content; margin:-4px auto 14px; white-space:nowrap;
   background:var(--yellow); color:var(--black); font-family:var(--ui); font-weight:700; font-size:.7rem;
-  letter-spacing:.1em; text-transform:uppercase; padding:7px 18px; box-shadow:0 8px 18px rgba(0,0,0,.25);
+  letter-spacing:.1em; text-transform:uppercase; padding:7px 18px; border-radius:20px;
+  box-shadow:0 8px 18px rgba(0,0,0,.2); animation:ribbonPulse 2.4s ease-in-out infinite;
 }
 .offer-box .kicker{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--yellow-dk); text-align:center; margin-top:6px; }
-.offer-box .price-row{ text-align:center; margin:16px 0 4px; }
-.offer-box .from{ font-family:var(--ui); font-size:1rem; color:var(--grey); text-decoration:line-through; }
-.offer-box .to{ font-family:var(--serif); font-weight:700; font-size:clamp(2.6rem,10vw,3.4rem); color:var(--black); line-height:1; margin-top:4px; }
+.offer-box .price-row{ text-align:center; margin:18px 0 4px; }
+.offer-box .from{ font-family:var(--ui); font-size:1rem; color:var(--red); text-decoration:line-through; opacity:.75; }
+.offer-box .to-wrap{ position:relative; display:inline-block; }
+.offer-box .to{
+  font-family:var(--serif); font-weight:700; font-size:clamp(2.7rem,10vw,3.5rem); color:var(--black);
+  line-height:1; margin-top:6px; text-shadow:0 0 46px rgba(201,161,92,.4);
+}
 .offer-box .to sup{ font-size:1.1rem; top:-1.2em; }
-.offer-box .save{
-  display:inline-block; background:var(--yellow-sf); color:var(--yellow-dk); font-family:var(--ui);
-  font-weight:700; font-size:.72rem; letter-spacing:.05em; padding:5px 12px; margin-top:10px;
+.offer-box .off-badge{
+  position:absolute; top:-8px; right:-42px; width:46px; height:46px; border-radius:50%;
+  background:var(--red); color:#fff; font-family:var(--ui); font-weight:700; font-size:.78rem;
+  display:flex; align-items:center; justify-content:center; transform:rotate(12deg);
+  box-shadow:0 8px 16px rgba(192,57,43,.4); border:2px solid #fff;
 }
+@media(max-width:400px){ .offer-box .off-badge{ position:static; transform:none; display:inline-flex; margin-top:10px; } }
+
+.countdown-label{
+  display:flex; align-items:center; justify-content:center; gap:8px; margin:26px 0 10px;
+  font-family:var(--ui); font-weight:600; font-size:.8rem; letter-spacing:.03em; color:var(--red);
+}
+.countdown-label .live-dot{ width:7px; height:7px; border-radius:50%; background:var(--red); animation:livePulse 1.4s ease-in-out infinite; }
 .countdown{
-  display:flex; justify-content:center; gap:10px; margin:22px 0; font-family:var(--ui);
+  display:flex; justify-content:center; align-items:center; gap:8px; margin:0 0 26px; font-family:var(--ui);
 }
-.countdown .u{ background:var(--black); color:#fff; min-width:58px; padding:10px 6px; text-align:center; }
-.countdown .u b{ display:block; font-size:1.5rem; font-weight:700; }
+.countdown .u{ background:var(--black); color:#fff; min-width:62px; padding:12px 8px; border-radius:8px; text-align:center; box-shadow:0 10px 20px rgba(0,0,0,.2); }
+.countdown .u b{ display:block; font-size:1.6rem; font-weight:700; font-variant-numeric:tabular-nums; }
 .countdown .u span{ display:block; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-top:2px; }
-.countdown-note{ text-align:center; font-family:var(--ui); font-size:.78rem; color:var(--red); font-weight:500; margin-top:-10px; margin-bottom:20px; }
+.countdown .colon{ font-size:1.4rem; font-weight:700; color:var(--black); opacity:.25; }
 
-.offer-includes{ list-style:none; margin:0 0 24px; padding:0; font-family:var(--ui); font-size:.88rem; }
-.offer-includes li{ padding-left:26px; position:relative; margin-bottom:9px; }
-.offer-includes li:before{ content:'✓'; position:absolute; left:0; color:var(--yellow-dk); font-weight:700; }
+.offer-includes{ list-style:none; margin:0 0 26px; padding:0; font-family:var(--ui); font-size:.9rem; display:flex; flex-direction:column; gap:8px; }
+.offer-includes li{
+  display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:8px;
+  background:rgba(201,161,92,.07); border:1px solid rgba(201,161,92,.2);
+}
+.offer-includes li::before{
+  content:'✓'; flex:none; width:20px; height:20px; border-radius:50%; background:var(--yellow);
+  color:var(--black); font-size:.68rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+}
 
-.offer-guarantee{ text-align:center; margin-top:16px; font-family:var(--ui); font-size:.78rem; color:var(--grey); }
+.offer-cta-note{ text-align:center; font-family:var(--ui); font-size:.76rem; color:var(--grey); margin-top:10px; }
+.offer-guarantee{ text-align:center; margin-top:8px; font-family:var(--ui); font-size:.78rem; color:var(--grey); }
 
 /* ============ CARROSSEL ============ */
 .carousel-wrap{ position:relative; }
@@ -587,21 +624,29 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <!-- ===== 5. OFERTA ===== -->
 <section class="section dark" id="oferta">
   <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Sua virada começa aqui</div>
+      <h2>Garanta seu acesso completo agora</h2>
+    </div>
+
     <div class="offer-box reveal">
       <div class="ribbon">Oferta especial</div>
       <div class="kicker">Por tempo limitado</div>
 
       <div class="price-row">
         <div class="from">De R$ 127,00</div>
-        <div class="to">R$ 37<sup>,90</sup></div>
-        <div class="save">Economize 70%</div>
+        <div class="to-wrap">
+          <div class="to">R$ 37<sup>,90</sup></div>
+          <div class="off-badge">−70%</div>
+        </div>
       </div>
 
+      <div class="countdown-label"><span class="live-dot"></span>Essa condição expira em</div>
       <div class="countdown" id="countdown">
         <div class="u"><b id="cd-m">15</b><span>min</span></div>
+        <div class="colon">:</div>
         <div class="u"><b id="cd-s">00</b><span>seg</span></div>
       </div>
-      <div class="countdown-note">Essa condição expira ao final da contagem</div>
 
       <ul class="offer-includes">
         <li>Ebook Reset Lombar (30 páginas)</li>
@@ -612,6 +657,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       </ul>
 
       <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="btn btn-primary btn-block btn-lg" data-cta>Quero o Reset Lombar agora</a>
+      <div class="offer-cta-note">Acesso liberado assim que o pagamento é confirmado</div>
       <div class="offer-guarantee">🔒 Compra segura · Garantia incondicional de 7 dias</div>
     </div>
   </div>
