@@ -300,16 +300,50 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ============ FAQ ============ */
 .faq{ max-width:720px; margin:0 auto; }
-.faq-item{ border-bottom:1px solid var(--line); }
+.faq-item{
+  background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:12px;
+  overflow:hidden; transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.faq-item:hover{ border-color:var(--yellow); box-shadow:0 6px 20px rgba(201,161,92,.12); transform:translateY(-2px); }
+.faq-item.open{ border-color:var(--yellow); box-shadow:0 10px 30px rgba(201,161,92,.16); }
+.faq .reveal:nth-child(1){ transition-delay:0s; }
+.faq .reveal:nth-child(2){ transition-delay:.08s; }
+.faq .reveal:nth-child(3){ transition-delay:.16s; }
+.faq .reveal:nth-child(4){ transition-delay:.24s; }
+.faq .reveal:nth-child(5){ transition-delay:.32s; }
 .faq-q{
   width:100%; text-align:left; background:none; border:none; cursor:pointer;
-  display:flex; justify-content:space-between; align-items:center; gap:16px;
-  padding:20px 4px; font-family:var(--ui); font-weight:600; font-size:.98rem; color:var(--black);
+  display:flex; align-items:center; gap:16px;
+  padding:20px 22px; font-family:var(--ui); font-weight:600; font-size:.98rem; color:var(--black);
 }
-.faq-q .plus{ flex:none; font-family:var(--ui); font-weight:300; font-size:1.4rem; color:var(--yellow-dk); transition:transform .2s ease; }
-.faq-item.open .faq-q .plus{ transform:rotate(45deg); }
-.faq-a{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
-.faq-a p{ margin:0 4px 20px; font-size:.92rem; color:var(--ink); }
+.faq-num{
+  flex:none; width:30px; font-family:var(--serif); font-weight:700; font-size:1.4rem;
+  color:var(--yellow-dk); opacity:.4;
+}
+.faq-q-text{ flex:1; }
+.faq-icon{
+  flex:none; position:relative; width:30px; height:30px; border-radius:50%;
+  border:1.5px solid var(--yellow); transition:background .25s ease, transform .35s ease;
+}
+.faq-icon::before,.faq-icon::after{
+  content:""; position:absolute; top:50%; left:50%; background:var(--yellow-dk);
+  transform:translate(-50%,-50%); transition:background .25s ease, transform .3s ease;
+}
+.faq-icon::before{ width:12px; height:1.5px; }
+.faq-icon::after{ width:1.5px; height:12px; }
+.faq-item.open .faq-icon{ background:var(--yellow); transform:rotate(180deg); }
+.faq-item.open .faq-icon::before,.faq-item.open .faq-icon::after{ background:#fff; }
+.faq-item.open .faq-icon::after{ transform:translate(-50%,-50%) scaleY(0); }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.faq-a p{
+  margin:0 22px 22px 68px; font-size:.92rem; color:var(--ink); line-height:1.65;
+  opacity:0; transform:translateY(-6px); transition:opacity .3s ease, transform .3s ease;
+}
+.faq-item.open .faq-a p{ opacity:1; transform:translateY(0); transition-delay:.08s; }
+@media(max-width:520px){
+  .faq-num{ display:none; }
+  .faq-a p{ margin-left:22px; }
+}
 
 /* ============ RODAPÉ ============ */
 footer{ background:var(--black); color:#9A9A9A; padding:40px 0; }
@@ -676,23 +710,23 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
     <div class="faq" id="faq-list">
       <div class="faq-item reveal">
-        <button class="faq-q" type="button">Funciona para dor crônica, que já dura anos? <span class="plus">+</span></button>
+        <button class="faq-q" type="button"><span class="faq-num">01</span><span class="faq-q-text">Funciona para dor crônica, que já dura anos?</span><span class="faq-icon"></span></button>
         <div class="faq-a"><p>Sim. O método não depende de quanto tempo a dor já dura, e sim de como o seu corpo responde ao movimento hoje. O teste de 3 dias funciona tanto para quadros recentes quanto para dores de longa data. O que muda é só o ritmo de progressão entre as fases.</p></div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" type="button">Funciona também para hérnia de disco? <span class="plus">+</span></button>
+        <button class="faq-q" type="button"><span class="faq-num">02</span><span class="faq-q-text">Funciona também para hérnia de disco?</span><span class="faq-icon"></span></button>
         <div class="faq-a"><p>Na maioria dos casos, sim: hérnia de disco costuma responder bem a movimento direcional bem dosado. O ebook começa com uma checagem de segurança para identificar os sinais de alerta que pedem avaliação médica antes de qualquer exercício. Fora desses casos, o método se aplica normalmente.</p></div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" type="button">Em que formato eu recebo o material? <span class="plus">+</span></button>
+        <button class="faq-q" type="button"><span class="faq-num">03</span><span class="faq-q-text">Em que formato eu recebo o material?</span><span class="faq-icon"></span></button>
         <div class="faq-a"><p>Um ebook digital em PDF de 30 páginas, com fotos de cada exercício, para ler no celular, tablet ou computador, e imprimir se preferir. Os bônus também são entregues em PDF.</p></div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" type="button">Em quanto tempo eu vejo resultado? <span class="plus">+</span></button>
+        <button class="faq-q" type="button"><span class="faq-num">04</span><span class="faq-q-text">Em quanto tempo eu vejo resultado?</span><span class="faq-icon"></span></button>
         <div class="faq-a"><p>O teste de 3 dias já mostra se você encontrou a sua direção. A partir daí, a maioria das pessoas sente alívio já na primeira fase (dias 1 a 10), mas o objetivo do método vai além do alívio rápido: as fases de Estabilidade e Força são o que evita a dor de voltar.</p></div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" type="button">Como eu acesso o material depois da compra? <span class="plus">+</span></button>
+        <button class="faq-q" type="button"><span class="faq-num">05</span><span class="faq-q-text">Como eu acesso o material depois da compra?</span><span class="faq-icon"></span></button>
         <div class="faq-a"><p>Assim que o pagamento é aprovado, você recebe acesso imediato na área de membros, com login por e-mail. O material fica disponível para consultar quando quiser, sem prazo de expiração.</p></div>
       </div>
     </div>
