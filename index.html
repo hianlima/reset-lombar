@@ -94,19 +94,21 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 /* ============ HERO ============ */
 .hero{ position:relative; padding:56px 0 64px; overflow:hidden; background:var(--black); }
 .hero .container{ display:grid; gap:36px; }
-.hero .kicker-row{ display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin-bottom:20px; }
+.hero .container > div{ display:flex; flex-direction:column; align-items:center; text-align:center; }
+.hero .kicker-row{ display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:20px; }
 .hero .kicker-row i{ flex:none; width:34px; height:1px; background:var(--yellow); opacity:.6; }
-.hero h1{ font-size:clamp(2rem,6.6vw,2.9rem); line-height:1.18; color:#fff; }
+.hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:30ch; text-wrap:balance; }
 .hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
 .hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
-.hero .compass{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.07em; line-height:1.6; max-width:44ch; color:var(--yellow); text-transform:uppercase; }
-.hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+.hero .compass{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.07em; line-height:1.6; max-width:44ch; color:var(--yellow); text-transform:uppercase; text-align:center; }
+.hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:center; }
 .hero .microtrust{ font-family:var(--ui); font-size:.8rem; color:#8A867C; }
 
 .media-box{
-  width:100%; aspect-ratio:4/5; background:var(--black); position:relative; overflow:hidden;
+  width:100%; max-width:340px; margin:24px 0; aspect-ratio:4/5; background:var(--black); position:relative; overflow:hidden;
   display:flex; align-items:center; justify-content:center; border:1px solid rgba(201,161,92,.4);
 }
+@media(min-width:640px){ .media-box{ max-width:400px; } }
 .media-box .ycorner{ position:absolute; top:0; right:0; width:26%; height:14px; background:var(--yellow); z-index:2; }
 .media-box .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; background:var(--black); }
 .media-box .play-overlay{
@@ -163,9 +165,6 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   .vsl-btn{ animation:none; }
 }
 
-@media(min-width:860px){
-  .hero .container{ grid-template-columns:1.05fr .95fr; align-items:center; }
-}
 
 /* ============ O QUE VOCÊ VAI RECEBER ============ */
 .receive-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
@@ -473,14 +472,8 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div>
       <div class="kicker-row reveal reveal-left"><i></i><span class="compass">Método clínico para dor lombar e ciática · Dr. Hian Lima, fisioterapeuta</span></div>
-      <h1 class="reveal reveal-left" style="transition-delay:150ms;">Sua coluna pode começar a melhorar ainda hoje<br>se você souber <em>o movimento certo</em></h1>
-      <p class="sub reveal reveal-left" style="transition-delay:300ms;">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Descubra agora qual é o seu movimento certo e siga um plano de 30 dias para parar de recair.</p>
-      <div class="cta-wrap reveal reveal-left" style="transition-delay:450ms;">
-        <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Quero descobrir a minha direção</a>
-        <span class="microtrust">Ebook digital · acesso imediato · garantia de 7 dias</span>
-      </div>
-    </div>
-    <div class="media-box reveal reveal-right" style="transition-delay:300ms; transition-duration:.8s;">
+      <h1 class="reveal reveal-left" style="transition-delay:150ms;">Sua coluna pode começar a melhorar ainda hoje se você souber <em>o movimento certo</em></h1>
+      <div class="media-box reveal" style="transition-delay:220ms; transition-duration:.8s;">
       <div class="ycorner"></div>
       <video id="heroVideo" class="hero-video" poster="img/video-vendas-poster.jpg" preload="metadata" playsinline>
         <source src="img/video-vendas.mp4" type="video/mp4">
@@ -508,6 +501,12 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
           <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a9 9 0 0 1 0 12"/></svg>
           <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><line x1="16" y1="9" x2="22" y2="15"/><line x1="22" y1="9" x2="16" y2="15"/></svg>
         </button>
+      </div>
+      </div>
+      <p class="sub reveal reveal-left" style="transition-delay:300ms;">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Descubra agora qual é o seu movimento certo e siga um plano de 30 dias para parar de recair.</p>
+      <div class="cta-wrap reveal reveal-left" style="transition-delay:450ms;">
+        <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Quero descobrir a minha direção</a>
+        <span class="microtrust">Ebook digital · acesso imediato · garantia de 7 dias</span>
       </div>
     </div>
   </div>
