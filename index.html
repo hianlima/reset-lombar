@@ -106,17 +106,19 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .journey-point.is-now .journey-label{ color:var(--black); background:var(--yellow); display:inline-block; padding:2px 8px; border-radius:2px; }
 .journey-point.is-now .journey-point-card strong{ font-size:1rem; }
 
+.journey-mobile-panel{ background:var(--yellow-sf); border-radius:20px; padding:32px 22px 22px; }
 .journey-mobile{ display:flex; flex-direction:column; }
-.journey-item{ position:relative; padding-left:44px; padding-bottom:30px; }
+.journey-item{ position:relative; padding-left:70px; padding-bottom:30px; }
 .journey-item:last-child{ padding-bottom:0; }
-.journey-item::before{ content:""; position:absolute; left:13px; top:28px; bottom:-6px; width:0; border-left:3px dashed var(--yellow); opacity:.85; }
-.journey-item:last-child::before{ display:none; }
+.journey-connector{ position:absolute; left:0; top:28px; bottom:-6px; width:58px; }
+.journey-item:nth-child(even) .journey-connector{ transform:scaleX(-1); }
 .journey-item-dot{
   position:absolute; left:0; top:0; width:28px; height:28px; border-radius:50%; background:var(--yellow); color:var(--black);
   font-family:var(--ui); font-weight:700; font-size:.6rem; display:flex; align-items:center; justify-content:center;
-  box-shadow:0 0 0 4px #fff;
+  box-shadow:0 0 0 4px var(--yellow-sf); z-index:1;
 }
-.journey-item.is-now .journey-item-dot{ width:34px; height:34px; left:-3px; top:-3px; font-size:.46rem; background:var(--black); color:var(--yellow); border:2px solid var(--yellow); box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(201,161,92,.25); }
+.journey-item:nth-child(even) .journey-item-dot{ left:28px; }
+.journey-item.is-now .journey-item-dot{ width:34px; height:34px; left:-3px; top:-3px; font-size:.46rem; background:var(--black); color:var(--yellow); border:2px solid var(--yellow); box-shadow:0 0 0 4px var(--yellow-sf), 0 0 0 8px rgba(201,161,92,.25); }
 .journey-item .journey-label{ display:block; font-family:var(--ui); font-weight:700; font-size:.64rem; letter-spacing:.05em; text-transform:uppercase; color:var(--yellow-dk); margin-bottom:4px; }
 .journey-item-card strong{ display:block; font-family:var(--serif); font-size:1.02rem; color:var(--black); margin-bottom:4px; line-height:1.25; }
 .journey-item-card p{ font-size:.9rem; color:var(--ink); line-height:1.4; margin:0; }
@@ -124,7 +126,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 @media(min-width:860px){
   .journey-desktop{ display:block; }
-  .journey-mobile{ display:none; }
+  .journey-mobile-panel{ display:none; }
 }
 .section-head h2{ font-size:clamp(1.6rem,4.5vw,2.3rem); line-height:1.2; }
 .section-head p{ margin-top:14px; font-size:1.02rem; color:var(--ink); }
@@ -841,61 +843,69 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       </div>
     </div>
 
-    <div class="journey-mobile reveal">
-      <div class="journey-item">
-        <span class="journey-item-dot">01</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Checkpoint 01</span>
-          <strong>Início da dor</strong>
-          <p>A dor lombar aparece, ainda parece passageira.</p>
+    <div class="journey-mobile-panel reveal">
+      <div class="journey-mobile">
+        <div class="journey-item">
+          <span class="journey-item-dot">01</span>
+          <svg class="journey-connector" viewBox="0 0 58 34" preserveAspectRatio="none" aria-hidden="true"><path d="M15,0 L43,34" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+          <div class="journey-item-card">
+            <span class="journey-label">Checkpoint 01</span>
+            <strong>Início da dor</strong>
+            <p>A dor lombar aparece, ainda parece passageira.</p>
+          </div>
         </div>
-      </div>
-      <div class="journey-item">
-        <span class="journey-item-dot">02</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Checkpoint 02</span>
-          <strong>Alívio momentâneo</strong>
-          <p>Repouso ou remédio ajudam por uns dias. Parece resolvido.</p>
+        <div class="journey-item">
+          <span class="journey-item-dot">02</span>
+          <svg class="journey-connector" viewBox="0 0 58 34" preserveAspectRatio="none" aria-hidden="true"><path d="M15,0 L43,34" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+          <div class="journey-item-card">
+            <span class="journey-label">Checkpoint 02</span>
+            <strong>Alívio momentâneo</strong>
+            <p>Repouso ou remédio ajudam por uns dias. Parece resolvido.</p>
+          </div>
         </div>
-      </div>
-      <div class="journey-item">
-        <span class="journey-item-dot">03</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Checkpoint 03</span>
-          <strong>A dor volta mais forte</strong>
-          <p>Às vezes com o nervo ciático inflamado. "Já tentei de tudo" vira a frase do dia.</p>
+        <div class="journey-item">
+          <span class="journey-item-dot">03</span>
+          <svg class="journey-connector" viewBox="0 0 58 34" preserveAspectRatio="none" aria-hidden="true"><path d="M15,0 L43,34" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+          <div class="journey-item-card">
+            <span class="journey-label">Checkpoint 03</span>
+            <strong>A dor volta mais forte</strong>
+            <p>Às vezes com o nervo ciático inflamado. "Já tentei de tudo" vira a frase do dia.</p>
+          </div>
         </div>
-      </div>
-      <div class="journey-item">
-        <span class="journey-item-dot">04</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Checkpoint 04</span>
-          <strong>Descobre a direção certa</strong>
-          <p>Em poucos dias, entende se o corpo responde melhor à flexão ou à extensão.</p>
+        <div class="journey-item">
+          <span class="journey-item-dot">04</span>
+          <svg class="journey-connector" viewBox="0 0 58 34" preserveAspectRatio="none" aria-hidden="true"><path d="M15,0 L43,34" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+          <div class="journey-item-card">
+            <span class="journey-label">Checkpoint 04</span>
+            <strong>Descobre a direção certa</strong>
+            <p>Em poucos dias, entende se o corpo responde melhor à flexão ou à extensão.</p>
+          </div>
         </div>
-      </div>
-      <div class="journey-item">
-        <span class="journey-item-dot">05</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Checkpoint 05</span>
-          <strong>Primeiro alívio real</strong>
-          <p>A dor começa a centralizar. Fase de Direção.</p>
+        <div class="journey-item">
+          <span class="journey-item-dot">05</span>
+          <svg class="journey-connector" viewBox="0 0 58 34" preserveAspectRatio="none" aria-hidden="true"><path d="M15,0 L43,34" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+          <div class="journey-item-card">
+            <span class="journey-label">Checkpoint 05</span>
+            <strong>Primeiro alívio real</strong>
+            <p>A dor começa a centralizar. Fase de Direção.</p>
+          </div>
         </div>
-      </div>
-      <div class="journey-item">
-        <span class="journey-item-dot">06</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Checkpoint 06</span>
-          <strong>Para de recair</strong>
-          <p>O tronco aprende a se sustentar sozinho. Fase de Estabilidade.</p>
+        <div class="journey-item">
+          <span class="journey-item-dot">06</span>
+          <svg class="journey-connector" viewBox="0 0 58 34" preserveAspectRatio="none" aria-hidden="true"><path d="M15,0 L43,34" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/></svg>
+          <div class="journey-item-card">
+            <span class="journey-label">Checkpoint 06</span>
+            <strong>Para de recair</strong>
+            <p>O tronco aprende a se sustentar sozinho. Fase de Estabilidade.</p>
+          </div>
         </div>
-      </div>
-      <div class="journey-item is-now">
-        <span class="journey-item-dot">AGORA</span>
-        <div class="journey-item-card">
-          <span class="journey-label">Agora</span>
-          <strong>Vida normal, sem medo de se mover</strong>
-          <p>Levanta da cama sem se segurar. Fase de Força.</p>
+        <div class="journey-item is-now">
+          <span class="journey-item-dot">AGORA</span>
+          <div class="journey-item-card">
+            <span class="journey-label">Agora</span>
+            <strong>Vida normal, sem medo de se mover</strong>
+            <p>Levanta da cama sem se segurar. Fase de Força.</p>
+          </div>
         </div>
       </div>
     </div>
