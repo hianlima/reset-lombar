@@ -95,12 +95,11 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .hero{ position:relative; padding:56px 0 64px; overflow:hidden; background:var(--black); }
 .hero .container{ display:grid; gap:36px; }
 .hero .container > div{ display:flex; flex-direction:column; align-items:center; text-align:center; }
-.hero .kicker-row{ display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:20px; }
-.hero .kicker-row i{ flex:none; width:34px; height:1px; background:var(--yellow); opacity:.6; }
+.hero .preheadline{ font-family:var(--ui); font-weight:400; font-size:.86rem; color:#B8B4AB; max-width:40ch; text-align:center; margin-bottom:8px; }
+.hero .signature{ font-family:var(--ui); font-weight:500; font-size:.72rem; letter-spacing:.02em; color:var(--yellow); text-align:center; margin-bottom:20px; }
 .hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:30ch; text-wrap:balance; }
 .hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
 .hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
-.hero .compass{ font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.07em; line-height:1.6; max-width:44ch; color:var(--yellow); text-transform:uppercase; text-align:center; }
 .hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:center; }
 .hero .microtrust{ font-family:var(--ui); font-size:.8rem; color:#8A867C; }
 
@@ -471,7 +470,8 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="hero">
   <div class="container">
     <div>
-      <div class="kicker-row reveal reveal-left"><i></i><span class="compass">Método clínico para dor lombar e ciática · Dr. Hian Lima, fisioterapeuta</span></div>
+      <p class="preheadline reveal reveal-left">Se você já se decepcionou com alguma promessa de alívio antes, eu entendo. Veja isso primeiro, sem compromisso nenhum:</p>
+      <p class="signature reveal reveal-left" style="transition-delay:80ms;">— Dr. Hian Lima, fisioterapeuta</p>
       <h1 class="reveal reveal-left" style="transition-delay:150ms;">Sua coluna pode começar a melhorar ainda hoje se você souber <em>o movimento certo</em></h1>
       <div class="media-box reveal" style="transition-delay:220ms; transition-duration:.8s;">
       <div class="ycorner"></div>
