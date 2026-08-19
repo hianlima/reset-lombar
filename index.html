@@ -362,19 +362,25 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 /* ============ CARROSSEL ============ */
 .carousel-wrap{ position:relative; }
 .carousel{
-  display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 20px 20px;
+  display:flex; justify-content:center; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:10px 20px 26px;
   -webkit-overflow-scrolling:touch; scrollbar-width:thin;
 }
 .carousel::-webkit-scrollbar{ height:6px; }
 .carousel::-webkit-scrollbar-thumb{ background:var(--line); }
 .cslide{
   flex:none; width:76%; max-width:280px; scroll-snap-align:center;
-  border:1px dashed #C7C7C7; background:#FBFBFB; aspect-ratio:210/297;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center; padding:16px;
+  position:relative; border-radius:14px; overflow:hidden; background:#fff;
+  box-shadow:0 10px 26px rgba(20,20,20,.14);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
+.cslide:hover{ transform:translateY(-6px); box-shadow:0 18px 36px rgba(20,20,20,.2); }
 @media(min-width:640px){ .cslide{ width:32%; } }
-.cslide .i{ font-family:var(--ui); font-weight:600; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow-dk); }
-.cslide .d{ font-size:.78rem; color:var(--grey); line-height:1.4; }
+.cslide img{ width:100%; display:block; }
+.cslide .i{
+  position:absolute; left:12px; bottom:12px; z-index:1;
+  background:var(--black); color:var(--yellow); font-family:var(--ui); font-weight:600; font-size:.68rem;
+  letter-spacing:.08em; text-transform:uppercase; padding:5px 10px; border-radius:6px;
+}
 .carousel-arrows{ display:flex; justify-content:center; gap:10px; margin-top:4px; }
 .carousel-arrows button{
   width:44px; height:44px; border:1px solid var(--line); background:#fff; cursor:pointer;
@@ -990,11 +996,18 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
   <div class="carousel-wrap">
     <div class="carousel" id="carousel">
-      <div class="cslide"><div class="i">Página 06</div><div class="d">[Substituir por print real] A regra ↑ ↓: como interpretar centralização e periferização</div></div>
-      <div class="cslide"><div class="i">Página 10</div><div class="d">[Substituir por print real] O teste de 3 dias, dia a dia</div></div>
-      <div class="cslide"><div class="i">Página 13</div><div class="d">[Substituir por print real] Trilha da flexão: movimento com foto e dose</div></div>
-      <div class="cslide"><div class="i">Página 23</div><div class="d">[Substituir por print real] Fase 3, Força: cards de exercício</div></div>
-      <div class="cslide"><div class="i">Página 26</div><div class="d">[Substituir por print real] Calendário de 30 dias</div></div>
+      <div class="cslide">
+        <img src="img/pagina-guia-03.png" alt="Página do guia mostrando a regra de centralização e periferização" loading="lazy">
+        <div class="i">Página 06</div>
+      </div>
+      <div class="cslide">
+        <img src="img/pagina-guia-02.png" alt="Página do guia mostrando a trilha da flexão com foto e dose do exercício" loading="lazy">
+        <div class="i">Página 13</div>
+      </div>
+      <div class="cslide">
+        <img src="img/pagina-guia-01.png" alt="Página do guia mostrando o calendário de 30 dias" loading="lazy">
+        <div class="i">Página 28</div>
+      </div>
     </div>
     <div class="carousel-arrows">
       <button type="button" id="cprev" aria-label="Anterior">←</button>
