@@ -107,16 +107,17 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .journey-point.is-now .journey-point-card strong{ font-size:1rem; }
 
 .journey-mobile{ display:flex; flex-direction:column; }
-.journey-item{ position:relative; padding-left:40px; padding-bottom:28px; }
+.journey-item{ position:relative; padding-left:44px; padding-bottom:30px; }
 .journey-item:last-child{ padding-bottom:0; }
-.journey-item::before{ content:""; position:absolute; left:12px; top:26px; bottom:-4px; width:0; border-left:2px dashed var(--yellow); opacity:.5; }
+.journey-item::before{ content:""; position:absolute; left:13px; top:28px; bottom:-6px; width:0; border-left:3px dashed var(--yellow); opacity:.85; }
 .journey-item:last-child::before{ display:none; }
 .journey-item-dot{
-  position:absolute; left:0; top:0; width:26px; height:26px; border-radius:50%; background:var(--yellow); color:var(--black);
+  position:absolute; left:0; top:0; width:28px; height:28px; border-radius:50%; background:var(--yellow); color:var(--black);
   font-family:var(--ui); font-weight:700; font-size:.6rem; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 0 4px #fff;
 }
-.journey-item.is-now .journey-item-dot{ width:32px; height:32px; left:-3px; top:-3px; font-size:.48rem; box-shadow:0 0 0 5px rgba(201,161,92,.2); }
-.journey-item .journey-label{ display:block; font-family:var(--ui); font-weight:700; font-size:.64rem; letter-spacing:.05em; text-transform:uppercase; color:var(--yellow); margin-bottom:4px; }
+.journey-item.is-now .journey-item-dot{ width:34px; height:34px; left:-3px; top:-3px; font-size:.46rem; background:var(--black); color:var(--yellow); border:2px solid var(--yellow); box-shadow:0 0 0 4px #fff, 0 0 0 8px rgba(201,161,92,.25); }
+.journey-item .journey-label{ display:block; font-family:var(--ui); font-weight:700; font-size:.64rem; letter-spacing:.05em; text-transform:uppercase; color:var(--yellow-dk); margin-bottom:4px; }
 .journey-item-card strong{ display:block; font-family:var(--serif); font-size:1.02rem; color:var(--black); margin-bottom:4px; line-height:1.25; }
 .journey-item-card p{ font-size:.9rem; color:var(--ink); line-height:1.4; margin:0; }
 .journey-item.is-now .journey-label{ color:var(--black); background:var(--yellow); display:inline-block; padding:2px 8px; border-radius:2px; }
@@ -158,6 +159,18 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .hero .signature{ font-family:var(--ui); font-weight:500; font-size:.72rem; letter-spacing:.02em; color:var(--yellow); text-align:center; margin-bottom:20px; }
 .hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:46ch; text-wrap:balance; }
 .hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
+.hero h1 .h1-short{ display:none; }
+@media(max-width:768px){
+  .hero h1{ font-size:clamp(1.4rem,5.2vw,1.9rem); line-height:1.22; max-width:30ch; }
+}
+@media(max-width:480px){
+  .hero h1{ font-size:clamp(1.2rem,6.2vw,1.5rem); line-height:1.2; max-width:30ch; }
+}
+@media(max-width:400px){
+  .hero h1{ font-size:1.15rem; line-height:1.22; max-width:34ch; }
+  .hero h1 .h1-full{ display:none; }
+  .hero h1 .h1-short{ display:inline; }
+}
 .hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
 .hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:center; }
 .hero .microtrust{ font-family:var(--ui); font-size:.8rem; color:#8A867C; }
@@ -531,7 +544,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     <div>
       <p class="preheadline reveal reveal-left">Se você já se decepcionou com alguma promessa de alívio antes, eu entendo. Veja isso primeiro, sem compromisso nenhum:</p>
       <p class="signature reveal reveal-left" style="transition-delay:80ms;">— Dr. Hian Lima, fisioterapeuta</p>
-      <h1 class="reveal reveal-left" style="transition-delay:150ms;">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, em poucos dias, mesmo depois da fisioterapia não ter resolvido</h1>
+      <h1 class="reveal reveal-left" style="transition-delay:150ms;"><span class="h1-full">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, em poucos dias, mesmo depois da fisioterapia não ter resolvido</span><span class="h1-short">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, mesmo depois da fisioterapia não ter resolvido</span></h1>
       <div class="media-box reveal" style="transition-delay:220ms; transition-duration:.8s;">
       <div class="ycorner"></div>
       <video id="heroVideo" class="hero-video" poster="img/video-vendas-poster.jpg" preload="metadata" playsinline>
