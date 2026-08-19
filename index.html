@@ -155,9 +155,6 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .hero{ position:relative; padding:56px 0 64px; overflow:hidden; background:var(--black); }
 .hero .container{ display:grid; gap:36px; }
 .hero .container > div{ display:flex; flex-direction:column; align-items:center; text-align:center; }
-.hero .preheadline{ font-family:var(--ui); font-weight:400; font-size:.86rem; color:#B8B4AB; max-width:40ch; text-align:center; margin-bottom:8px; }
-@media(max-width:480px){ .hero .preheadline{ font-size:.72rem; max-width:32ch; } }
-.hero .signature{ font-family:var(--ui); font-weight:500; font-size:.72rem; letter-spacing:.02em; color:var(--yellow); text-align:center; margin-bottom:20px; }
 .hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:46ch; text-wrap:balance; }
 .hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
 .hero h1 .h1-short{ display:none; }
@@ -543,9 +540,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="hero">
   <div class="container">
     <div>
-      <p class="preheadline reveal reveal-left">Se você já se decepcionou com alguma promessa de alívio antes, eu entendo. Veja isso primeiro, sem compromisso nenhum:</p>
-      <p class="signature reveal reveal-left" style="transition-delay:80ms;">— Dr. Hian Lima, fisioterapeuta</p>
-      <h1 class="reveal reveal-left" style="transition-delay:150ms;"><span class="h1-full">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, em poucos dias, mesmo depois da fisioterapia não ter resolvido</span><span class="h1-short">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, mesmo depois da fisioterapia não ter resolvido</span></h1>
+      <h1 class="reveal reveal-left"><span class="h1-full">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, em poucos dias, <em>mesmo depois da fisioterapia não ter resolvido</em></span><span class="h1-short">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, <em>mesmo depois da fisioterapia não ter resolvido</em></span></h1>
       <div class="media-box reveal" style="transition-delay:220ms; transition-duration:.8s;">
       <div class="ycorner"></div>
       <video id="heroVideo" class="hero-video" poster="img/video-vendas-poster.jpg" preload="metadata" playsinline>
