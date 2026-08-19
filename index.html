@@ -59,11 +59,9 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .reveal-right{ transform:translateX(40px); }
 .reveal-down{ transform:translateY(-40px); }
 .reveal.in,.reveal-left.in,.reveal-right.in,.reveal-down.in{ opacity:1; transform:none; }
-.receive-grid .reveal:nth-child(2){ transition-delay:.15s; }
-.receive-grid .reveal:nth-child(3){ transition-delay:.3s; }
+.receive-grid .reveal:nth-child(2),.bonus-grid .reveal:nth-child(2){ transition-delay:.15s; }
+.receive-grid .reveal:nth-child(3),.bonus-grid .reveal:nth-child(3){ transition-delay:.3s; }
 .receive-grid .reveal:nth-child(4){ transition-delay:.45s; }
-.bonus-stack .bonus-stack-item.reveal:nth-child(2){ transition-delay:.15s; }
-.bonus-stack .bonus-stack-item.reveal:nth-child(3){ transition-delay:.3s; }
 @media (prefers-reduced-motion: reduce){
   .reveal,.reveal-left,.reveal-right,.reveal-down{ opacity:1; transform:none; transition:none; }
   .pulse-dot::before,.pulse-dot::after{ animation:none; display:none; }
@@ -291,10 +289,9 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   .diagram-mobile{ display:none; }
 }
 
-/* ============ BÔNUS (scroll-stack) ============ */
-.bonus-stack{ display:flex; flex-direction:column; gap:16px; }
-.bonus-stack-item{ position:relative; }
-.bonus-stack-sticky{ position:static; }
+/* ============ BÔNUS ============ */
+.bonus-grid{ display:grid; gap:16px; grid-template-columns:1fr; }
+@media(min-width:640px){ .bonus-grid{ grid-template-columns:repeat(3,1fr); } }
 .bonus-card{ background:var(--black); color:#fff; padding:26px 22px; position:relative; }
 .bonus-card .ytab{ position:absolute; top:0; right:0; width:30%; height:6px; background:var(--yellow); }
 .bonus-card .ic{ width:40px; height:40px; background:var(--yellow); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
@@ -303,36 +300,6 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .bonus-card h3{ font-family:var(--ui); font-size:1.05rem; font-weight:600; color:#fff; margin:8px 0 8px; }
 .bonus-card p{ margin:0; font-size:.9rem; color:#D8D8D8; }
 .bonus-card .val{ margin-top:14px; font-family:var(--ui); font-size:.78rem; color:var(--yellow); }
-
-@media(min-width:768px){
-  .bonus-stack.is-stacking{ gap:0; }
-  .bonus-stack.is-stacking .bonus-stack-item{ height:170vh; }
-  .bonus-stack.is-stacking .bonus-stack-item:last-child{ height:85vh; }
-  .bonus-stack.is-stacking .bonus-stack-sticky{
-    position:sticky; top:0; height:85vh;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .bonus-stack.is-stacking .bonus-stack-item:nth-child(1) .bonus-stack-sticky{ z-index:1; }
-  .bonus-stack.is-stacking .bonus-stack-item:nth-child(2) .bonus-stack-sticky{ z-index:2; }
-  .bonus-stack.is-stacking .bonus-stack-item:nth-child(3) .bonus-stack-sticky{ z-index:3; }
-  .bonus-stack.is-stacking .bonus-card{
-    width:100%; height:100%; max-width:640px; margin:0 auto;
-    display:flex; flex-direction:column; justify-content:center;
-    transform:scale(calc(1 - var(--p, 0) * .05));
-    transition:transform .05s linear;
-    will-change:transform;
-  }
-  .bonus-stack.is-stacking .bonus-card::after{
-    content:""; position:absolute; inset:0; background:#000;
-    opacity:calc(var(--p, 0) * .45); pointer-events:none; transition:opacity .05s linear;
-  }
-}
-@media(prefers-reduced-motion: reduce){
-  .bonus-stack.is-stacking .bonus-stack-item{ height:auto; }
-  .bonus-stack.is-stacking .bonus-stack-sticky{ position:static; }
-  .bonus-stack.is-stacking .bonus-card{ transform:none !important; }
-  .bonus-stack.is-stacking .bonus-card::after{ opacity:0 !important; }
-}
 
 /* ============ OFERTA ============ */
 #oferta{ position:relative; overflow:hidden; }
@@ -953,42 +920,30 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       <h2>Além do ebook principal, você também leva</h2>
     </div>
 
-    <div class="bonus-stack" id="bonusStack">
-      <div class="bonus-stack-item">
-        <div class="bonus-stack-sticky">
-          <div class="bonus-card">
-            <div class="ytab"></div>
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#141414"/></svg></div>
-            <div class="tag">Bônus 1</div>
-            <h3>Reset Lombar: Crise 48h</h3>
-            <p>Plano hora a hora para os momentos de crise aguda, para usar enquanto o método principal ainda está fazendo efeito.</p>
-            <div class="val">[definir valor percebido]</div>
-          </div>
-        </div>
+    <div class="bonus-grid">
+      <div class="bonus-card reveal">
+        <div class="ytab"></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#141414"/></svg></div>
+        <div class="tag">Bônus 1</div>
+        <h3>Reset Lombar: Crise 48h</h3>
+        <p>Plano hora a hora para os momentos de crise aguda, para usar enquanto o método principal ainda está fazendo efeito.</p>
+        <div class="val">[definir valor percebido]</div>
       </div>
-      <div class="bonus-stack-item">
-        <div class="bonus-stack-sticky">
-          <div class="bonus-card">
-            <div class="ytab"></div>
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#141414" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="tag">Bônus 2</div>
-            <h3>Checklist dos 30 dias</h3>
-            <p>Uma folha única para marcar seus treinos dia a dia e não perder o fio da progressão entre as fases.</p>
-            <div class="val">[definir valor percebido]</div>
-          </div>
-        </div>
+      <div class="bonus-card reveal">
+        <div class="ytab"></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#141414" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="tag">Bônus 2</div>
+        <h3>Checklist dos 30 dias</h3>
+        <p>Uma folha única para marcar seus treinos dia a dia e não perder o fio da progressão entre as fases.</p>
+        <div class="val">[definir valor percebido]</div>
       </div>
-      <div class="bonus-stack-item">
-        <div class="bonus-stack-sticky">
-          <div class="bonus-card">
-            <div class="ytab"></div>
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#141414" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <div class="tag">Bônus 3</div>
-            <h3>Ficha de Parâmetros para Imprimir</h3>
-            <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o ebook toda vez que for anotar seus números.</p>
-            <div class="val">[definir valor percebido]</div>
-          </div>
-        </div>
+      <div class="bonus-card reveal">
+        <div class="ytab"></div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#141414" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="tag">Bônus 3</div>
+        <h3>Ficha de Parâmetros para Imprimir</h3>
+        <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o ebook toda vez que for anotar seus números.</p>
+        <div class="val">[definir valor percebido]</div>
       </div>
     </div>
   </div>
@@ -1175,74 +1130,6 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add("in"); });
-  }
-
-  /* ---- bônus: scroll-stacking cards (desktop) / fade-in normal (mobile) ---- */
-  var bonusStack = document.getElementById("bonusStack");
-  if(bonusStack){
-    var bonusItems = Array.prototype.slice.call(bonusStack.querySelectorAll(".bonus-stack-item"));
-    var bonusCards = bonusItems.map(function(it){ return it.querySelector(".bonus-card"); });
-    var desktopMq = window.matchMedia("(min-width:768px)");
-    var motionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var stackingActive = false;
-    var ticking = false;
-    var fallbackWired = false;
-
-    function updateStackProgress(){
-      ticking = false;
-      var vh = window.innerHeight;
-      for(var i = 0; i < bonusItems.length - 1; i++){
-        var nextRect = bonusItems[i + 1].getBoundingClientRect();
-        var p = (vh - nextRect.top) / vh;
-        if(p < 0) p = 0;
-        if(p > 1) p = 1;
-        bonusCards[i].style.setProperty("--p", p);
-      }
-    }
-    function onScroll(){
-      if(!stackingActive || ticking) return;
-      ticking = true;
-      requestAnimationFrame(updateStackProgress);
-    }
-    function wireFallbackReveal(){
-      if(fallbackWired) return;
-      fallbackWired = true;
-      bonusItems.forEach(function(it){ it.classList.add("reveal"); });
-      if("IntersectionObserver" in window){
-        var bio = new IntersectionObserver(function(entries){
-          entries.forEach(function(entry){
-            if(entry.isIntersecting){
-              entry.target.classList.add("in");
-              bio.unobserve(entry.target);
-            }
-          });
-        }, { threshold:.15, rootMargin:"0px 0px -50px 0px" });
-        bonusItems.forEach(function(it){ bio.observe(it); });
-      } else {
-        bonusItems.forEach(function(it){ it.classList.add("in"); });
-      }
-    }
-    function setupBonusStack(){
-      stackingActive = desktopMq.matches && !motionMq.matches;
-      bonusStack.classList.toggle("is-stacking", stackingActive);
-      if(stackingActive){
-        window.addEventListener("scroll", onScroll, { passive:true });
-        updateStackProgress();
-      } else {
-        window.removeEventListener("scroll", onScroll);
-        bonusCards.forEach(function(c){ c.style.removeProperty("--p"); });
-        wireFallbackReveal();
-      }
-    }
-    var mqChangeHandler = function(){ setupBonusStack(); };
-    if(desktopMq.addEventListener){
-      desktopMq.addEventListener("change", mqChangeHandler);
-      motionMq.addEventListener("change", mqChangeHandler);
-    } else if(desktopMq.addListener){
-      desktopMq.addListener(mqChangeHandler);
-      motionMq.addListener(mqChangeHandler);
-    }
-    setupBonusStack();
   }
 
   /* ---- vídeo do hero: player customizado ---- */
