@@ -15,7 +15,7 @@
 @font-face{ font-family:'Poppins'; src:url('fonts/Poppins-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
 @font-face{ font-family:'Lora'; src:url('fonts/Lora-Variable.woff2') format('woff2'); font-weight:400 700; font-display:swap; }
 
-/* ============ TOKENS (do ebook Reset Lombar) ============ */
+/* ============ TOKENS (do guia Reset Lombar) ============ */
 :root{
   --yellow:#C9A15C;
   --yellow-sf:#F6EDDC;
@@ -157,9 +157,8 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .hero{ position:relative; padding:56px 0 64px; overflow:hidden; background:var(--black); }
 .hero .container{ display:grid; gap:36px; }
 .hero .container > div{ display:flex; flex-direction:column; align-items:center; text-align:center; }
-.hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:46ch; text-wrap:balance; }
+.hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:30ch; text-wrap:balance; }
 .hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
-.hero h1 .h1-short{ display:none; }
 @media(max-width:768px){
   .hero h1{ font-size:clamp(1.55rem,5.8vw,1.95rem); line-height:1.2; max-width:30ch; }
 }
@@ -167,13 +166,10 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   .hero h1{ font-size:clamp(1.35rem,6.8vw,1.65rem); line-height:1.18; max-width:30ch; }
 }
 @media(max-width:420px){
-  .hero h1{ font-size:1.3rem; line-height:1.2; max-width:34ch; }
-  .hero h1 .h1-full{ display:none; }
-  .hero h1 .h1-short{ display:inline; }
+  .hero h1{ font-size:1.3rem; line-height:1.2; max-width:30ch; }
 }
 .hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
 .hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:center; }
-.hero .microtrust{ font-family:var(--ui); font-size:.8rem; color:#8A867C; }
 
 .media-box{
   width:100%; max-width:270px; margin:24px 0; aspect-ratio:9/16; background:var(--black); position:relative; overflow:hidden;
@@ -542,7 +538,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="hero">
   <div class="container">
     <div>
-      <h1 class="reveal reveal-left"><span class="h1-full">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, em poucos dias, <em>mesmo depois da fisioterapia não ter resolvido</em></span><span class="h1-short">O método que está ajudando pessoas a tratar a dor lombar e a ciática em casa, <em>mesmo depois da fisioterapia não ter resolvido</em></span></h1>
+      <h1 class="reveal reveal-left">O método que trata <em>dor lombar e ciática</em> em casa, mesmo quando <em>a fisioterapia não resolveu</em></h1>
       <div class="media-box reveal" style="transition-delay:220ms; transition-duration:.8s;">
       <div class="ycorner"></div>
       <video id="heroVideo" class="hero-video" poster="img/video-vendas-poster.jpg" preload="metadata" playsinline>
@@ -576,7 +572,6 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       <p class="sub reveal reveal-left" style="transition-delay:300ms;">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Descubra agora qual é o seu movimento certo e siga um plano de 30 dias para parar de recair.</p>
       <div class="cta-wrap reveal reveal-left" style="transition-delay:450ms;">
         <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Quero sair da dor lombar agora <span class="arrow">→</span></a>
-        <span class="microtrust">Ebook digital · acesso imediato · garantia de 7 dias</span>
       </div>
     </div>
   </div>
@@ -917,7 +912,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div class="section-head reveal">
       <div class="eyebrow">Bônus inclusos</div>
-      <h2>Além do ebook principal, você também leva</h2>
+      <h2>Além do guia principal, você também leva</h2>
     </div>
 
     <div class="bonus-grid">
@@ -942,7 +937,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#141414" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg></div>
         <div class="tag">Bônus 3</div>
         <h3>Ficha de Parâmetros para Imprimir</h3>
-        <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o ebook toda vez que for anotar seus números.</p>
+        <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o guia toda vez que for anotar seus números.</p>
         <div class="val">[definir valor percebido]</div>
       </div>
     </div>
@@ -970,7 +965,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       </div>
 
       <ul class="offer-includes">
-        <li>Ebook Reset Lombar (30 páginas)</li>
+        <li>Guia Reset Lombar (30 páginas)</li>
         <li>Bônus: Reset Lombar Crise 48h</li>
         <li>Bônus: Checklist dos 30 dias</li>
         <li>Bônus: Ficha de Parâmetros imprimível</li>
@@ -988,7 +983,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="section" id="paginas">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Por dentro do ebook</div>
+      <div class="eyebrow">Por dentro do guia</div>
       <h2>Veja algumas páginas reais</h2>
     </div>
   </div>
@@ -1075,11 +1070,11 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" type="button"><span class="faq-num">02</span><span class="faq-q-text">Funciona também para hérnia de disco?</span><span class="faq-icon"></span></button>
-        <div class="faq-a"><p>Na maioria dos casos, sim: hérnia de disco costuma responder bem a movimento direcional bem dosado. O ebook começa com uma checagem de segurança para identificar os sinais de alerta que pedem avaliação médica antes de qualquer exercício. Fora desses casos, o método se aplica normalmente.</p></div>
+        <div class="faq-a"><p>Na maioria dos casos, sim: hérnia de disco costuma responder bem a movimento direcional bem dosado. O guia começa com uma checagem de segurança para identificar os sinais de alerta que pedem avaliação médica antes de qualquer exercício. Fora desses casos, o método se aplica normalmente.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" type="button"><span class="faq-num">03</span><span class="faq-q-text">Em que formato eu recebo o material?</span><span class="faq-icon"></span></button>
-        <div class="faq-a"><p>Um ebook digital em PDF de 30 páginas, com fotos de cada exercício, para ler no celular, tablet ou computador, e imprimir se preferir. Os bônus também são entregues em PDF.</p></div>
+        <div class="faq-a"><p>Um guia digital em PDF de 30 páginas, com fotos de cada exercício, para ler no celular, tablet ou computador, e imprimir se preferir. Os bônus também são entregues em PDF.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q" type="button"><span class="faq-num">04</span><span class="faq-q-text">Em quanto tempo eu vejo resultado?</span><span class="faq-icon"></span></button>
