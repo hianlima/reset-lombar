@@ -138,8 +138,14 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   padding:16px 28px; border:none; cursor:pointer; text-decoration:none;
   transition:transform .15s ease, box-shadow .15s ease; text-align:center;
 }
-.btn-primary{ background:var(--yellow); color:var(--black); }
-.btn-primary:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(201,161,92,.4); }
+.btn-primary{
+  background:var(--yellow); color:var(--black); font-weight:700; letter-spacing:.02em;
+  box-shadow:0 8px 22px rgba(201,161,92,.4); border:1px solid rgba(20,20,20,.06);
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(201,161,92,.55); }
+.btn-primary:active{ transform:translateY(0); box-shadow:0 6px 16px rgba(201,161,92,.4); }
+.btn-primary .arrow{ display:inline-flex; transition:transform .15s ease; }
+.btn-primary:hover .arrow{ transform:translateX(3px); }
 .btn-block{ width:100%; }
 .btn-lg{ padding:18px 32px; font-size:1.08rem; }
 .btn small{ display:block; font-weight:400; font-size:.72rem; opacity:.75; }
@@ -558,7 +564,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       </div>
       <p class="sub reveal reveal-left" style="transition-delay:300ms;">Duas pessoas com a mesma dor podem precisar de exercícios opostos. Descubra agora qual é o seu movimento certo e siga um plano de 30 dias para parar de recair.</p>
       <div class="cta-wrap reveal reveal-left" style="transition-delay:450ms;">
-        <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Quero descobrir a minha direção</a>
+        <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Quero sair da dor lombar agora <span class="arrow">→</span></a>
         <span class="microtrust">Ebook digital · acesso imediato · garantia de 7 dias</span>
       </div>
     </div>
@@ -606,7 +612,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
     </div>
 
     <div style="text-align:center; margin-top:36px;">
-      <a href="#oferta" class="btn btn-primary" data-cta>Quero o método completo</a>
+      <a href="#oferta" class="btn btn-primary" data-cta>Quero o método completo <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -952,7 +958,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <li>Acesso imediato na área de membros</li>
       </ul>
 
-      <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="btn btn-primary btn-block btn-lg" data-cta>Quero o Reset Lombar agora</a>
+      <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="btn btn-primary btn-block btn-lg" data-cta>Quero o Reset Lombar agora <span class="arrow">→</span></a>
       <div class="offer-cta-note">Acesso liberado assim que o pagamento é confirmado</div>
       <div class="offer-guarantee">🔒 Compra segura · Garantia incondicional de 7 dias</div>
     </div>
