@@ -152,19 +152,26 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
   font-family:var(--ui); font-weight:600; font-size:1rem; letter-spacing:.01em;
   padding:16px 28px; border:none; cursor:pointer; text-decoration:none;
-  transition:transform .15s ease, box-shadow .15s ease; text-align:center;
+  border-radius:12px; transition:transform .15s ease, box-shadow .15s ease; text-align:center;
 }
 .btn-primary{
   background:var(--yellow); color:var(--black); font-weight:700; letter-spacing:.02em;
-  box-shadow:0 8px 22px rgba(201,161,92,.4); border:1px solid rgba(20,20,20,.06);
+  box-shadow:0 10px 28px rgba(201,161,92,.5); border:1px solid rgba(20,20,20,.08);
 }
-.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(201,161,92,.55); }
-.btn-primary:active{ transform:translateY(0); box-shadow:0 6px 16px rgba(201,161,92,.4); }
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(201,161,92,.65); }
+.btn-primary:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(201,161,92,.5); }
 .btn-primary .arrow{ display:inline-flex; transition:transform .15s ease; }
 .btn-primary:hover .arrow{ transform:translateX(3px); }
 .btn-block{ width:100%; }
 .btn-lg{ padding:18px 32px; font-size:1.08rem; }
 .btn small{ display:block; font-weight:400; font-size:.72rem; opacity:.75; }
+.btn-pulse{ animation:btnPulse 2.4s ease-in-out infinite; }
+.btn-pulse:hover{ animation-play-state:paused; }
+@keyframes btnPulse{
+  0%,100%{ box-shadow:0 10px 28px rgba(201,161,92,.5); }
+  50%{ box-shadow:0 10px 34px rgba(201,161,92,.85), 0 0 0 7px rgba(201,161,92,.16); }
+}
+@media(prefers-reduced-motion: reduce){ .btn-pulse{ animation:none; } }
 
 /* ============ HERO ============ */
 .hero{ position:relative; padding:56px 0 64px; overflow:hidden; background:var(--black); }
@@ -987,7 +994,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <li>Acesso imediato na área de membros</li>
       </ul>
 
-      <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="btn btn-primary btn-block btn-lg" data-cta>Quero o Reset Lombar agora <span class="arrow">→</span></a>
+      <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="btn btn-primary btn-block btn-lg btn-pulse" data-cta>Quero sair da crise lombar agora <span class="arrow">→</span></a>
       <div class="offer-cta-note">Acesso liberado assim que o pagamento é confirmado</div>
       <div class="offer-guarantee">🔒 Compra segura · Garantia incondicional de 7 dias</div>
     </div>
