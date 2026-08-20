@@ -200,6 +200,20 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
 .hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:center; }
+@media(min-width:900px){
+  .hero .container > div{
+    display:grid; grid-template-columns:1.05fr .95fr;
+    grid-template-areas:
+      "heading media"
+      "sub media"
+      "cta media";
+    align-items:center; column-gap:56px; text-align:left;
+  }
+  .hero h1{ grid-area:heading; max-width:none; }
+  .hero .sub{ grid-area:sub; max-width:46ch; }
+  .hero .cta-wrap{ grid-area:cta; align-items:flex-start; }
+  .hero .media-box{ grid-area:media; margin:0; justify-self:end; align-self:center; }
+}
 
 .media-box{
   width:100%; max-width:270px; margin:24px 0; aspect-ratio:9/16; background:var(--black); position:relative; overflow:hidden;
@@ -572,7 +586,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="hero">
   <div class="container">
     <div>
-      <h1 class="reveal reveal-left">O método que trata <em>dor lombar e ciática</em> em casa, mesmo quando <em>a fisioterapia não resolveu</em></h1>
+      <h1 class="reveal reveal-left">Alivie <em>a dor lombar e a ciática</em> em casa, mesmo se <em>a fisioterapia não resolveu</em></h1>
       <div class="media-box reveal" style="transition-delay:220ms; transition-duration:.8s;">
       <div class="ycorner"></div>
       <video id="heroVideo" class="hero-video" poster="img/video-vendas-poster.jpg" preload="metadata" playsinline>
