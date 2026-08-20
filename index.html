@@ -138,8 +138,18 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 /* ============ QUEM SOU EU (autor) ============ */
 .author-wrap{ display:grid; gap:32px; align-items:center; }
 @media(min-width:768px){ .author-wrap{ grid-template-columns:.85fr 1.15fr; gap:56px; } }
-.author-photo{ width:100%; max-width:320px; margin:0 auto; aspect-ratio:3/4; overflow:hidden; border:1px solid rgba(201,161,92,.35); }
-.author-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.author-photo{
+  position:relative; width:100%; max-width:320px; margin:0 auto;
+  -webkit-mask-image: radial-gradient(ellipse 82% 90% at 50% 38%, #000 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 90% at 50% 38%, #000 78%, transparent 100%);
+}
+.author-photo img{ width:100%; height:auto; display:block; }
+.author-photo::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom, transparent 68%, var(--black) 97%);
+  pointer-events:none;
+}
+@media(min-width:768px){ .author-photo{ max-width:360px; } }
 .author-text h2{ margin-top:4px; }
 .author-text p{ font-family:var(--ui); font-weight:300; font-size:1rem; line-height:1.75; color:#D8D5CC; margin:16px 0 0; }
 .author-highlight{ font-weight:600; color:var(--yellow); }
@@ -1088,7 +1098,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div class="author-wrap reveal">
       <div class="author-photo">
-        <img src="img/foto-hian.jpg" alt="Dr. Hian Lima, fisioterapeuta e criador do Reset Lombar" loading="lazy">
+        <img src="img/foto-hian.png" alt="Dr. Hian Lima, fisioterapeuta e criador do Reset Lombar" loading="lazy">
       </div>
       <div class="author-text">
         <div class="eyebrow">Quem sou eu</div>
