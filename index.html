@@ -135,6 +135,18 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .section.dark h2, .section.dark h3{ color:#fff; }
 .section.soft{ background:#FAF6EC; }
 
+/* ============ QUEM SOU EU (autor) ============ */
+.author-wrap{ display:grid; gap:32px; align-items:center; }
+@media(min-width:768px){ .author-wrap{ grid-template-columns:.85fr 1.15fr; gap:56px; } }
+.author-photo{ width:100%; max-width:320px; margin:0 auto; aspect-ratio:3/4; overflow:hidden; border:1px solid rgba(201,161,92,.35); }
+.author-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.author-text h2{ margin-top:4px; }
+.author-text p{ font-family:var(--ui); font-weight:300; font-size:1rem; line-height:1.75; color:#D8D5CC; margin:16px 0 0; }
+.author-highlight{ font-weight:600; color:var(--yellow); }
+.author-sig{ margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,.14); }
+.author-sig strong{ display:block; font-family:var(--serif); font-size:1.1rem; color:#fff; }
+.author-sig span{ display:block; font-family:var(--ui); font-size:.82rem; color:var(--yellow); margin-top:2px; }
+
 /* botões */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
@@ -908,6 +920,30 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
             <strong>Vida normal, sem medo de se mover</strong>
             <p>Levanta da cama sem se segurar. Fase de Força.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUEM SOU EU ===== -->
+<section class="section dark" id="autor">
+  <div class="container">
+    <div class="author-wrap reveal">
+      <div class="author-photo">
+        <img src="img/foto-hian.jpg" alt="Dr. Hian Lima, fisioterapeuta e criador do Reset Lombar" loading="lazy">
+      </div>
+      <div class="author-text">
+        <div class="eyebrow">Quem sou eu</div>
+        <h2>O mesmo erro, repetido centenas de vezes</h2>
+        <p>Depois de 8 anos atendendo dor lombar e ciática todos os dias, percebi um padrão que não dava mais pra ignorar.</p>
+        <p>Pacientes chegavam com uma pasta de exercícios e condutas fisioterapêuticas que não funcionavam mais. Faziam exatamente o que estava escrito. Mesmo assim, a dor voltava.</p>
+        <p>Não era falta de esforço. Era <span class="author-highlight">a direção errada</span>. Boa parte das vezes, o exercício que "todo mundo recomenda" era exatamente o que mantinha a dor viva naquele paciente específico.</p>
+        <p>Passei a aplicar, com cada paciente, um teste simples antes de qualquer exercício: descobrir qual direção de movimento o corpo dele realmente pedia. A velocidade de recuperação mudou completamente.</p>
+        <p>O Reset Lombar é esse mesmo processo, sistematizado para você aplicar sozinho, em casa.</p>
+        <div class="author-sig">
+          <strong>Dr. Hian Lima</strong>
+          <span>Fisioterapeuta</span>
         </div>
       </div>
     </div>
