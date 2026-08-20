@@ -447,10 +447,9 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ============ GARANTIA ============ */
 .guarantee{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px; max-width:560px; margin:0 auto; }
-.guarantee .seal{
-  width:96px; height:96px; border-radius:50%; background:var(--yellow); display:flex; align-items:center; justify-content:center; flex:none;
-}
-.guarantee .seal svg{ width:44px; height:44px; }
+.guarantee .seal{ width:132px; height:132px; flex:none; }
+.guarantee .seal img{ width:100%; height:100%; object-fit:contain; display:block; }
+@media(min-width:768px){ .guarantee .seal{ width:160px; height:160px; } }
 .guarantee h2{ font-size:1.6rem; }
 .guarantee p{ font-size:.98rem; color:var(--ink); }
 
@@ -1077,8 +1076,8 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="section" id="garantia">
   <div class="container">
     <div class="guarantee reveal">
-      <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 11-3.5-2.5-7-6-7-11V5l7-3z" fill="#141414"/><path d="M9 12l2 2 4-4" stroke="#C9A15C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <h2>7 dias de garantia incondicional</h2>
+      <div class="seal"><img src="img/selo-garantia.png" alt="Selo de garantia de 7 dias" loading="lazy"></div>
+      <h2>Teste todo o conteúdo por 7 dias sem compromisso</h2>
       <p>Se em até 7 dias você sentir que o Reset Lombar não é para você, basta enviar um e-mail e devolvemos 100% do valor, sem perguntas, sem burocracia.</p>
     </div>
   </div>
