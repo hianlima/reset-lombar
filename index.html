@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reset Lombar | Alívio para Dor Lombar em 30 Dias</title>
 <meta name="description" content="Descubra se a sua dor lombar ou ciática responde melhor a flexão ou extensão e siga um plano de 30 dias em 3 fases: Direção, Estabilidade, Força.">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3390337087934483');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <style>
 
 /* ============ FONTES LOCAIS ============ */
@@ -1322,6 +1341,13 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   });
   document.getElementById("cnext").addEventListener("click", function(){
     track.scrollBy({ left: step(), behavior:"smooth" });
+  });
+
+  /* ---- Meta Pixel: InitiateCheckout ao clicar no link de pagamento ---- */
+  document.querySelectorAll('a[href^="https://pay.cakto.com.br"]').forEach(function(link){
+    link.addEventListener("click", function(){
+      if (typeof fbq === "function") fbq("track", "InitiateCheckout");
+    });
   });
 })();
 </script>
