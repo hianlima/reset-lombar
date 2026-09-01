@@ -325,7 +325,11 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ============ O QUE VOCÊ VAI RECEBER ============ */
 #conteudo{ padding-top:0; }
-#conteudo .receive-grid{ margin-top:40px; }
+#conteudo .receive-grid{ margin-top:24px; }
+.section-divider{ display:flex; align-items:center; justify-content:center; gap:14px; margin:44px 0 8px; }
+.section-divider span{ width:44px; height:2px; border-radius:2px; background:var(--yellow); opacity:.6; }
+.section-divider b{ flex:none; width:6px; height:6px; border-radius:50%; background:var(--yellow); }
+@media(min-width:640px){ .section-divider{ margin:56px 0 12px; } }
 .method-banner{
   position:relative; border-radius:0; overflow:hidden; margin-bottom:40px;
   background-image:url('img/metodo-hero-mobile.jpg'); background-size:cover; background-position:center;
@@ -339,7 +343,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .method-banner p{ margin-top:14px; color:#fff; font-size:.95rem; line-height:1.5; opacity:.92; }
 @media(min-width:640px){ .method-banner-text{ max-width:340px; padding:36px 32px; } }
 @media(min-width:860px){
-  #conteudo .receive-grid{ margin-top:48px; }
+  #conteudo .receive-grid{ margin-top:28px; }
   .method-banner{
     background-image:url('img/metodo-hero-desktop.jpg'); aspect-ratio:1800/708; margin-bottom:48px;
   }
@@ -795,6 +799,8 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <p>Remédio e alongamento genérico aliviam por um tempo, mas não ensinam o que fazer numa crise. Existe o movimento certo pra cada dor — ele alivia agora, e um passo a passo evita que ela volte.</p>
       </div>
     </div>
+
+    <div class="section-divider reveal"><span></span><b></b><span></span></div>
 
     <div class="receive-grid">
       <div class="rcard reveal">
