@@ -325,11 +325,13 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ============ O QUE VOCÊ VAI RECEBER ============ */
 #conteudo{ padding-top:0; }
-#conteudo .receive-grid{ margin-top:24px; }
-.section-divider{ display:flex; align-items:center; justify-content:center; gap:14px; margin:44px 0 8px; }
-.section-divider span{ width:44px; height:2px; border-radius:2px; background:var(--yellow); opacity:.6; }
-.section-divider b{ flex:none; width:6px; height:6px; border-radius:50%; background:var(--yellow); }
-@media(min-width:640px){ .section-divider{ margin:56px 0 12px; } }
+#conteudo .receive-grid{ margin-top:32px; }
+.mechanism-head{ text-align:center; max-width:720px; margin:48px auto 0; }
+.mechanism-eyebrow{ font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.4); margin:0 0 12px; }
+#conteudo .mechanism-title{ font-family:var(--ui); font-weight:800; text-transform:uppercase; letter-spacing:.005em; font-size:clamp(1.9rem,6.4vw,3.3rem); line-height:1.1; color:var(--yellow); margin:0; }
+.mechanism-title span{ display:block; color:#fff; }
+.mechanism-sub{ font-family:var(--ui); font-weight:300; font-size:1rem; color:rgba(255,255,255,.75); max-width:520px; margin:18px auto 0; line-height:1.65; }
+@media(min-width:640px){ .mechanism-head{ margin:64px auto 0; } }
 .method-banner{
   position:relative; border-radius:0; overflow:hidden; margin-bottom:40px;
   background-image:url('img/metodo-hero-mobile.jpg'); background-size:cover; background-position:center;
@@ -343,7 +345,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .method-banner p{ margin-top:14px; color:#fff; font-size:.95rem; line-height:1.5; opacity:.92; }
 @media(min-width:640px){ .method-banner-text{ max-width:340px; padding:36px 32px; } }
 @media(min-width:860px){
-  #conteudo .receive-grid{ margin-top:28px; }
+  #conteudo .receive-grid{ margin-top:40px; }
   .method-banner{
     background-image:url('img/metodo-hero-desktop.jpg'); aspect-ratio:1800/708; margin-bottom:48px;
   }
@@ -796,11 +798,15 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
       <div class="method-banner-text">
         <div class="eyebrow">O que você vai receber</div>
         <h2>O problema nunca foi sua coluna.<br><span>É não saber qual movimento fazer.</span></h2>
-        <p>Remédio e alongamento genérico aliviam por um tempo, mas não ensinam o que fazer numa crise. Existe o movimento certo pra cada dor — ele alivia agora, e um passo a passo evita que ela volte.</p>
+        <p>Remédio e alongamento genérico aliviam por um tempo, mas não ensinam o que fazer numa crise. Existe o movimento certo pra cada dor, que alivia agora e evita que ela volte.</p>
       </div>
     </div>
 
-    <div class="section-divider reveal"><span></span><b></b><span></span></div>
+    <div class="mechanism-head reveal">
+      <p class="mechanism-eyebrow">O mecanismo</p>
+      <h2 class="mechanism-title">Quatro passos<span>que mudam tudo.</span></h2>
+      <p class="mechanism-sub">O método inteiro é a junção de quatro etapas. Com a direção certa identificada, você segue exatamente o que fazer a cada dia, sem depender de sorte.</p>
+    </div>
 
     <div class="receive-grid">
       <div class="rcard reveal">
