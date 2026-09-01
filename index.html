@@ -322,19 +322,33 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .receive-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
 @media(min-width:640px){ .receive-grid{ grid-template-columns:1fr 1fr; gap:24px; } }
+@media(min-width:960px){ .receive-grid{ grid-template-columns:repeat(4,1fr); gap:20px; } }
 
-.rcard{
-  position:relative; overflow:hidden; border:1px solid var(--line); border-top:3px solid var(--yellow);
-  padding:30px 26px 28px; background:#fff; transition:transform .18s ease, box-shadow .18s ease;
+.rcard{ position:relative; overflow:visible; transition:transform .18s ease; }
+.rcard:hover{ transform:translateY(-4px); }
+.rcard-photo{
+  position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden;
+  background-size:cover; background-position:center;
+  box-shadow:0 12px 30px rgba(20,20,20,.16);
 }
-.rcard:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(20,20,20,.09); }
-.rcard .num{
-  position:absolute; top:2px; right:18px; font-family:var(--serif); font-weight:700; font-size:3.6rem;
-  color:var(--yellow); opacity:.16; line-height:1; pointer-events:none;
+.rcard-photo::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to bottom, transparent 42%, rgba(20,20,20,.94) 100%);
 }
-.rcard .n{ font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.14em; color:var(--yellow-dk); text-transform:uppercase; position:relative; }
-.rcard h3{ font-family:var(--ui); font-size:1.05rem; font-weight:600; margin:8px 0 8px; position:relative; }
-.rcard p{ margin:0; font-size:.95rem; color:var(--ink); position:relative; }
+.rcard-badge{
+  position:absolute; top:-18px; left:24px; z-index:2;
+  width:42px; height:42px; border-radius:50%; background:var(--yellow); color:var(--black);
+  font-family:var(--ui); font-weight:700; font-size:1.02rem;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 12px rgba(20,20,20,.3);
+}
+.rcard-text{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:20px 22px 22px; }
+.rcard .n{
+  display:inline-block; font-family:var(--ui); font-weight:700; font-size:.68rem; letter-spacing:.14em;
+  color:var(--yellow); text-transform:uppercase; background:rgba(20,20,20,.62); padding:4px 10px; border-radius:4px;
+}
+.rcard h3{ font-family:var(--ui); font-size:1.05rem; font-weight:600; margin:6px 0 6px; color:#fff; }
+.rcard p{ margin:0; font-size:.88rem; color:rgba(255,255,255,.88); line-height:1.45; }
 
 /* ============ POR QUE É DIFERENTE ============ */
 .diagram-wrap{ max-width:1100px; margin:0 auto; }
@@ -372,15 +386,27 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 
 /* ============ BÔNUS ============ */
-.bonus-grid{ display:grid; gap:16px; grid-template-columns:1fr; }
-@media(min-width:640px){ .bonus-grid{ grid-template-columns:repeat(3,1fr); } }
-.bonus-card{ background:var(--black); color:#fff; padding:26px 22px; position:relative; }
-.bonus-card .ytab{ position:absolute; top:0; right:0; width:30%; height:6px; background:var(--yellow); }
-.bonus-card .ic{ width:40px; height:40px; background:var(--yellow); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
-.bonus-card .ic svg{ width:20px; height:20px; }
-.bonus-card .tag{ font-family:var(--ui); font-weight:600; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--yellow); }
+.bonus-grid{ display:grid; gap:20px; grid-template-columns:1fr; }
+@media(min-width:640px){ .bonus-grid{ grid-template-columns:1fr 1fr; } }
+@media(min-width:860px){ .bonus-grid{ grid-template-columns:repeat(3,1fr); gap:24px; } }
+.bonus-card{ position:relative; transition:transform .18s ease; }
+.bonus-card:hover{ transform:translateY(-4px); }
+.bonus-photo{
+  position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden;
+  background-size:cover; background-position:center;
+  box-shadow:0 12px 30px rgba(20,20,20,.16);
+}
+.bonus-photo::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to bottom, transparent 42%, rgba(20,20,20,.94) 100%);
+}
+.bonus-text{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:20px 22px 22px; }
+.bonus-card .tag{
+  display:inline-block; font-family:var(--ui); font-weight:600; font-size:.68rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--yellow); background:rgba(20,20,20,.62); padding:4px 10px; border-radius:4px;
+}
 .bonus-card h3{ font-family:var(--ui); font-size:1.05rem; font-weight:600; color:#fff; margin:8px 0 8px; }
-.bonus-card p{ margin:0; font-size:.9rem; color:#D8D8D8; }
+.bonus-card p{ margin:0; font-size:.88rem; color:rgba(255,255,255,.88); line-height:1.45; }
 
 /* ============ OFERTA ============ */
 #oferta{ position:relative; overflow:hidden; }
@@ -664,7 +690,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 </section>
 
 <!-- ===== 2. O QUE VOCÊ VAI RECEBER ===== -->
-<section class="section soft" id="conteudo">
+<section class="section dark" id="conteudo">
   <div class="container">
     <div class="method-banner reveal">
       <div class="method-banner-text">
@@ -676,32 +702,44 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
     <div class="receive-grid">
       <div class="rcard reveal">
-        <span class="num">01</span>
-        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="6.5" stroke="#141414" stroke-width="1.6"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/><path d="M12 8l2 4-2 4-2-4 2-4z" fill="#141414"/></svg></div>
-        <div class="n">Passo 1</div>
-        <h3>Teste de direção de 3 dias</h3>
-        <p>Um protocolo guiado, dia a dia, para descobrir se o seu corpo responde melhor a movimentos de flexão ou de extensão: a decisão mais importante de todo o processo.</p>
+        <div class="rcard-badge">1</div>
+        <div class="rcard-photo" style="background-image:url('img/passo1-teste-direcao.jpg')">
+          <div class="rcard-text">
+            <div class="n">Passo 1</div>
+            <h3>Teste de direção de 3 dias</h3>
+            <p>Um protocolo guiado, dia a dia, para descobrir se o seu corpo responde melhor a movimentos de flexão ou de extensão: a decisão mais importante de todo o processo.</p>
+          </div>
+        </div>
       </div>
       <div class="rcard reveal">
-        <span class="num">02</span>
-        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <div class="n">Passo 2</div>
-        <h3>8 movimentos com foto e dose exata</h3>
-        <p>Trilha da flexão e trilha da extensão, com fotos reais de cada exercício, número de séries, repetições e frequência ao longo do dia.</p>
+        <div class="rcard-badge">2</div>
+        <div class="rcard-photo" style="background-image:url('img/passo2-movimentos.jpg')">
+          <div class="rcard-text">
+            <div class="n">Passo 2</div>
+            <h3>8 movimentos com foto e dose exata</h3>
+            <p>Trilha da flexão e trilha da extensão, com fotos reais de cada exercício, número de séries, repetições e frequência ao longo do dia.</p>
+          </div>
+        </div>
       </div>
       <div class="rcard reveal">
-        <span class="num">03</span>
-        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="1" stroke="#141414" stroke-width="1.7"/><path d="M4 9.5h16M8 3v4M16 3v4" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <div class="n">Passo 3</div>
-        <h3>Calendário de 30 dias pronto</h3>
-        <p>Semana a semana, o que treinar, quando progredir de fase e como intercalar caminhada, sem precisar montar nada sozinho.</p>
+        <div class="rcard-badge">3</div>
+        <div class="rcard-photo" style="background-image:url('img/passo3-calendario.jpg')">
+          <div class="rcard-text">
+            <div class="n">Passo 3</div>
+            <h3>Calendário de 30 dias pronto</h3>
+            <p>Semana a semana, o que treinar, quando progredir de fase e como intercalar caminhada, sem precisar montar nada sozinho.</p>
+          </div>
+        </div>
       </div>
       <div class="rcard reveal">
-        <span class="num">04</span>
-        <div class="emblem"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="1" stroke="#141414" stroke-width="1.7"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5" stroke="#141414" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <div class="n">Passo 4</div>
-        <h3>Ficha de parâmetros imprimível</h3>
-        <p>Uma página para anotar os 6 números que realmente mostram progresso, muito além do "hoje doeu menos".</p>
+        <div class="rcard-badge">4</div>
+        <div class="rcard-photo" style="background-image:url('img/passo4-ficha.jpg')">
+          <div class="rcard-text">
+            <div class="n">Passo 4</div>
+            <h3>Ficha de parâmetros imprimível</h3>
+            <p>Uma página para anotar os 6 números que realmente mostram progresso, muito além do "hoje doeu menos".</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1005,25 +1043,31 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 
     <div class="bonus-grid">
       <div class="bonus-card reveal">
-        <div class="ytab"></div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="#141414"/></svg></div>
-        <div class="tag">Bônus 1</div>
-        <h3>Reset Lombar: Crise 48h</h3>
-        <p>Plano hora a hora para os momentos de crise aguda, para usar enquanto o método principal ainda está fazendo efeito.</p>
+        <div class="bonus-photo" style="background-image:url('img/bonus1-crise48h.jpg')">
+          <div class="bonus-text">
+            <div class="tag">Bônus 1</div>
+            <h3>Reset Lombar: Crise 48h</h3>
+            <p>Plano hora a hora para os momentos de crise aguda, para usar enquanto o método principal ainda está fazendo efeito.</p>
+          </div>
+        </div>
       </div>
       <div class="bonus-card reveal">
-        <div class="ytab"></div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#141414" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="tag">Bônus 2</div>
-        <h3>Checklist dos 30 dias</h3>
-        <p>Uma folha única para marcar seus treinos dia a dia e não perder o fio da progressão entre as fases.</p>
+        <div class="bonus-photo" style="background-image:url('img/bonus2-checklist.jpg')">
+          <div class="bonus-text">
+            <div class="tag">Bônus 2</div>
+            <h3>Checklist dos 30 dias</h3>
+            <p>Uma folha única para marcar seus treinos dia a dia e não perder o fio da progressão entre as fases.</p>
+          </div>
+        </div>
       </div>
       <div class="bonus-card reveal">
-        <div class="ytab"></div>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="1" stroke="#141414" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <div class="tag">Bônus 3</div>
-        <h3>Ficha de Parâmetros para Imprimir</h3>
-        <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o guia toda vez que for anotar seus números.</p>
+        <div class="bonus-photo" style="background-image:url('img/bonus3-geladeira.jpg')">
+          <div class="bonus-text">
+            <div class="tag">Bônus 3</div>
+            <h3>Ficha de Parâmetros para Imprimir</h3>
+            <p>Um arquivo separado, pronto para imprimir e colar na geladeira ou levar para o treino, sem precisar abrir o guia toda vez que for anotar seus números.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
