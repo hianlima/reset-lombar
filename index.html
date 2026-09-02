@@ -173,6 +173,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   .journey-mobile-panel{ display:none; }
 }
 .section-head h2{ font-size:clamp(1.6rem,4.5vw,2.3rem); line-height:1.2; }
+.section-head h2.impact{ font-family:var(--impact); font-weight:400; text-transform:uppercase; letter-spacing:.01em; font-size:clamp(1.9rem,5.6vw,2.7rem); line-height:1.08; }
 .section-head p{ margin-top:14px; font-size:1.02rem; color:var(--ink); }
 .section.dark{ background:var(--black); color:#fff; }
 .section.dark h2, .section.dark h3{ color:#fff; }
@@ -235,16 +236,16 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .hero .container{ display:grid; gap:36px; }
 .hero .container > div{ display:flex; flex-direction:column; align-items:center; text-align:center; }
-.hero h1{ font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.24; color:#fff; max-width:30ch; text-wrap:balance; }
-.hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--serif); }
+.hero h1{ font-family:var(--impact); font-weight:400; text-transform:uppercase; letter-spacing:.01em; font-size:clamp(2rem,6.6vw,3.3rem); line-height:1.08; color:#fff; max-width:32ch; text-wrap:balance; }
+.hero h1 em{ font-style:normal; color:var(--yellow); font-family:var(--impact); }
 @media(max-width:768px){
-  .hero h1{ font-size:clamp(1.55rem,5.8vw,1.95rem); line-height:1.2; max-width:30ch; }
+  .hero h1{ font-size:clamp(1.8rem,6.8vw,2.3rem); line-height:1.1; max-width:30ch; }
 }
 @media(max-width:480px){
-  .hero h1{ font-size:clamp(1.35rem,6.8vw,1.65rem); line-height:1.18; max-width:30ch; }
+  .hero h1{ font-size:clamp(1.6rem,8vw,1.95rem); line-height:1.08; max-width:30ch; }
 }
 @media(max-width:420px){
-  .hero h1{ font-size:1.3rem; line-height:1.2; max-width:30ch; }
+  .hero h1{ font-size:1.55rem; line-height:1.1; max-width:30ch; }
 }
 .hero .sub{ font-family:var(--ui); font-weight:300; font-size:1.08rem; color:#C9C6BF; margin-top:18px; max-width:52ch; }
 .hero .cta-wrap{ margin-top:28px; display:flex; flex-direction:column; gap:10px; align-items:center; }
@@ -494,6 +495,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 #oferta .container{ position:relative; }
 #oferta .section-head h2{ font-size:clamp(1.5rem,4vw,2.05rem); }
+#oferta .section-head h2.impact{ font-size:clamp(1.8rem,5vw,2.4rem); }
 
 @keyframes offerGlow{
   0%,100%{ box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,161,92,.35), 0 0 0 rgba(201,161,92,0); }
@@ -863,7 +865,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
 <section class="section dark" id="diferente">
   <div class="container">
     <div class="section-head reveal">
-      <h2>É por isso que a sua dor sempre volta</h2>
+      <h2 class="impact">É por isso que a sua dor sempre volta</h2>
       <p>Alongamento genérico não resolve a causa. Veja o que muda com um método real, criado por um <span class="hl">fisioterapeuta</span> que atende dor lombar e ciática todos os dias.</p>
     </div>
 
@@ -919,7 +921,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div class="section-head reveal">
       <div class="eyebrow">A jornada até aqui</div>
-      <h2>Talvez você já esteja em algum ponto deste caminho</h2>
+      <h2 class="impact">Talvez você já esteja em algum ponto deste caminho</h2>
     </div>
 
     <div class="journey-desktop reveal">
@@ -1070,7 +1072,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div class="section-head reveal">
       <div class="eyebrow">Bônus inclusos</div>
-      <h2>Além do guia principal, você também leva</h2>
+      <h2 class="impact">Além do guia principal, você também leva</h2>
     </div>
 
     <div class="bonus-grid">
@@ -1115,7 +1117,7 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
   <div class="container">
     <div class="section-head reveal">
       <div class="eyebrow">Sua virada começa aqui</div>
-      <h2>Garanta seu acesso completo agora</h2>
+      <h2 class="impact">Garanta seu acesso completo agora</h2>
     </div>
 
     <div class="offer-grid">
