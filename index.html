@@ -497,6 +497,17 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 #oferta .section-head h2{ font-size:clamp(1.5rem,4vw,2.05rem); }
 #oferta .section-head h2.impact{ font-size:clamp(1.8rem,5vw,2.4rem); }
 
+/* ============ DISPOSITIVOS ============ */
+.devices-visual{ max-width:980px; margin:36px auto 0; }
+.devices-visual img{ width:100%; }
+.devices-visual .devices-img-desktop{ display:none; }
+.devices-visual .devices-img-mobile{ display:block; }
+.devices-cta{ text-align:center; margin-top:40px; }
+@media(min-width:768px){
+  .devices-visual .devices-img-desktop{ display:block; }
+  .devices-visual .devices-img-mobile{ display:none; }
+}
+
 @keyframes offerGlow{
   0%,100%{ box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,161,92,.35), 0 0 0 rgba(201,161,92,0); }
   50%{ box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,161,92,.35), 0 0 44px 6px rgba(201,161,92,.32); }
@@ -1307,6 +1318,25 @@ footer .flegal{ font-family:var(--ui); font-size:.7rem; margin-top:16px; color:#
         <button class="faq-q" type="button"><span class="faq-num">05</span><span class="faq-q-text">Como eu acesso o material depois da compra?</span><span class="faq-icon"></span></button>
         <div class="faq-a"><p>Assim que o pagamento é aprovado, você recebe acesso imediato na área de membros, com login por e-mail. O material fica disponível para consultar quando quiser, sem prazo de expiração.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9B. DISPOSITIVOS ===== -->
+<section class="section dark" id="dispositivos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Onde quiser, quando quiser</div>
+      <h2 class="impact">Seu guia, em qualquer tela</h2>
+    </div>
+
+    <div class="devices-visual reveal">
+      <img class="devices-img devices-img-desktop" src="img/mockup-dispositivos-desktop.jpg" alt="Guia Reset Lombar aberto no computador, notebook, tablet e celular, com o vídeo de introdução do Dr. Hian Lima" loading="lazy">
+      <img class="devices-img devices-img-mobile" src="img/mockup-dispositivos-mobile.jpg" alt="Guia Reset Lombar aberto no tablet e no celular, com o vídeo de introdução do Dr. Hian Lima" loading="lazy">
+    </div>
+
+    <div class="devices-cta reveal">
+      <a href="#oferta" class="btn btn-primary btn-lg" data-cta>Preciso aliviar a dor agora!!! <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
