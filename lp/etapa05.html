@@ -63,7 +63,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
   function botSay(text, cb){
     var typing = addTyping();
-    var thinkTime = Math.min(1700, 500 + text.length * 16);
+    var thinkTime = Math.min(6000, Math.max(900, 500 + text.length * 16));
     setTimeout(function(){
       typing.remove();
       var row = document.createElement("div");
@@ -118,7 +118,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
         row.remove();
         meSay(opt.label);
         Funil.trackEtapa("Etapa5_Choice_" + opt.id);
-        setTimeout(function(){ opt.next(); }, 500);
+        opt.next();
       });
       group.appendChild(btn);
     });
