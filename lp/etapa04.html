@@ -34,6 +34,35 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     <h1 class="fh1">Vamos eliminar os culpados errados</h1>
     <p class="fsub">Você provavelmente já ouviu que sua dor é culpa de um desses motivos. Nenhum deles é a causa real.</p>
 
+    <div class="fvideo-box" id="videoBox">
+      <video id="vslVideo" poster="../img/video-funil-poster.jpg" preload="metadata" playsinline>
+        <source src="../img/video-funil.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="fplay-overlay" id="playBtn" aria-label="Reproduzir vídeo">
+        <span class="fvsl-btn fvsl-btn-start">
+          <span class="ftop">Toque para assistir</span>
+          <span class="fico"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><line x1="16" y1="9" x2="22" y2="15"/><line x1="22" y1="9" x2="16" y2="15"/></svg></span>
+          <span class="fbottom">Com áudio</span>
+        </span>
+        <span class="fvsl-btn fvsl-btn-replay">
+          <span class="ftop">Assista novamente</span>
+          <span class="fico"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+          <span class="fbottom">Toque para rever</span>
+        </span>
+      </button>
+      <div class="fvsl-controls" id="videoControls">
+        <button type="button" id="playPauseBtn" aria-label="Pausar vídeo">
+          <svg class="icon-pause" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+          <svg class="icon-play" viewBox="0 0 24 24" fill="#fff" style="display:none"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </button>
+        <div class="fvsl-progress-track"><div class="fvsl-progress-fill" id="progressFill"></div></div>
+        <button type="button" id="muteBtn" aria-label="Silenciar vídeo">
+          <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a9 9 0 0 1 0 12"/></svg>
+          <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><line x1="16" y1="9" x2="22" y2="15"/><line x1="22" y1="9" x2="16" y2="15"/></svg>
+        </button>
+      </div>
+    </div>
+
     <ul class="flist fx">
       <li><span class="fico">✕</span> <span><b>Sedentarismo.</b> Se fosse isso, atletas de alto rendimento nunca sentiriam dor. Eles sentem, e muito.</span></li>
       <li><span class="fico">✕</span> <span><b>Postura errada no trabalho.</b> Incomoda, mas raramente é a causa raiz de uma crise aguda.</span></li>
@@ -55,7 +84,60 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <script src="lp.js"></script>
 <script>
   Funil.trackEtapa("Etapa4_View");
-  document.getElementById("btnNext").addEventListener("click", function(){
+
+  var video = document.getElementById("vslVideo");
+  var playBtn = document.getElementById("playBtn");
+  var videoBox = document.getElementById("videoBox");
+  var playPauseBtn = document.getElementById("playPauseBtn");
+  var muteBtn = document.getElementById("muteBtn");
+  var progressFill = document.getElementById("progressFill");
+  var btnNext = document.getElementById("btnNext");
+
+  playBtn.addEventListener("click", function(){
+    if (playBtn.classList.contains("is-ended")) {
+      video.currentTime = 0;
+      playBtn.classList.remove("is-ended");
+    }
+    video.play();
+    playBtn.classList.add("is-hidden");
+    Funil.trackEtapa("Etapa4_PlayVideo");
+  });
+  video.addEventListener("click", function(){
+    if (video.paused) { video.play(); } else { video.pause(); }
+  });
+  playPauseBtn.addEventListener("click", function(){
+    if (video.paused) { video.play(); } else { video.pause(); }
+  });
+  muteBtn.addEventListener("click", function(){
+    video.muted = !video.muted;
+    muteBtn.querySelector(".icon-unmuted").style.display = video.muted ? "none" : "";
+    muteBtn.querySelector(".icon-muted").style.display = video.muted ? "" : "none";
+  });
+  video.addEventListener("play", function(){
+    videoBox.classList.add("is-playing");
+    playPauseBtn.querySelector(".icon-pause").style.display = "";
+    playPauseBtn.querySelector(".icon-play").style.display = "none";
+  });
+  video.addEventListener("pause", function(){
+    playPauseBtn.querySelector(".icon-pause").style.display = "none";
+    playPauseBtn.querySelector(".icon-play").style.display = "";
+    if (video.currentTime === 0) { playBtn.classList.remove("is-hidden"); }
+  });
+  video.addEventListener("ended", function(){
+    videoBox.classList.remove("is-playing");
+    progressFill.style.width = "0%";
+    playBtn.classList.add("is-ended");
+    playBtn.classList.remove("is-hidden");
+    Funil.trackEtapa("Etapa4_WatchedFull");
+  });
+  video.addEventListener("timeupdate", function(){
+    if (!video.duration) return;
+    var real = video.currentTime / video.duration;
+    var display = 1 - Math.pow(1 - real, 1.8);
+    progressFill.style.width = (display * 100) + "%";
+  });
+
+  btnNext.addEventListener("click", function(){
     Funil.trackEtapa("Etapa4_Click");
   });
 </script>
