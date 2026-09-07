@@ -163,6 +163,36 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   position:relative; font-family:var(--ui); font-weight:600; font-size:.86rem; color:var(--yellow-dk);
 }
 
+/* ---- Depoimentos em esteira automática (etapa 9) ---- */
+.ftesti-label{
+  font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--yellow-dk); text-align:center; margin:26px 0 14px;
+}
+.ftesti-wrap{ position:relative; width:100vw; left:50%; margin-left:-50vw; margin-bottom:6px; }
+.ftesti{
+  overflow:hidden; padding:4px 0 10px;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+  mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+}
+.ftesti-track{
+  display:flex; gap:14px; width:max-content;
+  animation:ftesti-marquee 24s linear infinite;
+}
+.ftesti:hover .ftesti-track, .ftesti:focus-within .ftesti-track{ animation-play-state:paused; }
+@keyframes ftesti-marquee{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(calc(-50% - 7px)); }
+}
+@media(prefers-reduced-motion:reduce){ .ftesti-track{ animation:none; } }
+.ftslide{
+  flex:none; width:190px; border-radius:14px; overflow:hidden; background:#0b141a;
+  box-shadow:0 10px 24px rgba(20,20,20,.18);
+}
+.ftslide img{ width:100%; height:230px; object-fit:contain; display:block; background:#0b141a; }
+.ftslide .fname{
+  background:#fff; text-align:center; padding:8px 6px; font-family:var(--ui); font-weight:600; font-size:.76rem; color:var(--black);
+}
+
 /* ---- Lista de X / check (etapa "inimigo comum" e benefícios) ---- */
 .flist{ list-style:none; margin:0 0 26px; padding:0; text-align:left; display:flex; flex-direction:column; gap:10px; }
 .flist li{
