@@ -40,7 +40,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
     <div class="fchat-wrap" id="chatWrap"></div>
 
-    <a href="etapa06.html" class="fcta green fcta-pulse" id="btnNext" style="display:none; margin-top:18px;">Continuar <span class="arrow">→</span></a>
+    <a href="etapa06.html" class="fcta green fcta-pulse" id="btnNext" style="display:none; margin-top:18px;">Continuar para ver seu resultado <span class="arrow">→</span></a>
   </div>
 </div>
 
@@ -49,8 +49,10 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   Funil.trackEtapa("Etapa5_View");
 
   var chatWrap = document.getElementById("chatWrap");
+  var btnNext = document.getElementById("btnNext");
 
   function scrollDown(){ chatWrap.scrollTop = chatWrap.scrollHeight; }
+  function randDelay(min, max){ return min + Math.random() * (max - min); }
 
   function addTyping(){
     var row = document.createElement("div");
@@ -61,9 +63,8 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     return row;
   }
 
-  function botSay(text, cb){
+  function botSay(text, delayMs, cb){
     var typing = addTyping();
-    var thinkTime = Math.min(6000, Math.max(900, 500 + text.length * 16));
     setTimeout(function(){
       typing.remove();
       var row = document.createElement("div");
@@ -71,21 +72,8 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       row.innerHTML = '<div class="fchat-bubble">' + text + '</div>';
       chatWrap.appendChild(row);
       scrollDown();
-      setTimeout(cb, 650);
-    }, thinkTime);
-  }
-
-  function botImage(src, caption, cb){
-    var typing = addTyping();
-    setTimeout(function(){
-      typing.remove();
-      var row = document.createElement("div");
-      row.className = "fchat-row them";
-      row.innerHTML = '<div class="fchat-bubble fchat-img"><img src="' + src + '" alt=""><div class="fchat-cap">' + caption + '</div></div>';
-      chatWrap.appendChild(row);
-      scrollDown();
-      setTimeout(cb, 700);
-    }, 1300);
+      if (cb) cb();
+    }, delayMs);
   }
 
   function meSay(text){
@@ -96,7 +84,33 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     scrollDown();
   }
 
-  function showChoices(options){
+  /* ---- roteiro do mini-quiz (3 perguntas) ---- */
+  var questions = [
+    {
+      key: "resposta_localizacao",
+      text: "Onde você sente a dor com mais frequência?",
+      options: ["Só na lombar", "Desce até o glúteo ou a coxa", "Desce até abaixo do joelho, na perna toda"]
+    },
+    {
+      key: "resposta_gatilho",
+      text: "O que geralmente piora sua dor?",
+      options: ["Ficar muito tempo sentado", "Ficar muito tempo em pé ou caminhando", "Se abaixar ou pegar peso"]
+    },
+    {
+      key: "resposta_historico",
+      text: "Você já tentou tratar antes (fisioterapia, alongamento, remédio) e a dor voltou?",
+      options: ["Sim, várias vezes", "Já tentei uma vez", "Ainda não tratei de forma nenhuma"]
+    }
+  ];
+
+  function askQuestion(i, delayMs){
+    var q = questions[i];
+    botSay(q.text, delayMs, function(){
+      showOptions(q, i);
+    });
+  }
+
+  function showOptions(q, i){
     var hint = document.createElement("div");
     hint.className = "fchat-tap-hint";
     hint.innerHTML = 'Toque pra responder <span class="tap-ico">👆</span>';
@@ -108,17 +122,24 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     group.className = "fchat-choice-group";
     row.appendChild(group);
 
-    options.forEach(function(opt){
+    q.options.forEach(function(label){
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "fchat-choice-bubble";
-      btn.innerHTML = '<span>' + opt.label + '</span><span class="fchat-choice-arrow">›</span>';
+      btn.innerHTML = "<span>" + label + "</span><span class=\"fchat-choice-arrow\">›</span>";
       btn.addEventListener("click", function(){
         hint.remove();
         row.remove();
-        meSay(opt.label);
-        Funil.trackEtapa("Etapa5_Choice_" + opt.id);
-        opt.next();
+        meSay(label);
+
+        try { localStorage.setItem(q.key, label); } catch(e){}
+        Funil.trackEtapa("Etapa5_Quiz_" + q.key);
+
+        if (i + 1 < questions.length) {
+          askQuestion(i + 1, randDelay(300, 500));
+        } else {
+          finish();
+        }
       });
       group.appendChild(btn);
     });
@@ -127,52 +148,20 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     scrollDown();
   }
 
-  var btnNext = document.getElementById("btnNext");
+  function finish(){
+    botSay("Pelo que você me contou, seu padrão parece se encaixar num tipo específico de dor lombar. Mas confirmar isso com precisão exige o teste completo, que leva menos de 3 minutos e está no seu guia.", 2000, function(){
+      btnNext.style.display = "flex";
+      Funil.trackEtapa("Etapa5_QuizCompleted");
+    });
+  }
+
+  botSay("Antes de continuar, deixa eu entender rapidinho seu caso. São só 3 perguntas.", randDelay(900, 1300), function(){
+    askQuestion(0, randDelay(900, 1300));
+  });
+
   btnNext.addEventListener("click", function(){
     Funil.trackEtapa("Etapa5_Click");
   });
-  function showContinue(){
-    btnNext.style.display = "flex";
-  }
-
-  /* ---- roteiro do chat ---- */
-  botSay("Oi! Que bom te ver por aqui 👋", function(){
-    botSay("Posso te fazer uma pergunta rápida antes de continuar?", function(){
-      botSay("Você já tentou resolver essa dor lombar por conta própria, tipo com vídeo de Youtube ou dica de alguém, e não rolou?", function(){
-        showChoices([
-          {
-            id: "ja_tentei",
-            label: "Já tentei de tudo 😩",
-            next: function(){
-              botSay("Imaginei. Isso é super comum, viu.", function(){
-                botSay("A maioria dos exercícios prontos por aí não leva em conta a SUA direção de dor.", step2);
-              });
-            }
-          },
-          {
-            id: "primeira_vez",
-            label: "Ainda não, é minha primeira vez",
-            next: function(){
-              botSay("Boa, já começa pelo caminho certo então.", function(){
-                botSay("Porque a maioria dos exercícios prontos por aí não leva em conta a SUA direção de dor.", step2);
-              });
-            }
-          }
-        ]);
-      });
-    });
-  });
-
-  function step2(){
-    botSay("E isso muda tudo. Dá uma olhada nisso aqui 👇", function(){
-      botImage("../img/depoimento-marcio.jpg", "Print real de conversa com paciente", function(){
-        botSay("Show, né? Bora pro próximo passo, vou te mostrar os números de como isso tem ajudado outras pessoas.", function(){
-          showContinue();
-          Funil.trackEtapa("Etapa5_ChatCompleted");
-        });
-      });
-    });
-  }
 </script>
 </body>
 </html>
