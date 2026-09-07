@@ -120,23 +120,48 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ---- Cartão de oferta em destaque (etapa 9) ---- */
 .foffer-card{
-  position:relative; background:linear-gradient(160deg, #fff, var(--yellow-sf));
-  border:2px solid var(--yellow); border-radius:18px; padding:28px 22px 22px;
-  text-align:center; margin:0 0 22px; box-shadow:0 16px 34px rgba(201,161,92,.3);
+  position:relative; background:linear-gradient(165deg, #fffdf7 0%, var(--yellow-sf) 55%, #f0dda9 100%);
+  border:2px solid var(--yellow); border-radius:20px; padding:36px 22px 28px;
+  text-align:center; margin:0 0 22px;
+  box-shadow:0 22px 44px rgba(201,161,92,.4), inset 0 1px 0 rgba(255,255,255,.7);
+}
+.foffer-card::before{
+  content:''; position:absolute; inset:0; pointer-events:none; border-radius:18px;
+  background:radial-gradient(circle at 50% -10%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(circle, rgba(147,113,47,.16) 1.5px, transparent 1.5px);
+  background-size:100% 100%, 16px 16px;
+}
+.foffer-card::after{
+  content:''; position:absolute; inset:6px; pointer-events:none; border-radius:14px;
+  border:1px dashed rgba(147,113,47,.35);
 }
 .foffer-card .fpct-badge{
-  position:absolute; top:-16px; left:50%; transform:translateX(-50%);
-  background:var(--red); color:#fff; font-family:var(--impact); font-size:1rem; letter-spacing:.02em;
-  padding:7px 18px; border-radius:999px; box-shadow:0 8px 18px rgba(192,57,43,.4); white-space:nowrap;
+  position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(135deg, #E0453A, var(--red)); color:#fff; font-family:var(--impact); font-size:1.05rem; letter-spacing:.03em;
+  padding:9px 22px; border-radius:999px; box-shadow:0 10px 22px rgba(192,57,43,.45), 0 0 0 4px #fff; white-space:nowrap;
+  animation:foffer-badge-pop .5s ease;
+}
+@keyframes foffer-badge-pop{
+  0%{ transform:translateX(-50%) scale(.6); opacity:0; }
+  70%{ transform:translateX(-50%) scale(1.08); opacity:1; }
+  100%{ transform:translateX(-50%) scale(1); }
 }
 .foffer-card .flabel{
-  font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--yellow-dk); margin-top:8px;
+  position:relative; font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--yellow-dk); margin-top:6px;
 }
-.foffer-card .fprice-line{ margin:16px 0 6px; }
-.foffer-card .fprice-line .old{ text-decoration:line-through; color:var(--red); margin-right:10px; font-size:1.05rem; }
-.foffer-card .fprice-line .new{ font-family:var(--impact); font-size:2.5rem; color:var(--black); }
-.foffer-card .fnote{ font-family:var(--ui); font-size:.86rem; color:var(--ink); opacity:.8; }
+.foffer-card .flabel::before, .foffer-card .flabel::after{ content:'✦'; color:var(--yellow); font-size:.6rem; margin:0 7px; position:relative; top:-2px; }
+.foffer-card .fprice-line{
+  position:relative; margin:18px auto 10px; display:flex; flex-direction:column; align-items:center; gap:2px;
+  max-width:260px; padding:14px 10px 12px; border-radius:14px;
+  background:rgba(255,255,255,.55); box-shadow:inset 0 0 0 1px rgba(201,161,92,.35);
+}
+.foffer-card .fprice-line .old{ text-decoration:line-through; color:var(--red); font-size:1rem; opacity:.75; }
+.foffer-card .fprice-line .new{ font-family:var(--impact); font-size:3rem; line-height:1; color:var(--black); text-shadow:0 2px 0 rgba(255,255,255,.6); }
+.foffer-card .fprice-divider{ position:relative; width:60px; height:2px; margin:16px auto; border-radius:2px; background:linear-gradient(90deg, transparent, var(--yellow), transparent); }
+.foffer-card .fnote{
+  position:relative; font-family:var(--ui); font-weight:600; font-size:.86rem; color:var(--yellow-dk);
+}
 
 /* ---- Lista de X / check (etapa "inimigo comum" e benefícios) ---- */
 .flist{ list-style:none; margin:0 0 26px; padding:0; text-align:left; display:flex; flex-direction:column; gap:10px; }
