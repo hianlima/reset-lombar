@@ -90,6 +90,17 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fcta.gold:hover{ box-shadow:0 14px 30px rgba(201,161,92,.4); }
 .fcta.green{ background:#22C55E; color:#fff; }
 .fcta.green:hover{ background:#1FA853; box-shadow:0 14px 30px rgba(34,197,94,.45); }
+.fcta.mega{
+  font-size:1.12rem; padding:22px 24px;
+  background:linear-gradient(135deg, #FF6B35, #E63946); color:#fff;
+  box-shadow:0 14px 30px rgba(230,57,70,.4);
+}
+.fcta.mega:hover{ box-shadow:0 18px 36px rgba(230,57,70,.5); }
+.fcta.mega.fcta-pulse{ animation:fcta-pulse-mega 1.5s ease-in-out infinite; }
+@keyframes fcta-pulse-mega{
+  0%,100%{ box-shadow:0 14px 30px rgba(230,57,70,.4); transform:scale(1); }
+  50%{ box-shadow:0 18px 42px rgba(230,57,70,.65); transform:scale(1.015); }
+}
 
 .fcta-pulse{ animation:fcta-pulse 1.8s ease-in-out infinite; }
 @keyframes fcta-pulse{
@@ -152,6 +163,37 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .fstat-num{ font-family:var(--impact); font-size:2.4rem; color:var(--yellow-dk); line-height:1; }
 .fstat-label{ font-family:var(--ui); font-size:.82rem; color:var(--grey); margin-top:6px; }
+
+/* ---- Garantia (etapa 9) ---- */
+.fguarantee-card{
+  display:flex; align-items:flex-start; gap:14px; background:var(--green-sf);
+  border:1px solid rgba(46,139,87,.3); border-left:4px solid var(--green);
+  border-radius:14px; padding:18px 20px; margin:0 0 22px; text-align:left;
+}
+.fguarantee-card .fico{
+  flex:none; width:34px; height:34px; border-radius:50%; background:var(--green); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+}
+.fguarantee-card h3{ font-family:var(--serif); font-weight:700; font-size:1rem; color:#1c4a33; margin:0 0 6px; }
+.fguarantee-card p{ font-family:var(--ui); font-size:.86rem; color:#1c4a33; opacity:.9; line-height:1.5; margin:0; }
+
+/* ---- Detalhamento do valor dos bônus (etapa 9) ---- */
+.fbonus-card{ margin:0 0 22px; }
+.fbonus-card .flabel{ margin-bottom:12px; }
+.fbonus-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+.fbonus-list li{
+  display:flex; justify-content:space-between; gap:10px; padding:9px 0;
+  border-bottom:1px dashed var(--line); font-family:var(--ui); font-size:.88rem; color:var(--ink);
+}
+.fbonus-list li:last-child{ border-bottom:0; }
+.fbonus-list .price{ color:var(--grey); flex:none; }
+.fbonus-total{
+  margin-top:12px; padding-top:12px; border-top:1px solid var(--line);
+  font-family:var(--ui); font-weight:700; font-size:.92rem; color:var(--black); text-align:center;
+}
+.fbonus-total span{
+  color:var(--yellow-dk); text-decoration:line-through; text-decoration-color:#ff6161; text-decoration-thickness:2px;
+}
 
 /* ---- Cartão de matéria/reportagem real (etapa 6) ---- */
 .fnews-card{
