@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Lombar | Sua oferta expira hoje</title>
+<meta name="robots" content="noindex">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3390337087934483');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="stylesheet" href="funil.css">
+</head>
+<body>
+
+<div class="fstage">
+  <div class="fcol">
+    <div class="fbadge">🔓 Seu desconto está ativo</div>
+
+    <div class="feyebrow">Válido só hoje, <span id="todayDate"></span></div>
+    <h1 class="fh1">Garanta seu acesso antes que o voucher expire</h1>
+
+    <div class="fcountdown">
+      <div class="fseg"><b id="cdH">00</b><span>Horas</span></div>
+      <div class="fseg"><b id="cdM">00</b><span>Min</span></div>
+      <div class="fseg"><b id="cdS">00</b><span>Seg</span></div>
+    </div>
+
+    <div class="foffer-card">
+      <div class="fpct-badge" id="pctBadge">72% OFF</div>
+      <div class="flabel">Reset Lombar · acesso completo</div>
+      <div class="fprice-line">
+        <span class="old" id="priceFrom">De R$127,00</span>
+        <span class="new" id="priceTo">R$35,00</span>
+      </div>
+      <div class="fnote" id="discountLabel">Desconto liberado pelo seu voucher, válido só hoje</div>
+    </div>
+
+    <ul class="flist fcheck">
+      <li><span class="fico">✓</span> <span>Guia Reset Lombar completo</span></li>
+      <li><span class="fico">✓</span> <span>Bônus: Reset Lombar Crise 48h</span></li>
+      <li><span class="fico">✓</span> <span>Bônus: Checklist dos 30 dias</span></li>
+      <li><span class="fico">✓</span> <span>Bônus: Ficha de Parâmetros imprimível</span></li>
+      <li><span class="fico">✓</span> <span>Acesso imediato na área de membros</span></li>
+    </ul>
+
+    <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="fcta green fcta-pulse" id="btnCheckout">Quero sair da crise lombar agora <span class="arrow">→</span></a>
+    <div class="fhint">🔒 Compra segura · Garantia incondicional de 7 dias</div>
+  </div>
+</div>
+
+<script src="funil.js"></script>
+<script>
+  Funil.trackEtapa("Etapa9_View");
+
+  var state = Funil.getState();
+  var pct = state.discountPct || 72;
+  var from = state.priceFrom || "127,00";
+  var to = state.priceTo || "35,00";
+  document.getElementById("priceFrom").textContent = "De R$" + from;
+  document.getElementById("priceTo").textContent = "R$" + to;
+  document.getElementById("pctBadge").textContent = pct + "% OFF";
+
+  var today = new Date();
+  document.getElementById("todayDate").textContent = today.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function updateCountdown(){
+    var now = new Date();
+    var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    var diff = Math.max(0, end - now);
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById("cdH").textContent = pad(h);
+    document.getElementById("cdM").textContent = pad(m);
+    document.getElementById("cdS").textContent = pad(s);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  document.getElementById("btnCheckout").addEventListener("click", function(){
+    Funil.trackEtapa("Etapa9_Click");
+    if (typeof fbq === "function") fbq("track", "InitiateCheckout");
+  });
+</script>
+</body>
+</html>

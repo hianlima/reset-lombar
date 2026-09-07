@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Lombar | Assista antes de continuar</title>
+<meta name="robots" content="noindex">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3390337087934483');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="stylesheet" href="funil.css">
+</head>
+<body>
+
+<div class="fstage">
+  <div class="fcol">
+    <div class="feyebrow">Antes de continuar</div>
+    <h1 class="fh1">Assista este vídeo rápido. Ele explica por que a dor sempre volta</h1>
+
+    <div class="fvideo-box" id="videoBox">
+      <video id="vslVideo" poster="../img/video-vendas-poster.jpg" preload="metadata" playsinline>
+        <source src="../img/video-vendas.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="fplay-overlay" id="playBtn" aria-label="Reproduzir vídeo">
+        <span class="fvsl-btn fvsl-btn-start">
+          <span class="ftop">Toque para assistir</span>
+          <span class="fico"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><line x1="16" y1="9" x2="22" y2="15"/><line x1="22" y1="9" x2="16" y2="15"/></svg></span>
+          <span class="fbottom">Com áudio</span>
+        </span>
+        <span class="fvsl-btn fvsl-btn-replay">
+          <span class="ftop">Assista novamente</span>
+          <span class="fico"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+          <span class="fbottom">Toque para rever</span>
+        </span>
+      </button>
+      <div class="fvsl-controls" id="videoControls">
+        <button type="button" id="playPauseBtn" aria-label="Pausar vídeo">
+          <svg class="icon-pause" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+          <svg class="icon-play" viewBox="0 0 24 24" fill="#fff" style="display:none"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </button>
+        <div class="fvsl-progress-track"><div class="fvsl-progress-fill" id="progressFill"></div></div>
+        <button type="button" id="muteBtn" aria-label="Silenciar vídeo">
+          <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a9 9 0 0 1 0 12"/></svg>
+          <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><line x1="16" y1="9" x2="22" y2="15"/><line x1="22" y1="9" x2="16" y2="15"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <a href="etapa03.html" class="fcta green fcta-pulse" id="btnNext">Continuar <span class="arrow">→</span></a>
+  </div>
+</div>
+
+<script src="funil.js"></script>
+<script>
+  Funil.trackEtapa("Etapa2_View");
+
+  var video = document.getElementById("vslVideo");
+  var playBtn = document.getElementById("playBtn");
+  var videoBox = document.getElementById("videoBox");
+  var playPauseBtn = document.getElementById("playPauseBtn");
+  var muteBtn = document.getElementById("muteBtn");
+  var progressFill = document.getElementById("progressFill");
+  var btnNext = document.getElementById("btnNext");
+
+  playBtn.addEventListener("click", function(){
+    if (playBtn.classList.contains("is-ended")) {
+      video.currentTime = 0;
+      playBtn.classList.remove("is-ended");
+    }
+    video.play();
+    playBtn.classList.add("is-hidden");
+    Funil.trackEtapa("Etapa2_PlayVideo");
+  });
+  video.addEventListener("click", function(){
+    if (video.paused) { video.play(); } else { video.pause(); }
+  });
+  playPauseBtn.addEventListener("click", function(){
+    if (video.paused) { video.play(); } else { video.pause(); }
+  });
+  muteBtn.addEventListener("click", function(){
+    video.muted = !video.muted;
+    muteBtn.querySelector(".icon-unmuted").style.display = video.muted ? "none" : "";
+    muteBtn.querySelector(".icon-muted").style.display = video.muted ? "" : "none";
+  });
+  video.addEventListener("play", function(){
+    videoBox.classList.add("is-playing");
+    playPauseBtn.querySelector(".icon-pause").style.display = "";
+    playPauseBtn.querySelector(".icon-play").style.display = "none";
+  });
+  video.addEventListener("pause", function(){
+    playPauseBtn.querySelector(".icon-pause").style.display = "none";
+    playPauseBtn.querySelector(".icon-play").style.display = "";
+    if (video.currentTime === 0) { playBtn.classList.remove("is-hidden"); }
+  });
+  video.addEventListener("ended", function(){
+    videoBox.classList.remove("is-playing");
+    progressFill.style.width = "0%";
+    playBtn.classList.add("is-ended");
+    playBtn.classList.remove("is-hidden");
+    Funil.trackEtapa("Etapa2_WatchedFull");
+  });
+  video.addEventListener("timeupdate", function(){
+    if (!video.duration) return;
+    var real = video.currentTime / video.duration;
+    var display = 1 - Math.pow(1 - real, 1.8);
+    progressFill.style.width = (display * 100) + "%";
+  });
+
+  btnNext.addEventListener("click", function(){
+    Funil.trackEtapa("Etapa2_Click");
+  });
+</script>
+</body>
+</html>

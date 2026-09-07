@@ -1,0 +1,374 @@
+/* ============ FUNIL RESET LOMBAR — BASE COMPARTILHADA ============ */
+
+/* ---- Fontes locais (mesmas do site principal) ---- */
+@font-face{ font-family:'Poppins'; src:url('../fonts/Poppins-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face{ font-family:'Poppins'; src:url('../fonts/Poppins-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face{ font-family:'Poppins'; src:url('../fonts/Poppins-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+@font-face{ font-family:'Poppins'; src:url('../fonts/Poppins-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+@font-face{ font-family:'Lora'; src:url('../fonts/Lora-Variable.woff2') format('woff2'); font-weight:400 700; font-display:swap; }
+@font-face{ font-family:'Anton'; src:url('../fonts/Anton-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+
+:root{
+  --yellow:#C9A15C;
+  --yellow-sf:#F6EDDC;
+  --yellow-dk:#93712F;
+  --black:#141414;
+  --ink:#3A3A3A;
+  --grey:#8A8A8A;
+  --line:#DEDEDE;
+  --red:#C0392B;
+  --red-sf:#FBF0EF;
+  --green:#2E8B57;
+  --green-sf:#EAF6EF;
+  --orange:#F2711A;
+  --orange-dk:#C85812;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --serif: 'Lora', serif;
+  --ui: 'Poppins', var(--sans);
+  --impact: 'Anton', var(--ui);
+}
+
+*{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; font-family:var(--ui); color:var(--ink); background:var(--yellow-sf);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  min-height:100vh; min-height:100dvh;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:700; }
+
+/* ---- Palco: cada etapa é uma tela cheia, conteúdo centralizado tipo quiz ---- */
+.fstage{
+  min-height:100vh; min-height:100dvh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:32px 20px 40px;
+}
+.fcol{ width:100%; max-width:440px; margin:0 auto; text-align:center; }
+
+/* ---- Prova social (pill verde) ---- */
+.fbadge{
+  display:inline-flex; align-items:center; gap:6px; margin:0 auto 22px;
+  background:var(--green-sf); color:var(--green); font-family:var(--ui); font-weight:600; font-size:.78rem;
+  letter-spacing:.02em; padding:7px 16px; border-radius:999px;
+}
+.fbadge::before{ content:'●'; font-size:.6rem; color:var(--green); }
+
+/* ---- Textos ---- */
+.feyebrow{
+  font-family:var(--ui); font-weight:600; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--yellow-dk); margin-bottom:10px;
+}
+.fh1{
+  font-family:var(--serif); font-weight:700; color:var(--black);
+  font-size:clamp(1.5rem, 6vw, 2.05rem); line-height:1.25; margin:0 0 14px;
+}
+.fh1 em, .fh1 .hl{ font-style:normal; color:var(--yellow-dk); }
+.fsub{
+  font-family:var(--ui); font-weight:400; color:var(--ink); font-size:1rem; line-height:1.6;
+  margin:0 0 26px; opacity:.85;
+}
+
+/* ---- Caixa de credibilidade ---- */
+.fcredibility{
+  background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 18px;
+  font-family:var(--ui); font-size:.86rem; color:var(--ink); margin:0 0 26px; text-align:left;
+}
+
+/* ---- Botão CTA grande ---- */
+.fcta{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; background:var(--black); color:#fff; font-family:var(--ui); font-weight:700; font-size:1.02rem;
+  padding:17px 22px; border:0; border-radius:12px; cursor:pointer;
+  box-shadow:0 10px 24px rgba(20,20,20,.22); transition:transform .15s ease, box-shadow .15s ease;
+}
+.fcta:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(20,20,20,.28); }
+.fcta .arrow{ transition:transform .15s ease; }
+.fcta:hover .arrow{ transform:translateX(4px); }
+.fcta.gold{ background:var(--yellow); color:var(--black); }
+.fcta.gold:hover{ box-shadow:0 14px 30px rgba(201,161,92,.4); }
+.fcta.green{ background:#22C55E; color:#fff; }
+.fcta.green:hover{ background:#1FA853; box-shadow:0 14px 30px rgba(34,197,94,.45); }
+
+.fcta-pulse{ animation:fcta-pulse 1.8s ease-in-out infinite; }
+@keyframes fcta-pulse{
+  0%,100%{ box-shadow:0 10px 24px rgba(20,20,20,.22); }
+  50%{ box-shadow:0 10px 30px rgba(201,161,92,.55); }
+}
+.fcta.green.fcta-pulse{ animation:fcta-pulse-green 1.8s ease-in-out infinite; }
+@keyframes fcta-pulse-green{
+  0%,100%{ box-shadow:0 10px 24px rgba(20,20,20,.22); }
+  50%{ box-shadow:0 10px 32px rgba(34,197,94,.6); }
+}
+
+.fhint{
+  margin-top:14px; font-family:var(--ui); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--grey); text-align:center;
+}
+
+/* ---- Cartão de oferta em destaque (etapa 9) ---- */
+.foffer-card{
+  position:relative; background:linear-gradient(160deg, #fff, var(--yellow-sf));
+  border:2px solid var(--yellow); border-radius:18px; padding:28px 22px 22px;
+  text-align:center; margin:0 0 22px; box-shadow:0 16px 34px rgba(201,161,92,.3);
+}
+.foffer-card .fpct-badge{
+  position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+  background:var(--red); color:#fff; font-family:var(--impact); font-size:1rem; letter-spacing:.02em;
+  padding:7px 18px; border-radius:999px; box-shadow:0 8px 18px rgba(192,57,43,.4); white-space:nowrap;
+}
+.foffer-card .flabel{
+  font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--yellow-dk); margin-top:8px;
+}
+.foffer-card .fprice-line{ margin:16px 0 6px; }
+.foffer-card .fprice-line .old{ text-decoration:line-through; color:var(--red); margin-right:10px; font-size:1.05rem; }
+.foffer-card .fprice-line .new{ font-family:var(--impact); font-size:2.5rem; color:var(--black); }
+.foffer-card .fnote{ font-family:var(--ui); font-size:.86rem; color:var(--ink); opacity:.8; }
+
+/* ---- Lista de X / check (etapa "inimigo comum" e benefícios) ---- */
+.flist{ list-style:none; margin:0 0 26px; padding:0; text-align:left; display:flex; flex-direction:column; gap:10px; }
+.flist li{
+  display:flex; align-items:flex-start; gap:10px; font-family:var(--ui); font-size:.94rem; color:var(--ink);
+  background:#fff; border:1px solid var(--line); border-radius:10px; padding:11px 14px;
+}
+.flist .fico{ flex:none; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:.7rem; font-weight:700; margin-top:1px; }
+.flist.fx .fico{ background:var(--red-sf); color:var(--red); }
+
+.flist.fcheck li{
+  background:var(--green-sf); border:1px solid rgba(46,139,87,.2); border-left:4px solid var(--green);
+  font-weight:500; color:#1c4a33;
+}
+.flist.fcheck .fico{
+  width:24px; height:24px; background:var(--green); color:#fff; font-size:.82rem; font-weight:800;
+  box-shadow:0 3px 8px rgba(46,139,87,.35);
+}
+
+/* ---- Card genérico (estatística, reportagem, contador) ---- */
+.fcard{
+  background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px; margin:0 0 22px; text-align:left;
+}
+.fstat-num{ font-family:var(--impact); font-size:2.4rem; color:var(--yellow-dk); line-height:1; }
+.fstat-label{ font-family:var(--ui); font-size:.82rem; color:var(--grey); margin-top:6px; }
+
+/* ---- Cartão de matéria/reportagem real (etapa 6) ---- */
+.fnews-card{
+  background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  margin:0 0 22px; box-shadow:0 8px 20px rgba(20,20,20,.08); text-align:left;
+}
+.fnews-top{ display:flex; align-items:center; gap:8px; padding:14px 16px 0; }
+.fnews-source{
+  font-family:var(--ui); font-weight:800; font-size:.76rem; color:#000; background:#fff;
+  border:1.5px solid #000; padding:2px 7px; border-radius:4px; letter-spacing:.01em;
+}
+.fnews-date{ font-family:var(--ui); font-size:.72rem; color:var(--grey); }
+.fnews-body{ padding:10px 16px 16px; }
+.fnews-headline{ font-family:var(--serif); font-weight:700; font-size:1.12rem; color:var(--black); line-height:1.32; margin:6px 0 8px; }
+.fnews-excerpt{ font-family:var(--ui); font-size:.86rem; color:var(--ink); opacity:.85; line-height:1.5; margin:0; }
+.fnews-link{ display:inline-block; margin-top:12px; font-family:var(--ui); font-weight:700; font-size:.78rem; color:var(--yellow-dk); }
+
+/* ---- Cartão com tag colorida (aviso de voucher, oportunidade, etc.) ---- */
+.ftag-card{
+  background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:18px 20px;
+  margin:0 0 22px; text-align:left;
+}
+.ftag-card .ftag-pill{
+  display:inline-block; font-family:var(--ui); font-weight:700; font-size:.66rem; letter-spacing:.1em;
+  text-transform:uppercase; padding:4px 11px; border-radius:999px; margin-bottom:10px;
+}
+.ftag-card h3{ font-family:var(--serif); font-weight:700; font-size:1.08rem; color:var(--black); line-height:1.35; margin:0 0 8px; }
+.ftag-card p{ font-family:var(--ui); font-size:.88rem; color:var(--ink); opacity:.85; line-height:1.5; margin:0; }
+.ftag-card.green{ border-color:rgba(46,139,87,.35); }
+.ftag-card.green .ftag-pill{ background:var(--green-sf); color:var(--green); }
+.fnews-card-img img{ width:100%; display:block; }
+.fnews-card-img .fnews-body{ padding:14px 16px 16px; }
+
+/* ---- Comparativo (etapa 6) ---- */
+.fcompare{ margin:0 0 22px; display:flex; flex-direction:column; gap:12px; }
+.fcompare-panel{ border-radius:14px; padding:16px 18px; text-align:left; }
+.fcompare-panel.bad{ background:var(--red-sf); border:1px solid rgba(192,57,43,.25); }
+.fcompare-panel.good{ background:var(--green-sf); border:1px solid rgba(46,139,87,.25); }
+.fcompare-title{
+  font-family:var(--ui); font-weight:800; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em;
+  margin-bottom:10px; display:flex; align-items:center; gap:6px;
+}
+.fcompare-panel.bad .fcompare-title{ color:var(--red); }
+.fcompare-panel.good .fcompare-title{ color:var(--green); }
+.fcompare-panel ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+.fcompare-panel li{ font-family:var(--ui); font-size:.9rem; line-height:1.4; display:flex; gap:8px; align-items:flex-start; }
+.fcompare-panel.bad li{ color:#7a2a20; }
+.fcompare-panel.good li{ color:#1c4a33; }
+.fcompare-panel li b{ flex:none; font-size:.95rem; }
+.fcompare-panel.bad li b{ color:var(--red); }
+.fcompare-panel.good li b{ color:var(--green); }
+
+/* ---- Cartão de insight/revelação (etapa 4) ---- */
+.finsight-card{
+  position:relative; background:linear-gradient(160deg, #1c1712, #241d15 55%, #1c1712);
+  border:1px solid rgba(201,161,92,.45); border-radius:16px; padding:26px 22px 22px;
+  margin:0 0 22px; text-align:left; box-shadow:0 16px 34px rgba(20,15,5,.28);
+}
+.finsight-card .ficon{
+  width:52px; height:52px; border-radius:50%; margin-bottom:14px;
+  background:radial-gradient(circle at 35% 30%, #F6E4BC, var(--yellow) 55%, var(--yellow-dk));
+  display:flex; align-items:center; justify-content:center; font-size:24px;
+  box-shadow:0 8px 18px rgba(201,161,92,.45), inset 0 2px 3px rgba(255,255,255,.5);
+}
+.finsight-card .ftag-pill{
+  display:inline-block; font-family:var(--ui); font-weight:700; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--yellow); border:1px solid rgba(201,161,92,.5);
+  border-radius:999px; padding:4px 12px; margin-bottom:12px;
+}
+.finsight-card h3{ font-family:var(--serif); font-weight:700; font-size:1.28rem; color:#fff; line-height:1.35; margin:0 0 12px; }
+.finsight-card p{ font-family:var(--ui); font-size:.92rem; color:#EFE6D2; opacity:.92; line-height:1.6; margin:0; }
+.finsight-card p + p{ margin-top:10px; }
+
+/* ---- Rodapé fixo de marca ---- */
+.ffoot{ margin-top:28px; font-family:var(--ui); font-size:.7rem; letter-spacing:.08em; color:var(--grey); text-transform:uppercase; }
+
+/* ---- Chat interativo simulado (etapa 5) — paleta WhatsApp ---- */
+:root{
+  --wa-header:#075E54;
+  --wa-bg:#ECE5DD;
+  --wa-sent:#DCF8C6;
+}
+.fchat-header{
+  display:flex; align-items:center; gap:10px; margin:0 0 0; text-align:left;
+  background:var(--wa-header); padding:12px 16px; border-radius:14px 14px 0 0;
+}
+.fchat-avatar{
+  width:38px; height:38px; border-radius:50%; background:#fff; color:var(--wa-header);
+  display:flex; align-items:center; justify-content:center; font-family:var(--ui); font-weight:700; font-size:.85rem;
+  flex:none;
+}
+.fchat-header .fname{ font-family:var(--ui); font-weight:600; font-size:.94rem; color:#fff; }
+.fchat-header .fstatus{ font-family:var(--ui); font-size:.72rem; color:#CFEFE7; }
+.fchat-wrap{
+  background:var(--wa-bg); border-radius:0 0 16px 16px; padding:14px; margin:0 0 20px;
+  display:flex; flex-direction:column; gap:8px; min-height:280px; max-height:52vh; overflow-y:auto;
+  text-align:left;
+}
+.fchat-row{ display:flex; }
+.fchat-row.them{ justify-content:flex-start; }
+.fchat-row.me{ justify-content:flex-end; }
+.fchat-bubble{
+  max-width:78%; padding:10px 13px; border-radius:8px; font-family:var(--ui); font-size:.9rem; line-height:1.45;
+  background:#fff; color:#111B21; box-shadow:0 1px 2px rgba(0,0,0,.13);
+}
+.fchat-row.me .fchat-bubble{ background:var(--wa-sent); color:#111B21; }
+.fchat-bubble.fchat-img{ max-width:86%; padding:6px; }
+.fchat-bubble.fchat-img img{ width:100%; border-radius:6px; display:block; }
+.fchat-bubble.fchat-img .fchat-cap{ font-size:.72rem; color:#5b6b73; padding:6px 4px 2px; }
+.fchat-bubble.typing{ display:flex; gap:4px; padding:13px 15px; align-items:center; }
+.fchat-bubble.typing span{
+  width:6px; height:6px; border-radius:50%; background:#9aa3a7; display:inline-block;
+  animation:fchat-typing 1s infinite ease-in-out;
+}
+.fchat-bubble.typing span:nth-child(2){ animation-delay:.15s; }
+.fchat-bubble.typing span:nth-child(3){ animation-delay:.3s; }
+@keyframes fchat-typing{ 0%,60%,100%{ transform:translateY(0); opacity:.5; } 30%{ transform:translateY(-4px); opacity:1; } }
+
+/* respostas e CTA como bolhas dentro do próprio chat */
+.fchat-choice-group{ display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+.fchat-choice-bubble{
+  max-width:82%; background:var(--wa-sent); border:0; color:#0a5c36;
+  font-family:var(--ui); font-weight:600; font-size:.88rem; line-height:1.4; padding:10px 14px;
+  border-radius:8px; cursor:pointer; text-align:left; box-shadow:0 1px 2px rgba(0,0,0,.13);
+}
+.fchat-choice-bubble:hover{ background:#cdf0b3; }
+
+/* ---- Voucher / escassez (etapa 7-8) — visual tipo cupom premium ---- */
+.fvoucher{
+  position:relative;
+  background:linear-gradient(160deg, #1c1712, #241d15 55%, #1c1712);
+  border:1px solid rgba(201,161,92,.45);
+  color:#fff; border-radius:18px; padding:30px 24px 26px;
+  margin:0 0 22px; text-align:center;
+  box-shadow:0 16px 34px rgba(20,15,5,.28);
+}
+.fvoucher .ficon{
+  width:64px; height:64px; margin:0 auto 14px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #F6E4BC, var(--yellow) 55%, var(--yellow-dk));
+  display:flex; align-items:center; justify-content:center; font-size:28px;
+  box-shadow:0 8px 18px rgba(201,161,92,.45), inset 0 2px 3px rgba(255,255,255,.5);
+}
+.fvoucher .ftag{
+  display:inline-block; font-family:var(--ui); font-weight:700; font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--yellow); border:1px solid rgba(201,161,92,.5); border-radius:999px; padding:4px 12px;
+}
+.fvoucher .ftitle{ font-family:var(--serif); font-size:1.5rem; margin:14px 0 0; color:#fff; }
+
+.fvoucher-divider{ position:relative; border-top:2px dashed rgba(201,161,92,.35); margin:20px -24px 18px; }
+.fvoucher-divider::before, .fvoucher-divider::after{
+  content:''; position:absolute; top:-11px; width:22px; height:22px; border-radius:50%; background:var(--yellow-sf);
+}
+.fvoucher-divider::before{ left:-11px; }
+.fvoucher-divider::after{ right:-11px; }
+
+.fvoucher .fremaining{ font-family:var(--ui); font-weight:600; font-size:.86rem; color:#EFE6D2; }
+.fvoucher .fbar{ height:8px; border-radius:5px; background:rgba(255,255,255,.12); margin-top:12px; overflow:hidden; }
+.fvoucher .fbar-fill{ height:100%; border-radius:5px; background:linear-gradient(90deg, var(--yellow-dk), var(--yellow), #F3D9A4); }
+
+.fconfetti-wrap{ position:relative; }
+.fconfetti-canvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.fdiscount{
+  font-family:var(--impact); font-size:3.4rem; color:var(--yellow-dk); line-height:1; text-align:center; margin:6px 0 4px;
+}
+.fvoucher .fdiscount{ color:var(--yellow); text-shadow:0 2px 16px rgba(201,161,92,.5); }
+.fprice-line{ font-family:var(--ui); font-size:1rem; text-align:center; }
+.fprice-line .old{ text-decoration:line-through; color:#8f887a; margin-right:10px; }
+.fprice-line .new{ font-family:var(--impact); font-size:1.5rem; color:#fff; letter-spacing:.01em; }
+
+/* ---- Contagem regressiva (etapa 9) ---- */
+.fcountdown{
+  display:flex; justify-content:center; gap:10px; margin:0 0 22px;
+}
+.fcountdown .fseg{ background:var(--black); color:#fff; border-radius:10px; padding:10px 14px; min-width:56px; text-align:center; }
+.fcountdown .fseg b{ display:block; font-family:var(--impact); font-size:1.3rem; }
+.fcountdown .fseg span{ display:block; font-size:.62rem; text-transform:uppercase; letter-spacing:.08em; color:#cfc6b4; margin-top:2px; }
+
+/* ---- Player de vídeo (etapa 2 — VSL) ---- */
+.fvideo-box{
+  width:100%; max-width:380px; margin:0 auto 22px; aspect-ratio:9/16; background:var(--black);
+  position:relative; overflow:hidden; border-radius:14px; border:1px solid rgba(201,161,92,.4);
+}
+.fvideo-box video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; background:var(--black); }
+.fplay-overlay{
+  position:absolute; inset:0; width:100%; height:100%; border:none; padding:0; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; z-index:2; background:rgba(0,0,0,.28);
+}
+.fplay-overlay.is-hidden{ display:none; }
+.fvsl-btn{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  width:112px; height:112px; border-radius:18px; background:rgba(201,161,92,.55); color:var(--black);
+  animation:fvsl-pulse 2s ease-in-out infinite;
+}
+@keyframes fvsl-pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.05); } }
+.fvsl-btn .ftop, .fvsl-btn .fbottom{ font-family:var(--ui); font-weight:700; font-size:.6rem; text-align:center; line-height:1.2; padding:0 6px; }
+.fvsl-btn svg{ width:24px; height:24px; display:block; }
+.fplay-overlay.is-ended .fvsl-btn-start{ display:none; }
+.fplay-overlay:not(.is-ended) .fvsl-btn-replay{ display:none; }
+
+.fvsl-controls{
+  position:absolute; left:0; right:0; bottom:0; z-index:1; display:none; align-items:center; gap:10px;
+  padding:10px 12px; background:linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,0));
+}
+.fvideo-box.is-playing .fvsl-controls{ display:flex; }
+.fvsl-controls button{ flex:none; width:26px; height:26px; border:none; background:transparent; padding:0; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.fvsl-controls svg{ width:17px; height:17px; }
+.fvsl-progress-track{ flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,.3); overflow:hidden; }
+.fvsl-progress-fill{ height:100%; width:0%; background:var(--yellow); border-radius:2px; }
+
+.fcta.fcta-ghost{
+  background:transparent; color:var(--ink); box-shadow:none; border:1px solid var(--line);
+}
+.fcta.fcta-ghost:hover{ box-shadow:none; }
+
+/* ---- Utilidades ---- */
+.fonly-mobile-tap{ -webkit-tap-highlight-color:transparent; }
+
+@media(prefers-reduced-motion:reduce){
+  .fcta-pulse{ animation:none; }
+}

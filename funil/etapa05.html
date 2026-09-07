@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Lombar | Fala rápido comigo</title>
+<meta name="robots" content="noindex">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3390337087934483');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="stylesheet" href="funil.css">
+</head>
+<body>
+
+<div class="fstage">
+  <div class="fcol">
+    <div class="fchat-header">
+      <div class="fchat-avatar">HL</div>
+      <div>
+        <div class="fname">Dr. Hian Lima</div>
+        <div class="fstatus">online agora</div>
+      </div>
+    </div>
+
+    <div class="fchat-wrap" id="chatWrap"></div>
+
+    <a href="etapa06.html" class="fcta green fcta-pulse" id="btnNext" style="display:none; margin-top:18px;">Continuar <span class="arrow">→</span></a>
+  </div>
+</div>
+
+<script src="funil.js"></script>
+<script>
+  Funil.trackEtapa("Etapa5_View");
+
+  var chatWrap = document.getElementById("chatWrap");
+
+  function scrollDown(){ chatWrap.scrollTop = chatWrap.scrollHeight; }
+
+  function addTyping(){
+    var row = document.createElement("div");
+    row.className = "fchat-row them";
+    row.innerHTML = '<div class="fchat-bubble typing"><span></span><span></span><span></span></div>';
+    chatWrap.appendChild(row);
+    scrollDown();
+    return row;
+  }
+
+  function botSay(text, cb){
+    var typing = addTyping();
+    var thinkTime = Math.min(1700, 500 + text.length * 16);
+    setTimeout(function(){
+      typing.remove();
+      var row = document.createElement("div");
+      row.className = "fchat-row them";
+      row.innerHTML = '<div class="fchat-bubble">' + text + '</div>';
+      chatWrap.appendChild(row);
+      scrollDown();
+      setTimeout(cb, 650);
+    }, thinkTime);
+  }
+
+  function botImage(src, caption, cb){
+    var typing = addTyping();
+    setTimeout(function(){
+      typing.remove();
+      var row = document.createElement("div");
+      row.className = "fchat-row them";
+      row.innerHTML = '<div class="fchat-bubble fchat-img"><img src="' + src + '" alt=""><div class="fchat-cap">' + caption + '</div></div>';
+      chatWrap.appendChild(row);
+      scrollDown();
+      setTimeout(cb, 700);
+    }, 1300);
+  }
+
+  function meSay(text){
+    var row = document.createElement("div");
+    row.className = "fchat-row me";
+    row.innerHTML = '<div class="fchat-bubble">' + text + '</div>';
+    chatWrap.appendChild(row);
+    scrollDown();
+  }
+
+  function showChoices(options){
+    var row = document.createElement("div");
+    row.className = "fchat-row me";
+    var group = document.createElement("div");
+    group.className = "fchat-choice-group";
+    row.appendChild(group);
+
+    options.forEach(function(opt){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "fchat-choice-bubble";
+      btn.textContent = opt.label;
+      btn.addEventListener("click", function(){
+        row.remove();
+        meSay(opt.label);
+        Funil.trackEtapa("Etapa5_Choice_" + opt.id);
+        setTimeout(function(){ opt.next(); }, 500);
+      });
+      group.appendChild(btn);
+    });
+
+    chatWrap.appendChild(row);
+    scrollDown();
+  }
+
+  var btnNext = document.getElementById("btnNext");
+  btnNext.addEventListener("click", function(){
+    Funil.trackEtapa("Etapa5_Click");
+  });
+  function showContinue(){
+    btnNext.style.display = "flex";
+  }
+
+  /* ---- roteiro do chat ---- */
+  botSay("Oi! Que bom que você chegou até aqui 👋", function(){
+    botSay("Antes de te mostrar o passo a passo completo, deixa eu te perguntar uma coisa rápida...", function(){
+      botSay("Você já tentou resolver sua dor lombar sozinho(a), com vídeo do Youtube ou dica de amigo, e não deu muito certo?", function(){
+        showChoices([
+          {
+            id: "ja_tentei",
+            label: "Sim, já tentei de tudo 😩",
+            next: function(){
+              botSay("Faz todo sentido você já ter tentado de tudo e não ter resolvido. A maioria dos exercícios prontos por aí não considera a SUA direção de dor.", step2);
+            }
+          },
+          {
+            id: "primeira_vez",
+            label: "Não, essa é minha primeira tentativa",
+            next: function(){
+              botSay("Sem problema, é até bom começar já pelo jeito certo. A maioria dos exercícios prontos por aí não considera a SUA direção de dor.", step2);
+            }
+          }
+        ]);
+      });
+    });
+  });
+
+  function step2(){
+    botSay("Isso faz toda diferença. Olha o que uma paciente me mandou depois de aplicar isso 👇", function(){
+      botImage("../img/depoimento-marcio.jpg", "Print real de conversa com paciente", function(){
+        botSay("Bora pro próximo passo? Vou te mostrar os números de como isso tem ajudado outras pessoas.", function(){
+          showContinue();
+          Funil.trackEtapa("Etapa5_ChatCompleted");
+        });
+      });
+    });
+  }
+</script>
+</body>
+</html>

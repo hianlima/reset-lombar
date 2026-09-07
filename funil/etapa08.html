@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Lombar | Seu desconto foi liberado</title>
+<meta name="robots" content="noindex">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3390337087934483');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="stylesheet" href="funil.css">
+</head>
+<body>
+
+<canvas id="confettiCanvas" style="position:fixed; inset:0; width:100vw; height:100vh; pointer-events:none; z-index:50;"></canvas>
+
+<div class="fstage">
+  <div class="fcol">
+    <div class="feyebrow">Voucher resgatado</div>
+    <h1 class="fh1" id="revealTitle">Resgatando seu voucher...</h1>
+
+    <div class="fvoucher">
+      <div class="ficon" id="voucherIcon">🎁</div>
+      <div class="ftag">Voucher premiado</div>
+      <div class="ftitle" id="voucherTitle">Validando seu código...</div>
+      <div class="fvoucher-divider"></div>
+
+      <div id="voucherResult" style="display:none;">
+        <div class="fdiscount">72% OFF</div>
+        <div class="fprice-line"><span class="old">De R$127,00</span><span class="new">R$35,00</span></div>
+      </div>
+      <div class="fremaining" id="loadingText">Só um instante...</div>
+    </div>
+
+    <a href="etapa09.html" class="fcta green fcta-pulse" id="btnNext" style="display:none;">Continuar <span class="arrow">→</span></a>
+  </div>
+</div>
+
+<script src="funil.js"></script>
+<script>
+  Funil.trackEtapa("Etapa8_View");
+  Funil.setState({ discountPct: 72, priceFrom: "127,00", priceTo: "35,00" });
+
+  setTimeout(function(){
+    document.getElementById("revealTitle").textContent = "Parabéns! Seu desconto foi liberado 🎉";
+    document.getElementById("voucherIcon").textContent = "🎉";
+    document.getElementById("voucherTitle").textContent = "Voucher resgatado com sucesso";
+    document.getElementById("loadingText").style.display = "none";
+    document.getElementById("voucherResult").style.display = "block";
+
+    Funil.confetti(document.getElementById("confettiCanvas"), 2600);
+
+    var btnNext = document.getElementById("btnNext");
+    btnNext.style.display = "flex";
+    Funil.trackEtapa("Etapa8_Revealed");
+  }, 1400);
+
+  document.getElementById("btnNext").addEventListener("click", function(){
+    Funil.trackEtapa("Etapa8_Click");
+  });
+</script>
+</body>
+</html>
