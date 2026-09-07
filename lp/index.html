@@ -30,7 +30,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
 <div class="fstage">
   <div class="fcol">
-    <div class="fbadge">+1.327 pessoas aliviando a dor esta semana</div>
+    <div class="fbadge"><span id="liveCount">18</span> pessoas vendo essa página agora</div>
 
     <div class="feyebrow">Reset Lombar</div>
     <h1 class="fh1">Eu vou te mostrar como sair da crise de dor lombar em até <em>7 dias</em>, sem depender de sessão de fisioterapia toda semana</h1>
@@ -50,6 +50,15 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   document.getElementById("btnStart").addEventListener("click", function(){
     Funil.trackEtapa("Etapa1_Click");
   });
+
+  /* ---- contador de "pessoas vendo agora" (varia sozinho para dar escassez) ---- */
+  var liveCount = document.getElementById("liveCount");
+  function tickLiveCount(){
+    var next = 8 + Math.floor(Math.random() * 33); // entre 8 e 40
+    liveCount.textContent = next;
+    setTimeout(tickLiveCount, 2500 + Math.random() * 3000);
+  }
+  setTimeout(tickLiveCount, 2500 + Math.random() * 3000);
 </script>
 </body>
 </html>
