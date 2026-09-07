@@ -255,18 +255,15 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fchat-row.me{ justify-content:flex-end; }
 .fchat-bubble{
   max-width:78%; padding:10px 13px; border-radius:8px; font-family:var(--ui); font-size:.9rem; line-height:1.45;
-  background:#1c1712; color:#EFE6D2; box-shadow:0 2px 8px rgba(0,0,0,.25);
+  background:#fff; color:#111B21; box-shadow:0 1px 2px rgba(0,0,0,.13);
 }
-.fchat-row.me .fchat-bubble{
-  background:linear-gradient(135deg, var(--yellow), #F3D9A4); color:#1c1712; font-weight:600;
-  box-shadow:0 2px 8px rgba(201,161,92,.35);
-}
+.fchat-row.me .fchat-bubble{ background:var(--wa-sent); color:#111B21; }
 .fchat-bubble.fchat-img{ max-width:86%; padding:6px; }
 .fchat-bubble.fchat-img img{ width:100%; border-radius:6px; display:block; }
 .fchat-bubble.fchat-img .fchat-cap{ font-size:.72rem; color:#5b6b73; padding:6px 4px 2px; }
 .fchat-bubble.typing{ display:flex; gap:4px; padding:13px 15px; align-items:center; }
 .fchat-bubble.typing span{
-  width:6px; height:6px; border-radius:50%; background:#cbbfa8; display:inline-block;
+  width:6px; height:6px; border-radius:50%; background:#9aa3a7; display:inline-block;
   animation:fchat-typing 1s infinite ease-in-out;
 }
 .fchat-bubble.typing span:nth-child(2){ animation-delay:.15s; }
@@ -277,25 +274,25 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fchat-tap-hint{
   display:flex; align-items:center; justify-content:flex-end; gap:5px; margin:2px 2px 0;
   font-family:var(--ui); font-weight:600; font-size:.68rem; letter-spacing:.03em; text-transform:uppercase;
-  color:var(--yellow-dk);
+  color:#6b8f7a;
 }
 .fchat-tap-hint .tap-ico{ animation:fchat-tap-bounce 1.2s ease-in-out infinite; }
 @keyframes fchat-tap-bounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(3px); } }
 
 .fchat-choice-group{ display:flex; flex-direction:column; gap:8px; align-items:flex-end; margin-top:6px; }
 .fchat-choice-bubble{
-  max-width:82%; background:#fff; border:1.5px solid var(--yellow); color:var(--yellow-dk);
-  font-family:var(--ui); font-weight:700; font-size:.88rem; line-height:1.4; padding:10px 14px;
+  max-width:82%; background:var(--wa-sent); border:0; color:#0a5c36;
+  font-family:var(--ui); font-weight:600; font-size:.88rem; line-height:1.4; padding:10px 14px;
   border-radius:8px; cursor:pointer; text-align:left; box-shadow:0 1px 2px rgba(0,0,0,.13);
   display:flex; align-items:center; justify-content:space-between; gap:10px;
   animation:fchat-choice-pop .3s ease, fchat-choice-pulse 1.7s ease-in-out .3s infinite;
 }
-.fchat-choice-bubble .fchat-choice-arrow{ flex:none; font-weight:800; font-size:1rem; opacity:.7; }
-.fchat-choice-bubble:hover{ background:var(--yellow); color:#1c1712; }
+.fchat-choice-bubble .fchat-choice-arrow{ flex:none; font-weight:800; font-size:1rem; opacity:.55; }
+.fchat-choice-bubble:hover{ background:#cdf0b3; }
 @keyframes fchat-choice-pop{ from{ transform:scale(.85); opacity:0; } to{ transform:scale(1); opacity:1; } }
 @keyframes fchat-choice-pulse{
   0%,100%{ box-shadow:0 1px 2px rgba(0,0,0,.13); }
-  50%{ box-shadow:0 2px 12px rgba(201,161,92,.6); }
+  50%{ box-shadow:0 2px 12px rgba(37,211,102,.55); }
 }
 
 /* ---- Voucher / escassez (etapa 7-8) — visual tipo cupom premium ---- */
