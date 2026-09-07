@@ -53,6 +53,13 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
   function scrollDown(){ chatWrap.scrollTop = chatWrap.scrollHeight; }
   function randDelay(min, max){ return min + Math.random() * (max - min); }
+  function nowTime(){
+    return new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  }
+  var ticksSvg = '<svg class="fchat-ticks" viewBox="0 0 16 11" width="16" height="11" fill="none">' +
+    '<path d="M11.3 0.7 4.8 7.2 1.6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<path d="M14.8 0.7 7.7 7.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '</svg>';
 
   function addTyping(){
     var row = document.createElement("div");
@@ -69,7 +76,8 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       typing.remove();
       var row = document.createElement("div");
       row.className = "fchat-row them";
-      row.innerHTML = '<div class="fchat-bubble">' + text + '</div>';
+      row.innerHTML = '<div class="fchat-bubble">' + text +
+        '<div class="fchat-meta"><span class="fchat-time">' + nowTime() + '</span></div></div>';
       chatWrap.appendChild(row);
       scrollDown();
       if (cb) cb();
@@ -79,9 +87,13 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   function meSay(text){
     var row = document.createElement("div");
     row.className = "fchat-row me";
-    row.innerHTML = '<div class="fchat-bubble">' + text + '</div>';
+    row.innerHTML = '<div class="fchat-bubble">' + text +
+      '<div class="fchat-meta"><span class="fchat-time">' + nowTime() + '</span>' + ticksSvg + '</div></div>';
     chatWrap.appendChild(row);
     scrollDown();
+
+    var ticks = row.querySelector(".fchat-ticks");
+    setTimeout(function(){ ticks.classList.add("read"); }, 700);
   }
 
   /* ---- roteiro do mini-quiz (3 perguntas) ---- */
