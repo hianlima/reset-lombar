@@ -491,6 +491,13 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fvsl-progress-track{ flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,.3); overflow:hidden; }
 .fvsl-progress-fill{ height:100%; width:0%; background:var(--yellow); border-radius:2px; }
 
+/* ---- Vídeo horizontal em loop automático (etapa 4) ---- */
+.fvideo-loop{
+  width:100%; margin:0 auto 22px; aspect-ratio:16/9; background:var(--black);
+  position:relative; overflow:hidden; border-radius:14px; border:1px solid rgba(201,161,92,.4);
+}
+.fvideo-loop video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; background:var(--black); }
+
 .fcta.fcta-ghost{
   background:transparent; color:var(--ink); box-shadow:none; border:1px solid var(--line);
 }
