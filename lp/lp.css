@@ -227,6 +227,26 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fnews-card-img img{ width:100%; display:block; }
 .fnews-card-img .fnews-body{ padding:14px 16px 16px; }
 
+/* ---- FAQ (etapa 9) ---- */
+.ffaq{ text-align:left; margin-top:8px; }
+.ffaq-title{ font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--black); text-align:center; margin:0 0 16px; }
+.ffaq-item{ border:1px solid var(--line); border-radius:12px; margin-bottom:10px; overflow:hidden; background:#fff; }
+.ffaq-q{
+  width:100%; text-align:left; background:none; border:0; padding:14px 16px; cursor:pointer;
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-family:var(--ui); font-weight:600; font-size:.92rem; color:var(--black);
+}
+.ffaq-icon{ flex:none; width:18px; height:18px; position:relative; }
+.ffaq-icon::before, .ffaq-icon::after{
+  content:''; position:absolute; top:50%; left:50%; background:var(--yellow-dk);
+  transform:translate(-50%,-50%); transition:transform .2s ease;
+}
+.ffaq-icon::before{ width:12px; height:2px; }
+.ffaq-icon::after{ width:2px; height:12px; }
+.ffaq-item.open .ffaq-icon::after{ transform:translate(-50%,-50%) scaleY(0); }
+.ffaq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.ffaq-a p{ margin:0; padding:0 16px 16px; font-family:var(--ui); font-size:.86rem; color:var(--ink); opacity:.85; line-height:1.55; }
+
 /* ---- Comparativo (etapa 6) ---- */
 .fcompare{ margin:0 0 22px; display:flex; flex-direction:column; gap:12px; }
 .fcompare-panel{ border-radius:14px; padding:16px 18px; text-align:left; }

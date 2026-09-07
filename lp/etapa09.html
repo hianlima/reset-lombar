@@ -82,6 +82,31 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
     <p class="fsub" style="font-weight:700; color:var(--black); opacity:1;">Não deixe a dor lombar decidir por você.</p>
     <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="fcta mega fcta-pulse" id="btnCheckout2">Sim, quero garantir meu acesso agora <span class="arrow">→</span></a>
+
+    <div class="ffaq">
+      <div class="ffaq-title">Perguntas frequentes</div>
+
+      <div class="ffaq-item">
+        <button class="ffaq-q" type="button">Funciona para dor crônica, que já dura anos?<span class="ffaq-icon"></span></button>
+        <div class="ffaq-a"><p>Sim. O método não depende de quanto tempo a dor já dura, e sim de como o seu corpo responde ao movimento hoje. O teste de 3 dias funciona tanto para quadros recentes quanto para dores de longa data. O que muda é só o ritmo de progressão entre as fases.</p></div>
+      </div>
+      <div class="ffaq-item">
+        <button class="ffaq-q" type="button">Funciona também para hérnia de disco?<span class="ffaq-icon"></span></button>
+        <div class="ffaq-a"><p>Na maioria dos casos, sim: hérnia de disco costuma responder bem a movimento direcional bem dosado. O guia começa com uma checagem de segurança para identificar os sinais de alerta que pedem avaliação médica antes de qualquer exercício. Fora desses casos, o método se aplica normalmente.</p></div>
+      </div>
+      <div class="ffaq-item">
+        <button class="ffaq-q" type="button">Em que formato eu recebo o material?<span class="ffaq-icon"></span></button>
+        <div class="ffaq-a"><p>Um guia digital em PDF de 30 páginas, com fotos de cada exercício, para ler no celular, tablet ou computador, e imprimir se preferir. Os bônus também são entregues em PDF.</p></div>
+      </div>
+      <div class="ffaq-item">
+        <button class="ffaq-q" type="button">Em quanto tempo eu vejo resultado?<span class="ffaq-icon"></span></button>
+        <div class="ffaq-a"><p>O teste de 3 dias já mostra se você encontrou a sua direção. A partir daí, a maioria das pessoas sente alívio já na primeira fase (dias 1 a 10), mas o objetivo do método vai além do alívio rápido: as fases de Estabilidade e Força são o que evita a dor de voltar.</p></div>
+      </div>
+      <div class="ffaq-item">
+        <button class="ffaq-q" type="button">Como eu acesso o material depois da compra?<span class="ffaq-icon"></span></button>
+        <div class="ffaq-a"><p>Assim que o pagamento é aprovado, você recebe acesso imediato na área de membros, com login por e-mail. O material fica disponível para consultar quando quiser, sem prazo de expiração.</p></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -119,6 +144,23 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     document.getElementById(id).addEventListener("click", function(){
       Funil.trackEtapa("Etapa9_Click");
       if (typeof fbq === "function") fbq("track", "InitiateCheckout");
+    });
+  });
+
+  /* ---- FAQ acordeão ---- */
+  document.querySelectorAll(".ffaq-item").forEach(function(item){
+    var btn = item.querySelector(".ffaq-q");
+    var a = item.querySelector(".ffaq-a");
+    btn.addEventListener("click", function(){
+      var isOpen = item.classList.contains("open");
+      document.querySelectorAll(".ffaq-item.open").forEach(function(o){
+        o.classList.remove("open");
+        o.querySelector(".ffaq-a").style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add("open");
+        a.style.maxHeight = a.scrollHeight + "px";
+      }
     });
   });
 </script>
