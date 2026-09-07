@@ -115,5 +115,31 @@ var Funil = (function(){
     requestAnimationFrame(frame);
   }
 
-  return { trackEtapa: trackEtapa, getState: getState, setState: setState, playChat: playChat, confetti: confetti };
+  /* ---- Som de recompensa (sintetizado via Web Audio, sem arquivo externo) ---- */
+  function playRewardSound(){
+    try {
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      var ctx = new AudioCtx();
+      var notes = [523.25, 659.25, 783.99, 1046.5];
+      var t0 = ctx.currentTime;
+      notes.forEach(function(freq, i){
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        var start = t0 + i * 0.09;
+        gain.gain.setValueAtTime(0, start);
+        gain.gain.linearRampToValueAtTime(0.28, start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 0.4);
+      });
+      if (ctx.state === "suspended") { ctx.resume().catch(function(){}); }
+      setTimeout(function(){ ctx.close(); }, 900);
+    } catch(e){}
+  }
+
+  return { trackEtapa: trackEtapa, getState: getState, setState: setState, playChat: playChat, confetti: confetti, playRewardSound: playRewardSound };
 })();
