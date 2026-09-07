@@ -491,6 +491,13 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fvsl-progress-track{ flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,.3); overflow:hidden; }
 .fvsl-progress-fill{ height:100%; width:0%; background:var(--yellow); border-radius:2px; }
 
+/* ---- Imagem de destaque no hero (etapa 1) ---- */
+.fhero-img{
+  width:100%; margin:0 0 22px; border-radius:14px; overflow:hidden;
+  box-shadow:0 14px 32px rgba(20,20,20,.18); border:1px solid rgba(201,161,92,.35);
+}
+.fhero-img img{ width:100%; display:block; }
+
 /* ---- Vídeo horizontal em loop automático (etapa 4) ---- */
 .fvideo-loop{
   width:100%; margin:0 auto 22px; aspect-ratio:16/9; background:var(--black);
