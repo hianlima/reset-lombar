@@ -24,6 +24,15 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SWB0F2N49J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SWB0F2N49J');
+</script>
+
 <link rel="stylesheet" href="lp.css">
 </head>
 <body>
@@ -76,8 +85,10 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <script src="lp.js"></script>
 <script>
   Funil.trackEtapa("Etapa6_View");
+  if (typeof gtag === "function") gtag("event", "funil_etapa6_view");
   document.getElementById("btnNext").addEventListener("click", function(){
     Funil.trackEtapa("Etapa6_Click");
+    if (typeof gtag === "function") gtag("event", "funil_etapa6_click");
   });
 </script>
 </body>

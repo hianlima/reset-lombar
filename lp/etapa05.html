@@ -24,6 +24,15 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SWB0F2N49J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SWB0F2N49J');
+</script>
+
 <link rel="stylesheet" href="lp.css">
 </head>
 <body>
@@ -47,6 +56,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <script src="lp.js"></script>
 <script>
   Funil.trackEtapa("Etapa5_View");
+  if (typeof gtag === "function") gtag("event", "funil_etapa5_view");
 
   var chatWrap = document.getElementById("chatWrap");
   var btnNext = document.getElementById("btnNext");
@@ -146,6 +156,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
         try { localStorage.setItem(q.key, label); } catch(e){}
         Funil.trackEtapa("Etapa5_Quiz_" + q.key);
+        if (typeof gtag === "function") gtag("event", "quiz_pergunta" + (i + 1) + "_respondida");
 
         if (i + 1 < questions.length) {
           askQuestion(i + 1, randDelay(300, 500));
@@ -164,6 +175,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     botSay("Pelo que você me contou, seu padrão faz muito sentido dentro do que eu trabalho no método. Deixa eu te mostrar algo assustador...", 2000, function(){
       btnNext.style.display = "flex";
       Funil.trackEtapa("Etapa5_QuizCompleted");
+      if (typeof gtag === "function") gtag("event", "quiz_completed");
     });
   }
 
@@ -173,6 +185,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
   btnNext.addEventListener("click", function(){
     Funil.trackEtapa("Etapa5_Click");
+    if (typeof gtag === "function") gtag("event", "funil_etapa5_click");
   });
 </script>
 </body>
