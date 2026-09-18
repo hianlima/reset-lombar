@@ -217,6 +217,28 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fstat-num{ font-family:var(--impact); font-size:2.4rem; color:var(--yellow-dk); line-height:1; }
 .fstat-label{ font-family:var(--ui); font-size:.82rem; color:var(--grey); margin-top:6px; }
 
+/* ---- Card de diagnóstico personalizado, a partir do quiz (etapa 6) ---- */
+.fdiag-card{
+  background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 20px; margin:0 0 22px; text-align:left;
+  box-shadow:0 10px 26px rgba(20,20,20,.08);
+}
+.fdiag-label{
+  font-family:var(--ui); font-weight:700; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--yellow-dk); margin-bottom:20px;
+}
+.fdiag-track{
+  position:relative; height:8px; border-radius:6px;
+  background:linear-gradient(90deg, var(--green), #E8C547 50%, var(--red)); margin:0 4px 10px;
+}
+.fdiag-marker{
+  position:absolute; top:50%; width:18px; height:18px; border-radius:50%; background:#fff; border:3px solid var(--black);
+  transform:translate(-50%,-50%); box-shadow:0 2px 8px rgba(0,0,0,.3); transition:left .8s ease; left:50%;
+}
+.fdiag-scale-labels{
+  display:flex; justify-content:space-between; font-family:var(--ui); font-size:.64rem; color:var(--grey); margin:0 0 18px;
+}
+.fdiag-text{ font-family:var(--ui); font-size:.92rem; color:var(--ink); line-height:1.6; margin:0; }
+
 /* ---- Garantia (etapa 9) ---- */
 .fguarantee-card{
   display:flex; align-items:flex-start; gap:14px; background:var(--green-sf);
