@@ -37,7 +37,7 @@ body{
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
-h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:700; }
+h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; }
 
 /* ---- Palco: cada etapa é uma tela cheia, conteúdo centralizado tipo quiz ---- */
 .fstage{
@@ -256,7 +256,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   flex:none; width:34px; height:34px; border-radius:50%; background:var(--green); color:#fff;
   display:flex; align-items:center; justify-content:center; font-size:1.1rem;
 }
-.fguarantee-card h3{ font-family:var(--serif); font-weight:700; font-size:1rem; color:#1c4a33; margin:0 0 6px; }
+.fguarantee-card h3{ font-family:var(--ui); font-weight:700; font-size:1rem; color:#1c4a33; margin:0 0 6px; }
 .fguarantee-card p{ font-family:var(--ui); font-size:.86rem; color:#1c4a33; opacity:.9; line-height:1.5; margin:0; }
 
 /* ---- Detalhamento do valor dos bônus (etapa 9) ---- */
@@ -289,7 +289,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .fnews-date{ font-family:var(--ui); font-size:.72rem; color:var(--grey); }
 .fnews-body{ padding:10px 16px 16px; }
-.fnews-headline{ font-family:var(--serif); font-weight:700; font-size:1.12rem; color:var(--black); line-height:1.32; margin:6px 0 8px; }
+.fnews-headline{ font-family:var(--ui); font-weight:700; font-size:1.12rem; color:var(--black); line-height:1.32; margin:6px 0 8px; }
 .fnews-excerpt{ font-family:var(--ui); font-size:.86rem; color:var(--ink); opacity:.85; line-height:1.5; margin:0; }
 .fnews-link{ display:inline-block; margin-top:12px; font-family:var(--ui); font-weight:700; font-size:.78rem; color:var(--yellow-dk); }
 
@@ -302,7 +302,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   display:inline-block; font-family:var(--ui); font-weight:700; font-size:.66rem; letter-spacing:.1em;
   text-transform:uppercase; padding:4px 11px; border-radius:999px; margin-bottom:10px;
 }
-.ftag-card h3{ font-family:var(--serif); font-weight:700; font-size:1.08rem; color:var(--black); line-height:1.35; margin:0 0 8px; }
+.ftag-card h3{ font-family:var(--ui); font-weight:700; font-size:1.08rem; color:var(--black); line-height:1.35; margin:0 0 8px; }
 .ftag-card p{ font-family:var(--ui); font-size:.88rem; color:var(--ink); opacity:.85; line-height:1.5; margin:0; }
 .ftag-card.green{ border-color:rgba(46,139,87,.35); }
 .ftag-card.green .ftag-pill{ background:var(--green-sf); color:var(--green); }
@@ -311,7 +311,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 
 /* ---- FAQ (etapa 9) ---- */
 .ffaq{ text-align:left; margin-top:8px; }
-.ffaq-title{ font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--black); text-align:center; margin:0 0 16px; }
+.ffaq-title{ font-family:var(--ui); font-weight:700; font-size:1.2rem; color:var(--black); text-align:center; margin:0 0 16px; }
 .ffaq-item{ border:1px solid var(--line); border-radius:12px; margin-bottom:10px; overflow:hidden; background:#fff; }
 .ffaq-q{
   width:100%; text-align:left; background:none; border:0; padding:14px 16px; cursor:pointer;
@@ -365,7 +365,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   text-transform:uppercase; color:var(--yellow); border:1px solid rgba(201,161,92,.5);
   border-radius:999px; padding:4px 12px; margin-bottom:12px;
 }
-.finsight-card h3{ font-family:var(--serif); font-weight:700; font-size:1.28rem; color:#fff; line-height:1.35; margin:0 0 12px; }
+.finsight-card h3{ font-family:var(--ui); font-weight:700; font-size:1.28rem; color:#fff; line-height:1.35; margin:0 0 12px; }
 .finsight-card p{ font-family:var(--ui); font-size:.92rem; color:#EFE6D2; opacity:.92; line-height:1.6; margin:0; }
 .finsight-card p + p{ margin-top:10px; }
 
@@ -476,7 +476,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   display:inline-block; font-family:var(--ui); font-weight:700; font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
   color:var(--yellow); border:1px solid rgba(201,161,92,.5); border-radius:999px; padding:4px 12px;
 }
-.fvoucher .ftitle{ font-family:var(--serif); font-size:1.5rem; margin:14px 0 0; color:#fff; }
+.fvoucher .ftitle{ font-family:var(--ui); font-size:1.5rem; margin:14px 0 0; color:#fff; }
 
 .fvoucher-divider{ position:relative; border-top:2px dashed rgba(201,161,92,.35); margin:20px -24px 18px; }
 .fvoucher-divider::before, .fvoucher-divider::after{
@@ -522,7 +522,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   display:inline-block; font-family:var(--ui); font-weight:700; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
   color:var(--yellow); margin-bottom:8px;
 }
-.fvoucher-teaser h3{ font-family:var(--serif); font-weight:700; font-size:1.15rem; color:#fff; margin:0; line-height:1.3; }
+.fvoucher-teaser h3{ font-family:var(--ui); font-weight:700; font-size:1.15rem; color:#fff; margin:0; line-height:1.3; }
 
 /* ---- Contagem regressiva (etapa 9) ---- */
 .fcountdown{
