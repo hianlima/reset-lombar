@@ -106,6 +106,51 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     setTimeout(function(){ ticks.classList.add("read"); }, 700);
   }
 
+  function escapeHtml(str){
+    return str.replace(/[&<>"']/g, function(c){
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function showNameInput(onDone){
+    var row = document.createElement("div");
+    row.className = "fchat-row me";
+    row.innerHTML =
+      '<div class="fchat-name-form">' +
+        '<input type="text" class="fchat-name-field" placeholder="Digite seu nome" maxlength="30" autocomplete="given-name">' +
+        '<button type="button" class="fchat-name-send" aria-label="Enviar" disabled>' +
+          '<svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>' +
+        '</button>' +
+      '</div>';
+    chatWrap.appendChild(row);
+    scrollDown();
+
+    var input = row.querySelector(".fchat-name-field");
+    var sendBtn = row.querySelector(".fchat-name-send");
+    input.focus();
+
+    input.addEventListener("input", function(){
+      sendBtn.disabled = input.value.trim().length === 0;
+    });
+
+    function submit(){
+      var raw = input.value.trim();
+      if (!raw) return;
+      var nome = raw.charAt(0).toUpperCase() + raw.slice(1);
+      row.remove();
+      meSay(escapeHtml(nome));
+      try { localStorage.setItem("resposta_nome", nome); } catch(e){}
+      Funil.trackEtapa("Etapa5_NomeCapturado");
+      if (typeof gtag === "function") gtag("event", "quiz_nome_informado");
+      onDone(nome);
+    }
+
+    input.addEventListener("keydown", function(e){
+      if (e.key === "Enter") submit();
+    });
+    sendBtn.addEventListener("click", submit);
+  }
+
   /* ---- roteiro do mini-quiz (3 perguntas) ---- */
   var questions = [
     {
@@ -172,15 +217,22 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   }
 
   function finish(){
-    botSay("Pelo que você me contou, seu padrão faz muito sentido dentro do que eu trabalho no método. Deixa eu te mostrar algo assustador...", 2000, function(){
+    var nome;
+    try { nome = localStorage.getItem("resposta_nome") || ""; } catch(e){ nome = ""; }
+    var abertura = nome ? escapeHtml(nome) + ", pelo" : "Pelo";
+    botSay(abertura + " que você me contou, seu padrão faz muito sentido dentro do que eu trabalho no método. Deixa eu te mostrar algo assustador...", 2000, function(){
       btnNext.style.display = "flex";
       Funil.trackEtapa("Etapa5_QuizCompleted");
       if (typeof gtag === "function") gtag("event", "quiz_completed");
     });
   }
 
-  botSay("Antes de continuar, deixa eu entender rapidinho seu caso. São só 3 perguntas.", randDelay(900, 1300), function(){
-    askQuestion(0, randDelay(900, 1300));
+  botSay("Antes de continuar, deixa eu te conhecer melhor. Qual é o seu nome?", randDelay(900, 1300), function(){
+    showNameInput(function(nome){
+      botSay("Prazer, " + escapeHtml(nome) + "! Agora deixa eu entender rapidinho seu caso. São só 3 perguntas.", randDelay(900, 1300), function(){
+        askQuestion(0, randDelay(900, 1300));
+      });
+    });
   });
 
   btnNext.addEventListener("click", function(){

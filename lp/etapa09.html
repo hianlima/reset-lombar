@@ -154,8 +154,11 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
   /* ---- headline e CTAs personalizados pela dor relatada na etapa 5 ---- */
   (function(){
-    var localizacao;
-    try { localizacao = localStorage.getItem("resposta_localizacao") || ""; } catch(e){ localizacao = ""; }
+    var localizacao, nome;
+    try {
+      localizacao = localStorage.getItem("resposta_localizacao") || "";
+      nome = localStorage.getItem("resposta_nome") || "";
+    } catch(e){ localizacao = nome = ""; }
 
     var copy = {
       h1: "Garanta seu acesso antes que o voucher expire",
@@ -177,7 +180,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       };
     }
 
-    document.getElementById("offerTitle").textContent = copy.h1;
+    document.getElementById("offerTitle").textContent = nome ? nome + ", " + copy.h1.charAt(0).toLowerCase() + copy.h1.slice(1) : copy.h1;
     document.getElementById("btnCheckout").innerHTML = copy.cta1 + ' <span class="arrow">→</span>';
     document.getElementById("btnCheckout2").innerHTML = copy.cta2 + ' <span class="arrow">→</span>';
   })();

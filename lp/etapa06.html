@@ -98,12 +98,19 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
   /* ---- diagnóstico personalizado a partir das respostas do quiz (etapa 5) ---- */
   (function(){
-    var localizacao, gatilho, historico;
+    var localizacao, gatilho, historico, nome;
     try {
       localizacao = localStorage.getItem("resposta_localizacao") || "";
       gatilho = localStorage.getItem("resposta_gatilho") || "";
       historico = localStorage.getItem("resposta_historico") || "";
-    } catch(e){ localizacao = gatilho = historico = ""; }
+      nome = localStorage.getItem("resposta_nome") || "";
+    } catch(e){ localizacao = gatilho = historico = nome = ""; }
+
+    function escapeHtml(str){
+      return str.replace(/[&<>"']/g, function(c){
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
 
     var nivel;
     if (localizacao === "Desce até abaixo do joelho, na perna toda") {
@@ -147,7 +154,8 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       extra += " Como você ainda não tratou isso de forma direcionada, esse é o momento ideal pra começar certo, antes que o padrão se repita.";
     }
 
-    document.getElementById("diagTitle").innerHTML = "Pelo que você me contou, isso é o que seu caso indica: <em>" + nivel.titulo + "</em>";
+    var abertura = nome ? escapeHtml(nome) + ", pelo" : "Pelo";
+    document.getElementById("diagTitle").innerHTML = abertura + " que você me contou, isso é o que seu caso indica: <em>" + nivel.titulo + "</em>";
     document.getElementById("diagMarker").style.left = nivel.pct + "%";
     document.getElementById("diagText").textContent = nivel.texto + extra;
   })();
