@@ -40,6 +40,10 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   .voucher-stage .fbadge::before{ color:#FFC94D; }
   .voucher-stage .feyebrow{ color:#141414; }
   .voucher-stage .fsub{ color:#241c07; opacity:.92; }
+  .voucher-stage .fh1 .fname-hl{
+    background:#141414; color:#FFC94D; padding:2px 10px; border-radius:6px;
+    -webkit-box-decoration-break:clone; box-decoration-break:clone;
+  }
 </style>
 </head>
 <body>
@@ -74,7 +78,12 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     var nome;
     try { nome = localStorage.getItem("resposta_nome") || ""; } catch(e){ nome = ""; }
     if (nome) {
-      document.getElementById("voucherTitle").textContent = nome + ", você desbloqueou um voucher de desconto";
+      function escapeHtml(str){
+        return str.replace(/[&<>"']/g, function(c){
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+      document.getElementById("voucherTitle").innerHTML = '<span class="fname-hl">' + escapeHtml(nome) + '</span>, você desbloqueou um voucher de desconto';
     }
   })();
 
