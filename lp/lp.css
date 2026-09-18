@@ -390,7 +390,8 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 .fchat-header .fname{ font-family:var(--ui); font-weight:600; font-size:.94rem; color:#fff; }
 .fchat-header .fstatus{ font-family:var(--ui); font-size:.72rem; color:#CFEFE7; }
 .fchat-wrap{
-  background:var(--wa-bg); border-radius:0 0 16px 16px; padding:14px; margin:0 0 20px;
+  background:var(--wa-bg) url('../img/FUNDOWHATSAPP.jpg') repeat; background-size:280px auto;
+  border-radius:0 0 16px 16px; padding:14px; margin:0 0 20px;
   display:flex; flex-direction:column; gap:8px; min-height:280px; max-height:52vh; overflow-y:auto;
   text-align:left;
 }
