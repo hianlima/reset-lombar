@@ -573,22 +573,6 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 }
 .fvoucher-teaser h3{ font-family:var(--ui); font-weight:700; font-size:1.15rem; color:#fff; margin:0; line-height:1.3; }
 
-/* ---- Card de resultado real (foto antes/depois, etapa 9) ---- */
-.fresult-card{
-  background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden;
-  margin:0 0 22px; box-shadow:0 10px 26px rgba(20,20,20,.1); text-align:center;
-}
-.fresult-tag{
-  display:inline-block; margin:14px auto 0; font-family:var(--ui); font-weight:700; font-size:.68rem;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--green); background:var(--green-sf);
-  padding:5px 14px; border-radius:999px;
-}
-.fresult-card img{ width:100%; display:block; margin-top:12px; }
-.fresult-cap{
-  font-family:var(--ui); font-size:.86rem; color:var(--ink); opacity:.85; line-height:1.5;
-  padding:12px 18px 18px; margin:0; text-align:left;
-}
-
 /* ---- Contagem regressiva (etapa 9) ---- */
 .fcountdown{
   display:flex; justify-content:center; gap:10px; margin:0 0 22px;
