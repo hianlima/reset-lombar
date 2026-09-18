@@ -61,7 +61,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   color:var(--yellow-dk); margin-bottom:10px;
 }
 .fh1{
-  font-family:var(--serif); font-weight:700; color:var(--black);
+  font-family:var(--ui); font-weight:700; color:var(--black);
   font-size:clamp(1.5rem, 6vw, 2.05rem); line-height:1.25; margin:0 0 14px;
 }
 .fh1 em, .fh1 .hl{ font-style:normal; color:var(--yellow-dk); }
@@ -568,9 +568,11 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fpick-card:active{ transform:scale(.97); }
 .fpick-card img{ width:100%; aspect-ratio:3/4; object-fit:cover; display:block; }
 .fpick-tag{
-  background:var(--black); color:var(--yellow); font-family:var(--ui); font-weight:700; font-size:.72rem;
-  text-align:center; padding:8px 6px; line-height:1.25;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  background:var(--black); color:var(--yellow); font-family:var(--ui); font-weight:700; font-size:.76rem;
+  text-align:center; padding:14px 8px; line-height:1.3; min-height:52px;
 }
+.fpick-tag .arrow{ flex:none; font-weight:800; }
 
 /* ---- Vídeo horizontal em loop automático (etapa 4) ---- */
 .fvideo-loop{
