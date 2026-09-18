@@ -293,6 +293,8 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 }
 .fbonus-list li:last-child{ border-bottom:0; }
 .fbonus-list .price{ color:var(--grey); flex:none; }
+.fbonus-name{ display:flex; align-items:center; gap:8px; }
+.fbonus-name .fico{ flex:none; color:var(--green); font-weight:800; font-size:.92rem; }
 .fbonus-total{
   margin-top:12px; padding-top:12px; border-top:1px solid var(--line);
   font-family:var(--ui); font-weight:700; font-size:.92rem; color:var(--black); text-align:center;
