@@ -49,10 +49,12 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     <div class="fpick-grid">
       <a href="etapa02.html" class="fpick-card fcta-pulse" id="pickA">
         <img src="../img/dorlombar-card.jpg" alt="Pessoa com dor lombar localizada, sem irradiar para a perna">
+        <div class="fpick-check">✓</div>
         <div class="fpick-tag">Dor lombar <span class="arrow">→</span></div>
       </a>
       <a href="etapa02.html" class="fpick-card fcta-pulse" id="pickB">
         <img src="../img/duas-direita.jpg" alt="Pessoa com dor lombar que irradia até o pé">
+        <div class="fpick-check">✓</div>
         <div class="fpick-tag">Dor lombar com irradiação até o pé <span class="arrow">→</span></div>
       </a>
     </div>
@@ -64,7 +66,18 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   Funil.trackEtapa("Etapa1_View");
   if (typeof gtag === "function") gtag("event", "funil_etapa1_view");
 
-  document.getElementById("pickA").addEventListener("click", function(){
+  function selectPick(chosenId, otherId, href){
+    var chosen = document.getElementById(chosenId);
+    var other = document.getElementById(otherId);
+    chosen.style.animation = "none";
+    other.style.animation = "none";
+    chosen.classList.add("is-selected");
+    other.classList.add("is-dimmed");
+    setTimeout(function(){ window.location.href = href; }, 450);
+  }
+
+  document.getElementById("pickA").addEventListener("click", function(e){
+    e.preventDefault();
     try { localStorage.setItem("resposta_identificacao", "lombar"); } catch(e){}
     Funil.trackEtapa("Etapa1_Click");
     Funil.trackEtapa("Etapa1_Pick_Lombar");
@@ -72,8 +85,10 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       gtag("event", "funil_etapa1_click");
       gtag("event", "funil_etapa1_pick_lombar");
     }
+    selectPick("pickA", "pickB", "etapa02.html");
   });
-  document.getElementById("pickB").addEventListener("click", function(){
+  document.getElementById("pickB").addEventListener("click", function(e){
+    e.preventDefault();
     try { localStorage.setItem("resposta_identificacao", "irradiada"); } catch(e){}
     Funil.trackEtapa("Etapa1_Click");
     Funil.trackEtapa("Etapa1_Pick_Irradiada");
@@ -81,6 +96,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       gtag("event", "funil_etapa1_click");
       gtag("event", "funil_etapa1_pick_irradiada");
     }
+    selectPick("pickB", "pickA", "etapa02.html");
   });
 
   /* ---- contador de "pessoas vendo agora" (varia sozinho para dar escassez) ---- */
