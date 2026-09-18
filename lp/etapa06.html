@@ -40,11 +40,16 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <div class="fstage">
   <div class="fcol">
     <div id="analyzeBlock">
-      <div class="feyebrow">Analisando suas respostas</div>
-      <div class="fanalyze-track"><div class="fanalyze-fill" id="analyzeFill"></div></div>
-      <div class="fanalyze-pct" id="analyzePct">0%</div>
-      <p class="fanalyze-label">Analisando seu padrão de dor...</p>
-      <p class="fanalyze-sub">Aguarde um momento</p>
+      <div class="fanalyze-card">
+        <div class="fanalyze-spinner" aria-hidden="true">
+          <svg class="fanalyze-spinner-ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="19"></circle></svg>
+          <span class="fanalyze-spinner-icon">🧠</span>
+        </div>
+        <div class="feyebrow">Analisando suas respostas</div>
+        <p class="fanalyze-label" id="analyzeLabel">Lendo seu padrão de dor...</p>
+        <div class="fanalyze-track"><div class="fanalyze-fill" id="analyzeFill"></div></div>
+        <div class="fanalyze-pct"><span id="analyzePctNum">0</span><span class="fanalyze-pct-sign">%</span></div>
+      </div>
 
       <div class="ftesti-label">Quem já aplicou, aprovou</div>
       <div class="ftesti-wrap">
@@ -182,12 +187,32 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   /* ---- barra de "analisando suas respostas" antes de revelar o diagnóstico ---- */
   (function(){
     var fill = document.getElementById("analyzeFill");
-    var pctEl = document.getElementById("analyzePct");
+    var pctEl = document.getElementById("analyzePctNum");
+    var labelEl = document.getElementById("analyzeLabel");
+    var labels = [
+      "Lendo seu padrão de dor...",
+      "Cruzando com casos parecidos com o seu...",
+      "Calculando a direção de movimento certa...",
+      "Fechando seu resultado..."
+    ];
+    var labelIdx = 0;
     var pct = 0;
+
+    function setLabel(i){
+      if (i === labelIdx) return;
+      labelIdx = i;
+      labelEl.classList.add("fade");
+      setTimeout(function(){
+        labelEl.textContent = labels[i];
+        labelEl.classList.remove("fade");
+      }, 200);
+    }
+
     function tick(){
       pct = Math.min(100, pct + 4 + Math.random() * 11);
       fill.style.width = pct + "%";
-      pctEl.textContent = Math.floor(pct) + "%";
+      pctEl.textContent = Math.floor(pct);
+      setLabel(pct < 28 ? 0 : pct < 56 ? 1 : pct < 88 ? 2 : 3);
       if (pct < 100) {
         setTimeout(tick, 140 + Math.random() * 130);
       } else {
