@@ -56,13 +56,6 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
         <div class="fpick-tag">Dor lombar com irradiação até o pé <span class="arrow">→</span></div>
       </a>
     </div>
-
-    <p class="fsub">Pessoas sem tempo pra fisioterapia presencial usaram isso pra voltar a trabalhar e dormir sem dor em menos de 15 dias.</p>
-
-    <div class="fcredibility">Aqui você não vai ver remédio disfarçado, promessa de cura milagrosa ou depoimento de ator pago. Só o método que eu uso com meus pacientes, todos os dias.</div>
-
-    <a href="etapa02.html" class="fcta green fcta-pulse" id="btnStart">Iniciar Agora <span class="arrow">→</span></a>
-    <div class="fhint">Toque para começar</div>
   </div>
 </div>
 
@@ -70,20 +63,24 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <script>
   Funil.trackEtapa("Etapa1_View");
   if (typeof gtag === "function") gtag("event", "funil_etapa1_view");
-  document.getElementById("btnStart").addEventListener("click", function(){
-    Funil.trackEtapa("Etapa1_Click");
-    if (typeof gtag === "function") gtag("event", "funil_etapa1_click");
-  });
 
   document.getElementById("pickA").addEventListener("click", function(){
     try { localStorage.setItem("resposta_identificacao", "lombar"); } catch(e){}
+    Funil.trackEtapa("Etapa1_Click");
     Funil.trackEtapa("Etapa1_Pick_Lombar");
-    if (typeof gtag === "function") gtag("event", "funil_etapa1_pick_lombar");
+    if (typeof gtag === "function") {
+      gtag("event", "funil_etapa1_click");
+      gtag("event", "funil_etapa1_pick_lombar");
+    }
   });
   document.getElementById("pickB").addEventListener("click", function(){
     try { localStorage.setItem("resposta_identificacao", "irradiada"); } catch(e){}
+    Funil.trackEtapa("Etapa1_Click");
     Funil.trackEtapa("Etapa1_Pick_Irradiada");
-    if (typeof gtag === "function") gtag("event", "funil_etapa1_pick_irradiada");
+    if (typeof gtag === "function") {
+      gtag("event", "funil_etapa1_click");
+      gtag("event", "funil_etapa1_pick_irradiada");
+    }
   });
 
   /* ---- contador de "pessoas vendo agora" (varia sozinho para dar escassez) ---- */
