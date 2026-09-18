@@ -66,6 +66,13 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 }
 .fh1 em, .fh1 .hl{ font-style:normal; color:var(--yellow-dk); }
 .fh1 .hl-alert{ font-style:normal; color:var(--red); }
+
+.fhl-line{ text-align:center; margin:0 0 20px; line-height:1.6; }
+.fhl{
+  background-color:#FFE066; color:var(--black); font-family:var(--ui); font-weight:800; font-size:.86rem;
+  letter-spacing:.01em; text-transform:uppercase; padding:2px 6px; border-radius:3px;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+}
 .fsub{
   font-family:var(--ui); font-weight:400; color:var(--ink); font-size:1rem; line-height:1.6;
   margin:0 0 26px; opacity:.85;
