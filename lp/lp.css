@@ -65,6 +65,7 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
   font-size:clamp(1.5rem, 6vw, 2.05rem); line-height:1.25; margin:0 0 14px;
 }
 .fh1 em, .fh1 .hl{ font-style:normal; color:var(--yellow-dk); }
+.fh1 .hl-alert{ font-style:normal; color:var(--red); }
 .fsub{
   font-family:var(--ui); font-weight:400; color:var(--ink); font-size:1rem; line-height:1.6;
   margin:0 0 26px; opacity:.85;
