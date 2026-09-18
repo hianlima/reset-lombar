@@ -284,23 +284,32 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 .fguarantee-text b{ color:var(--black); }
 
 /* ---- Detalhamento do valor dos bônus (etapa 9) ---- */
-.fbonus-card{ margin:0 0 22px; }
-.fbonus-card .flabel{ margin-bottom:12px; }
+.fbonus-card{ margin:0 0 22px; border:1px solid rgba(242,113,26,.3); border-left:4px solid var(--orange); }
+.fbonus-head{
+  display:flex; align-items:center; gap:9px; font-family:var(--ui); font-weight:700; font-size:1.02rem;
+  color:var(--black); margin-bottom:14px;
+}
+.fbonus-icon{ flex:none; font-size:1.25rem; }
 .fbonus-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
 .fbonus-list li{
-  display:flex; justify-content:space-between; gap:10px; padding:9px 0;
+  display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0;
   border-bottom:1px dashed var(--line); font-family:var(--ui); font-size:.88rem; color:var(--ink);
 }
 .fbonus-list li:last-child{ border-bottom:0; }
-.fbonus-list .price{ color:var(--grey); flex:none; }
-.fbonus-name{ display:flex; align-items:center; gap:8px; }
+.fbonus-list .price{ color:var(--grey); text-decoration:line-through; }
+.fbonus-name{ display:flex; align-items:center; gap:8px; font-weight:600; color:var(--black); }
 .fbonus-name .fico{ flex:none; color:var(--green); font-weight:800; font-size:.92rem; }
+.fbonus-value{ display:flex; align-items:center; gap:8px; flex:none; }
+.fbonus-free{
+  font-family:var(--ui); font-weight:800; font-size:.64rem; letter-spacing:.05em; text-transform:uppercase;
+  color:#fff; background:var(--green); padding:3px 9px; border-radius:999px;
+}
 .fbonus-total{
-  margin-top:12px; padding-top:12px; border-top:1px solid var(--line);
+  margin-top:14px; padding:12px 14px; border-radius:10px; background:#FFF1E6;
   font-family:var(--ui); font-weight:700; font-size:.92rem; color:var(--black); text-align:center;
 }
 .fbonus-total span{
-  color:var(--yellow-dk); text-decoration:line-through; text-decoration-color:#ff6161; text-decoration-thickness:2px;
+  color:var(--orange-dk); text-decoration:line-through; text-decoration-color:var(--red); text-decoration-thickness:2px;
 }
 
 /* ---- Cartão de matéria/reportagem real (etapa 6) ---- */
