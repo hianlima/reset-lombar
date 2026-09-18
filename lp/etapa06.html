@@ -49,7 +49,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       <p class="fdiag-text" id="diagText">Carregando sua análise...</p>
     </div>
 
-    <p class="fsub" style="text-align:left; margin-top:-4px;">E não é só você: a dor lombar já é tratada como questão de saúde pública no Brasil.</p>
+    <p class="fsub" style="text-align:left; margin-top:-4px;">E não é só você:</p>
 
     <div class="fnews-card fnews-card-img">
       <img src="../img/materia-g1-dor-lombar.jpg" alt="Manchete do G1: Hérnia de disco e dor lombar lideram causas de afastamento do trabalho no Brasil">
@@ -58,33 +58,29 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <p class="fsub" style="text-align:left; margin-top:-4px;">Veja a diferença entre os dois caminhos:</p>
-
     <div class="fcompare">
       <div class="fcompare-panel bad">
-        <div class="fcompare-title">✕ Sem acessar o Reset Lombar</div>
+        <div class="fcompare-title">✕ Sem o Reset Lombar</div>
         <ul>
-          <li><b>✕</b> <span>Continua no ciclo de crise → alívio → crise de novo</span></li>
-          <li><b>✕</b> <span>Depende de fisioterapia presencial toda semana</span></li>
-          <li><b>✕</b> <span>Evita atividades do dia a dia com medo da dor voltar</span></li>
-          <li><b>✕</b> <span>Não sabe se o caso pede mais flexão ou mais extensão</span></li>
+          <li><b>✕</b> <span>Ciclo de crise → alívio → crise de novo</span></li>
+          <li><b>✕</b> <span>Fisioterapia presencial toda semana</span></li>
+          <li><b>✕</b> <span>Medo de fazer o dia a dia normal</span></li>
         </ul>
       </div>
       <div class="fcompare-panel good">
-        <div class="fcompare-title">✓ Aplicando o método certo</div>
+        <div class="fcompare-title">✓ Com o método certo</div>
         <ul>
-          <li><b>✓</b> <span>Identifica a direção de movimento certa pro seu tipo de dor</span></li>
-          <li><b>✓</b> <span>Reduz a crise em poucos dias, sem sair de casa</span></li>
-          <li><b>✓</b> <span>Retoma trabalho, treino e rotina sem medo</span></li>
-          <li><b>✓</b> <span>Segue um plano de 30 dias pra não recair</span></li>
+          <li><b>✓</b> <span>Direção de movimento certa pro seu caso</span></li>
+          <li><b>✓</b> <span>Alívio em poucos dias, sem sair de casa</span></li>
+          <li><b>✓</b> <span>Plano de 30 dias pra não recair</span></li>
         </ul>
       </div>
     </div>
 
-    <div class="ftag-card green">
-      <div class="ftag-pill">Oportunidade primeiro acesso</div>
-      <h3>🎁 Você recebeu um voucher premiado da nossa equipe por chegar até aqui!</h3>
-      <p>Ele libera um desconto exclusivo no seu acesso ao Reset Lombar, válido só por hoje. Toque no botão abaixo pra resgatar.</p>
+    <div class="fvoucher-teaser">
+      <div class="ficon-mini">🎁</div>
+      <div class="ftag">Oportunidade desbloqueada</div>
+      <h3>Você ganhou um voucher premiado!</h3>
     </div>
 
     <a href="etapa07.html" class="fcta green fcta-pulse" id="btnNext">Continuar para Finalização <span class="arrow">→</span></a>
@@ -98,13 +94,11 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
   /* ---- diagnóstico personalizado a partir das respostas do quiz (etapa 5) ---- */
   (function(){
-    var localizacao, gatilho, historico, nome;
+    var localizacao, nome;
     try {
       localizacao = localStorage.getItem("resposta_localizacao") || "";
-      gatilho = localStorage.getItem("resposta_gatilho") || "";
-      historico = localStorage.getItem("resposta_historico") || "";
       nome = localStorage.getItem("resposta_nome") || "";
-    } catch(e){ localizacao = gatilho = historico = nome = ""; }
+    } catch(e){ localizacao = nome = ""; }
 
     function escapeHtml(str){
       return str.replace(/[&<>"']/g, function(c){
@@ -117,47 +111,32 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       nivel = {
         pct: 90,
         titulo: "um padrão compatível com dor ciática",
-        texto: "Uma dor que desce até abaixo do joelho é o padrão clássico do que chamamos de dor ciática: geralmente indica uma raiz nervosa sendo comprimida na coluna lombar. Quanto mais cedo você aplica a direção de movimento certa pro seu caso, mais rápido esse tipo de dor tende a aliviar."
+        texto: "Dor que desce até abaixo do joelho costuma vir de uma raiz nervosa comprimida na coluna. Corrigir a direção de movimento certa tende a aliviar rápido."
       };
     } else if (localizacao === "Desce até o glúteo ou a coxa") {
       nivel = {
         pct: 58,
         titulo: "dor com irradiação inicial",
-        texto: "Sua dor já está saindo da lombar e afetando glúteo ou coxa. Isso costuma acontecer quando alguma estrutura da coluna está pressionando levemente uma raiz nervosa, ainda numa fase inicial, o momento mais fácil de reverter o quadro."
+        texto: "Sua dor já saiu da lombar e afeta glúteo ou coxa, ainda numa fase inicial: o momento mais fácil de reverter o quadro."
       };
     } else if (localizacao === "Só na lombar") {
       nivel = {
         pct: 22,
         titulo: "dor localizada, sem irradiação",
-        texto: "A boa notícia é que sua dor ainda está localizada na lombar, sem descer pela perna. Isso é o que chamamos de dor mecânica: geralmente responde bem e rápido assim que você acerta a direção de movimento certa pro seu caso."
+        texto: "Sua dor ainda não desceu pela perna. É o que chamamos de dor mecânica: costuma responder rápido quando você acerta o movimento certo."
       };
     } else {
       nivel = {
         pct: 50,
         titulo: "algo que dá pra reverter",
-        texto: "O que você vai ver a seguir se aplica à grande maioria dos casos de dor lombar que eu atendo todos os dias."
+        texto: "O que você vai ver a seguir se aplica à grande maioria dos casos que eu atendo todos os dias."
       };
-    }
-
-    var extra = "";
-    if (gatilho === "Ficar muito tempo sentado") {
-      extra += " Isso também bate com o fato de piorar quando você fica muito tempo sentado, um padrão muito comum em quem trabalha em escritório.";
-    } else if (gatilho === "Ficar muito tempo em pé ou caminhando") {
-      extra += " Isso também bate com o fato de piorar ao ficar muito tempo em pé ou caminhando, o que costuma indicar sensibilidade a uma das direções de movimento da coluna.";
-    } else if (gatilho === "Se abaixar ou pegar peso") {
-      extra += " Isso também bate com o fato de piorar ao se abaixar ou pegar peso, um sinal clássico de sensibilidade à flexão da coluna.";
-    }
-
-    if (historico === "Sim, várias vezes" || historico === "Já tentei uma vez") {
-      extra += " Você já tentou tratar antes e a dor voltou. Isso costuma acontecer quando o tratamento alivia o sintoma, mas não corrige a direção de movimento errada por trás dele.";
-    } else if (historico === "Ainda não tratei de forma nenhuma") {
-      extra += " Como você ainda não tratou isso de forma direcionada, esse é o momento ideal pra começar certo, antes que o padrão se repita.";
     }
 
     var abertura = nome ? escapeHtml(nome) + ", pelo" : "Pelo";
     document.getElementById("diagTitle").innerHTML = abertura + " que você me contou, isso é o que seu caso indica: <em>" + nivel.titulo + "</em>";
     document.getElementById("diagMarker").style.left = nivel.pct + "%";
-    document.getElementById("diagText").textContent = nivel.texto + extra;
+    document.getElementById("diagText").textContent = nivel.texto;
   })();
   document.getElementById("btnNext").addEventListener("click", function(){
     Funil.trackEtapa("Etapa6_Click");
