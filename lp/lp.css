@@ -580,10 +580,6 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 .fresult-mini img{
   width:150px; border-radius:12px; box-shadow:0 8px 20px rgba(20,20,20,.18);
 }
-.fresult-mini span{
-  font-family:var(--ui); font-weight:700; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--green); background:var(--green-sf); padding:4px 12px; border-radius:999px;
-}
 
 /* ---- Contagem regressiva (etapa 9) ---- */
 .fcountdown{
