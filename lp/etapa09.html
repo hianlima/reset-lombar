@@ -50,6 +50,8 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       <div class="fseg"><b id="cdS">00</b><span>Seg</span></div>
     </div>
 
+    <a href="https://pay.cakto.com.br/35ix5ws_1044130" class="fcta mega fcta-pulse" id="btnCheckoutTop" style="margin-bottom:26px;">Quero sair da crise lombar agora <span class="arrow">→</span></a>
+
     <h2 class="fproof-title">Resultado real de quem aplicou o método</h2>
     <div class="fproof-frame">
       <div class="fproof-badge">Antes → Depois</div>
@@ -188,6 +190,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     }
 
     document.getElementById("offerTitle").textContent = nome ? nome + ", " + copy.h1.charAt(0).toLowerCase() + copy.h1.slice(1) : copy.h1;
+    document.getElementById("btnCheckoutTop").innerHTML = copy.cta1 + ' <span class="arrow">→</span>';
     document.getElementById("btnCheckout").innerHTML = copy.cta1 + ' <span class="arrow">→</span>';
     document.getElementById("btnCheckout2").innerHTML = copy.cta2 + ' <span class="arrow">→</span>';
   })();
@@ -218,7 +221,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  ["btnCheckout", "btnCheckout2"].forEach(function(id){
+  ["btnCheckoutTop", "btnCheckout", "btnCheckout2"].forEach(function(id){
     document.getElementById(id).addEventListener("click", function(){
       Funil.trackEtapa("Etapa9_Click");
       if (typeof gtag === "function") gtag("event", "funil_etapa9_click");
