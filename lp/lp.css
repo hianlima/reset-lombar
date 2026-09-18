@@ -224,6 +224,13 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 .fstat-num{ font-family:var(--impact); font-size:2.4rem; color:var(--yellow-dk); line-height:1; }
 .fstat-label{ font-family:var(--ui); font-size:.82rem; color:var(--grey); margin-top:6px; }
 
+/* ---- Barra de "analisando suas respostas" (etapa 6) ---- */
+.fanalyze-track{ height:8px; border-radius:5px; background:rgba(20,20,20,.1); overflow:hidden; margin:36px 0 8px; }
+.fanalyze-fill{ height:100%; width:0%; background:linear-gradient(90deg, var(--yellow-dk), var(--yellow)); border-radius:5px; }
+.fanalyze-pct{ font-family:var(--ui); font-weight:700; font-size:.78rem; color:var(--yellow-dk); text-align:right; margin-bottom:18px; }
+.fanalyze-label{ font-family:var(--ui); font-weight:700; font-size:1rem; color:var(--black); text-align:center; margin:0; }
+.fanalyze-sub{ font-family:var(--ui); font-size:.84rem; color:var(--grey); text-align:center; margin:4px 0 30px; }
+
 /* ---- Card de diagnóstico personalizado, a partir do quiz (etapa 6) ---- */
 .fdiag-card{
   background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 20px; margin:0 0 22px; text-align:left;
