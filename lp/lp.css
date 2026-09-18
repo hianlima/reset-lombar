@@ -558,11 +558,19 @@ h1,h2,h3{ font-family:var(--serif); color:var(--black); margin:0; font-weight:70
 .fvsl-progress-fill{ height:100%; width:0%; background:var(--yellow); border-radius:2px; }
 
 /* ---- Imagem de destaque no hero (etapa 1) ---- */
-.fhero-img{
-  width:100%; margin:0 0 22px; border-radius:14px; overflow:hidden;
-  box-shadow:0 14px 32px rgba(20,20,20,.18); border:1px solid rgba(201,161,92,.35);
+/* ---- Cards de identificação por imagem, clicáveis (etapa 1) ---- */
+.fpick-label{ font-family:var(--ui); font-weight:600; font-size:.88rem; color:var(--ink); margin:0 0 12px; text-align:center; }
+.fpick-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 22px; }
+.fpick-card{
+  position:relative; display:block; border-radius:14px; overflow:hidden; border:2px solid var(--yellow);
+  box-shadow:0 10px 24px rgba(20,20,20,.16); transition:transform .15s ease, box-shadow .15s ease;
 }
-.fhero-img img{ width:100%; display:block; }
+.fpick-card:active{ transform:scale(.97); }
+.fpick-card img{ width:100%; aspect-ratio:3/4; object-fit:cover; display:block; }
+.fpick-tag{
+  background:var(--black); color:var(--yellow); font-family:var(--ui); font-weight:700; font-size:.72rem;
+  text-align:center; padding:8px 6px; line-height:1.25;
+}
 
 /* ---- Vídeo horizontal em loop automático (etapa 4) ---- */
 .fvideo-loop{

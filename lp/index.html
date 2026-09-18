@@ -43,8 +43,16 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
     <h1 class="fh1">Eu vou te mostrar como sair da crise de dor lombar em até <em>7 dias</em>, sem depender de sessão de fisioterapia toda semana</h1>
 
-    <div class="fhero-img">
-      <img src="../img/duas.jpg" alt="Comparação entre uma pessoa sem dor lombar e outra sofrendo com uma crise de dor irradiando pela perna">
+    <div class="fpick-label">Toque na imagem que mais parece com você agora:</div>
+    <div class="fpick-grid">
+      <a href="etapa02.html" class="fpick-card" id="pickA">
+        <img src="../img/duas-esquerda.jpg" alt="Pessoa com dor lombar que irradia pela perna, mas ainda consegue se manter em pé">
+        <div class="fpick-tag">Dá pra levar, mas incomoda</div>
+      </a>
+      <a href="etapa02.html" class="fpick-card" id="pickB">
+        <img src="../img/duas-direita.jpg" alt="Pessoa travada numa crise forte de dor lombar, curvada e sem conseguir se levantar">
+        <div class="fpick-tag">Trava numa crise forte</div>
+      </a>
     </div>
 
     <p class="fsub">Pessoas sem tempo pra fisioterapia presencial usaram isso pra voltar a trabalhar e dormir sem dor em menos de 15 dias.</p>
@@ -63,6 +71,17 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   document.getElementById("btnStart").addEventListener("click", function(){
     Funil.trackEtapa("Etapa1_Click");
     if (typeof gtag === "function") gtag("event", "funil_etapa1_click");
+  });
+
+  document.getElementById("pickA").addEventListener("click", function(){
+    try { localStorage.setItem("resposta_identificacao", "controlada"); } catch(e){}
+    Funil.trackEtapa("Etapa1_Pick_Controlada");
+    if (typeof gtag === "function") gtag("event", "funil_etapa1_pick_controlada");
+  });
+  document.getElementById("pickB").addEventListener("click", function(){
+    try { localStorage.setItem("resposta_identificacao", "crise"); } catch(e){}
+    Funil.trackEtapa("Etapa1_Pick_Crise");
+    if (typeof gtag === "function") gtag("event", "funil_etapa1_pick_crise");
   });
 
   /* ---- contador de "pessoas vendo agora" (varia sozinho para dar escassez) ---- */
