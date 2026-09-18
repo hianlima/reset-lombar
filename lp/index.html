@@ -33,7 +33,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   gtag('config', 'G-SWB0F2N49J');
 </script>
 
-<link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="/lp/lp.css">
 </head>
 <body>
 
@@ -47,13 +47,13 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 
     <div class="fpick-label">Toque na imagem que mais parece com você agora:</div>
     <div class="fpick-grid">
-      <a href="etapa02.html" class="fpick-card fcta-pulse" id="pickA">
-        <img src="../img/dorlombar-card.jpg" alt="Pessoa com dor lombar localizada, sem irradiar para a perna">
+      <a href="/lp/etapa02.html" class="fpick-card fcta-pulse" id="pickA">
+        <img src="/img/dorlombar-card.jpg" alt="Pessoa com dor lombar localizada, sem irradiar para a perna">
         <div class="fpick-check">✓</div>
         <div class="fpick-tag">Dor lombar <span class="arrow">→</span></div>
       </a>
-      <a href="etapa02.html" class="fpick-card fcta-pulse" id="pickB">
-        <img src="../img/duas-direita.jpg" alt="Pessoa com dor lombar que irradia até o pé">
+      <a href="/lp/etapa02.html" class="fpick-card fcta-pulse" id="pickB">
+        <img src="/img/duas-direita.jpg" alt="Pessoa com dor lombar que irradia até o pé">
         <div class="fpick-check">✓</div>
         <div class="fpick-tag">Dor lombar com irradiação até o pé <span class="arrow">→</span></div>
       </a>
@@ -61,7 +61,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   </div>
 </div>
 
-<script src="lp.js"></script>
+<script src="/lp/lp.js"></script>
 <script>
   Funil.lockStep({ first: true });
   Funil.trackEtapa("Etapa1_View");
@@ -86,7 +86,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       gtag("event", "funil_etapa1_click");
       gtag("event", "funil_etapa1_pick_lombar");
     }
-    selectPick("pickA", "pickB", "etapa02.html");
+    selectPick("pickA", "pickB", "/lp/etapa02.html");
   });
   document.getElementById("pickB").addEventListener("click", function(e){
     e.preventDefault();
@@ -97,7 +97,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       gtag("event", "funil_etapa1_click");
       gtag("event", "funil_etapa1_pick_irradiada");
     }
-    selectPick("pickB", "pickA", "etapa02.html");
+    selectPick("pickB", "pickA", "/lp/etapa02.html");
   });
 
   /* ---- contador de "pessoas vendo agora" (varia sozinho para dar escassez) ---- */

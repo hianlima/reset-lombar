@@ -20,7 +20,7 @@ var Funil = (function(){
         var nav = window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
         var isReload = nav ? nav.type === "reload" : (performance.navigation && performance.navigation.type === 1);
         if (isReload) {
-          location.replace("index.html");
+          location.replace("/lp/index.html");
           return;
         }
       } catch(e){}
