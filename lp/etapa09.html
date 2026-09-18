@@ -42,7 +42,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     <div class="fbadge">🔓 Seu desconto está ativo</div>
 
     <div class="feyebrow">Válido só hoje, <span id="todayDate"></span></div>
-    <h1 class="fh1">Garanta seu acesso antes que o voucher expire</h1>
+    <h1 class="fh1" id="offerTitle">Garanta seu acesso antes que o voucher expire</h1>
 
     <div class="fcountdown">
       <div class="fseg"><b id="cdH">00</b><span>Horas</span></div>
@@ -59,6 +59,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
       </div>
       <div class="fprice-divider"></div>
       <div class="fnote" id="discountLabel">Desconto liberado pelo seu voucher, válido só hoje</div>
+      <div class="fhint" style="margin-top:10px;">Pagamento único · Sem assinatura · Acesso vitalício</div>
     </div>
 
     <ul class="flist fcheck">
@@ -150,6 +151,36 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <script>
   Funil.trackEtapa("Etapa9_View");
   if (typeof gtag === "function") gtag("event", "funil_etapa9_view");
+
+  /* ---- headline e CTAs personalizados pela dor relatada na etapa 5 ---- */
+  (function(){
+    var localizacao;
+    try { localizacao = localStorage.getItem("resposta_localizacao") || ""; } catch(e){ localizacao = ""; }
+
+    var copy = {
+      h1: "Garanta seu acesso antes que o voucher expire",
+      cta1: "Quero sair da crise lombar agora",
+      cta2: "Sim, quero garantir meu acesso agora"
+    };
+
+    if (localizacao === "Desce até abaixo do joelho, na perna toda") {
+      copy = {
+        h1: "Garanta o alívio da dor que desce pela perna antes que o voucher expire",
+        cta1: "Quero eliminar a dor que desce pra perna",
+        cta2: "Sim, quero parar de sentir essa dor na perna"
+      };
+    } else if (localizacao === "Desce até o glúteo ou a coxa") {
+      copy = {
+        h1: "Garanta o alívio antes que essa dor avance ainda mais",
+        cta1: "Quero eliminar essa dor antes que piore",
+        cta2: "Sim, quero resolver isso agora"
+      };
+    }
+
+    document.getElementById("offerTitle").textContent = copy.h1;
+    document.getElementById("btnCheckout").innerHTML = copy.cta1 + ' <span class="arrow">→</span>';
+    document.getElementById("btnCheckout2").innerHTML = copy.cta2 + ' <span class="arrow">→</span>';
+  })();
 
   var state = Funil.getState();
   var pct = state.discountPct || 72;
