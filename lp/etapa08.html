@@ -72,7 +72,9 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   Funil.setState({ discountPct: 72, priceFrom: "127,00", priceTo: "35,00" });
 
   setTimeout(function(){
-    document.getElementById("revealTitle").textContent = "Parabéns! Seu desconto foi liberado 🎉";
+    var nome;
+    try { nome = localStorage.getItem("resposta_nome") || ""; } catch(e){ nome = ""; }
+    document.getElementById("revealTitle").textContent = (nome ? nome + ", parabéns" : "Parabéns") + "! Seu desconto foi liberado 🎉";
     document.getElementById("voucherIcon").textContent = "🎉";
     document.getElementById("voucherTitle").textContent = "Voucher resgatado com sucesso";
     document.getElementById("loadingText").style.display = "none";

@@ -49,7 +49,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     <div class="fbadge">🎉 Parabéns, você chegou até aqui</div>
 
     <div class="feyebrow">Antes de ver o valor</div>
-    <h1 class="fh1">Você desbloqueou um voucher de desconto</h1>
+    <h1 class="fh1" id="voucherTitle">Você desbloqueou um voucher de desconto</h1>
     <p class="fsub">Por ter assistido até aqui, você garantiu acesso a um voucher especial, mas ele é limitado por dia.</p>
 
     <div class="fvoucher">
@@ -69,6 +69,15 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
 <script>
   Funil.trackEtapa("Etapa7_View");
   if (typeof gtag === "function") gtag("event", "funil_etapa7_view");
+
+  (function(){
+    var nome;
+    try { nome = localStorage.getItem("resposta_nome") || ""; } catch(e){ nome = ""; }
+    if (nome) {
+      document.getElementById("voucherTitle").textContent = nome + ", você desbloqueou um voucher de desconto";
+    }
+  })();
+
   document.getElementById("btnNext").addEventListener("click", function(){
     Funil.trackEtapa("Etapa7_Click");
     if (typeof gtag === "function") gtag("event", "funil_etapa7_click");
