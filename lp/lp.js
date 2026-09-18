@@ -9,6 +9,31 @@ var Funil = (function(){
     }
   }
 
+  /* ---- Trava de navegação: sem voltar pra etapa anterior, reload manda pro início ----
+     first: true na primeira etapa do funil (não redireciona em reload, só trava o botão voltar)
+  */
+  function lockStep(opts){
+    opts = opts || {};
+
+    if (!opts.first) {
+      try {
+        var nav = window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+        var isReload = nav ? nav.type === "reload" : (performance.navigation && performance.navigation.type === 1);
+        if (isReload) {
+          location.replace("index.html");
+          return;
+        }
+      } catch(e){}
+    }
+
+    try {
+      history.pushState(null, "", location.href);
+      window.addEventListener("popstate", function(){
+        history.pushState(null, "", location.href);
+      });
+    } catch(e){}
+  }
+
   /* ---- Persistência simples entre etapas (mesma aba/sessão) ---- */
   var STORE_KEY = "resetlombar_funil";
 
@@ -141,5 +166,5 @@ var Funil = (function(){
     } catch(e){}
   }
 
-  return { trackEtapa: trackEtapa, getState: getState, setState: setState, playChat: playChat, confetti: confetti, playRewardSound: playRewardSound };
+  return { trackEtapa: trackEtapa, lockStep: lockStep, getState: getState, setState: setState, playChat: playChat, confetti: confetti, playRewardSound: playRewardSound };
 })();
