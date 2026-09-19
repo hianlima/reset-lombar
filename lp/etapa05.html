@@ -95,6 +95,88 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
     }, delayMs);
   }
 
+  function buildWave(n){
+    var bars = "";
+    for (var i = 0; i < n; i++) {
+      bars += '<span style="height:' + (4 + Math.round(Math.random() * 14)) + 'px"></span>';
+    }
+    return bars;
+  }
+
+  function wireAudioBubble(row){
+    var btn = row.querySelector(".faudio-play");
+    var iconPlay = row.querySelector(".icon-play");
+    var iconPause = row.querySelector(".icon-pause");
+    var fg = row.querySelector(".faudio-bars-fg");
+    var timeEl = row.querySelector(".faudio-time");
+    var audio = row.querySelector(".faudio-el");
+
+    function fmt(sec){
+      sec = Math.max(0, Math.round(sec || 0));
+      var m = Math.floor(sec / 60), s = sec % 60;
+      return m + ":" + (s < 10 ? "0" : "") + s;
+    }
+
+    audio.addEventListener("loadedmetadata", function(){
+      if (isFinite(audio.duration)) timeEl.textContent = fmt(audio.duration);
+    });
+    audio.addEventListener("timeupdate", function(){
+      if (audio.duration) {
+        fg.style.width = (audio.currentTime / audio.duration * 100) + "%";
+        timeEl.textContent = fmt(audio.duration - audio.currentTime);
+      }
+    });
+    audio.addEventListener("ended", function(){
+      iconPlay.style.display = "";
+      iconPause.style.display = "none";
+      fg.style.width = "0%";
+      if (isFinite(audio.duration)) timeEl.textContent = fmt(audio.duration);
+    });
+
+    btn.addEventListener("click", function(){
+      if (audio.paused) {
+        document.querySelectorAll(".faudio-el").forEach(function(a){ if (a !== audio) a.pause(); });
+        audio.play().catch(function(){});
+        iconPlay.style.display = "none";
+        iconPause.style.display = "";
+      } else {
+        audio.pause();
+        iconPlay.style.display = "";
+        iconPause.style.display = "none";
+      }
+    });
+  }
+
+  function botSayAudio(src, delayMs, cb){
+    var typing = addTyping();
+    setTimeout(function(){
+      typing.remove();
+      var row = document.createElement("div");
+      row.className = "fchat-row them";
+      var bars = buildWave(28);
+      row.innerHTML =
+        '<div class="fchat-bubble fchat-audio">' +
+          '<div class="faudio-row">' +
+            '<button type="button" class="faudio-play" aria-label="Reproduzir áudio">' +
+              '<svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M8 5v14l11-7z"/></svg>' +
+              '<svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="#fff" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>' +
+            '</button>' +
+            '<div class="faudio-wave">' +
+              '<div class="faudio-bars-bg">' + bars + '</div>' +
+              '<div class="faudio-bars-fg">' + bars + '</div>' +
+            '</div>' +
+            '<div class="faudio-time">0:00</div>' +
+          '</div>' +
+          '<div class="fchat-meta"><span class="fchat-time">' + nowTime() + '</span></div>' +
+          '<audio class="faudio-el" src="' + src + '" preload="metadata"></audio>' +
+        '</div>';
+      chatWrap.appendChild(row);
+      scrollDown();
+      wireAudioBubble(row);
+      if (cb) cb();
+    }, delayMs);
+  }
+
   function meSay(text){
     var row = document.createElement("div");
     row.className = "fchat-row me";
@@ -218,10 +300,7 @@ src="https://www.facebook.com/tr?id=3390337087934483&ev=PageView&noscript=1"
   }
 
   function finish(){
-    var nome;
-    try { nome = localStorage.getItem("resposta_nome") || ""; } catch(e){ nome = ""; }
-    var abertura = nome ? escapeHtml(nome) + ", pelo" : "Pelo";
-    botSay(abertura + " que você me contou, seu padrão faz muito sentido dentro do que eu trabalho no método. Deixa eu te mostrar algo assustador...", 2000, function(){
+    botSayAudio("/audio/etapa05-diagnostico.mp3", 2000, function(){
       btnNext.style.display = "flex";
       Funil.trackEtapa("Etapa5_QuizCompleted");
       if (typeof gtag === "function") gtag("event", "quiz_completed");
