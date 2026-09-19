@@ -272,15 +272,7 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 
 /* ---- Garantia, em selo (etapa 9) ---- */
 .fguarantee-seal{ text-align:center; margin:0 0 22px; }
-.fguarantee-ring{
-  width:84px; height:84px; margin:0 auto 14px; border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #fff3e6, var(--orange) 60%, var(--orange-dk));
-  border:3px dashed rgba(255,255,255,.75);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  box-shadow:0 10px 22px rgba(242,113,26,.35);
-}
-.fguarantee-num{ font-family:var(--impact); font-size:1.7rem; color:#fff; line-height:1; }
-.fguarantee-days{ font-family:var(--ui); font-weight:700; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#fff; margin-top:2px; }
+.fguarantee-img{ width:110px; height:110px; margin:0 auto 14px; object-fit:contain; }
 .fguarantee-text{ font-family:var(--ui); font-size:.88rem; color:var(--ink); line-height:1.6; max-width:300px; margin:0 auto; }
 .fguarantee-text b{ color:var(--black); }
 
