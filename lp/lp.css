@@ -343,6 +343,19 @@ h1,h2,h3{ font-family:var(--ui); color:var(--black); margin:0; font-weight:700; 
 .ftag-card.green{ border-color:rgba(46,139,87,.35); }
 .ftag-card.green .ftag-pill{ background:var(--green-sf); color:var(--green); }
 .fnews-card-img img{ width:100%; display:block; }
+
+/* ---- Cartão de citação de estudo científico (etapa 3) ---- */
+.fstudy-card{
+  background:#fbfaf7; border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:0 0 12px;
+}
+.fstudy-journal{
+  background:#1c2b4a; color:#fff; font-family:var(--ui); font-weight:800; font-size:.66rem;
+  letter-spacing:.14em; text-transform:uppercase; padding:7px 14px;
+}
+.fstudy-body{ padding:12px 14px 14px; }
+.fstudy-title{ font-family:var(--serif); font-weight:700; font-style:italic; font-size:1rem; color:var(--black); line-height:1.4; margin:0 0 3px; }
+.fstudy-sub{ font-family:var(--ui); font-size:.8rem; color:var(--ink); opacity:.8; line-height:1.4; margin:0 0 8px; }
+.fstudy-meta{ font-family:var(--ui); font-weight:600; font-size:.7rem; color:var(--grey); letter-spacing:.02em; }
 .fnews-card-img .fnews-body{ padding:14px 16px 16px; }
 
 /* ---- FAQ (etapa 9) ---- */
